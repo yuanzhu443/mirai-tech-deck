@@ -1,0 +1,1491 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>未来の技術と私たちの暮らし — 日本科学未来館を訪れて</title>
+
+<!-- =================================================================
+     PRESENTATION: 未来の技術と私たちの暮らし
+     STYLE: Blue Professional (warm cream + single cobalt accent)
+     STRUCTURE: 9 slides, fixed 1920×1080 stage, scaled to viewport
+     LANGUAGE: Japanese (N3-N2 level), Space Grotesk + Noto Sans JP
+     ================================================================= -->
+
+<!-- === FONTS ===
+     Space Grotesk (Latin display, numerals, chrome)
+     Inter (Latin body)
+     Noto Sans JP (Japanese display + body — covers both roles) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=Noto+Sans+JP:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+
+<style>
+/* ===========================================================
+   VIEWPORT BASE CSS (mandatory fixed 16:9 stage)
+   Slides authored at 1920×1080, scaled as a whole to viewport.
+   =========================================================== */
+html, body { width:100%; height:100%; margin:0; overflow:hidden; background:var(--stage-bg,#000); }
+.deck-viewport { position:fixed; inset:0; overflow:hidden; background:var(--stage-bg,#000); }
+.deck-stage { position:absolute; left:0; top:0; width:1920px; height:1080px; overflow:hidden; transform-origin:0 0; background:var(--slide-bg,#fff); }
+.slide { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; display:block; visibility:hidden; opacity:0; pointer-events:none; background:var(--slide-bg,#fff); }
+.slide.active, .slide.visible { visibility:visible; opacity:1; pointer-events:auto; z-index:1; }
+img, video, canvas, svg { max-width:100%; max-height:100%; }
+.deck-controls { position:fixed; left:50%; bottom:22px; transform:translateX(-50%); z-index:1000; }
+@media print {
+  html, body { width:1920px; height:auto; overflow:visible; background:#fff; }
+  .deck-viewport { position:static; overflow:visible; background:#fff; }
+  .deck-stage { position:static; width:auto; height:auto; transform:none !important; background:none; }
+  .slide { position:relative; display:block !important; visibility:visible !important; opacity:1 !important; pointer-events:auto !important; width:1920px; height:1080px; break-after:page; page-break-after:always; }
+  .slide:last-child { break-after:auto; page-break-after:auto; }
+  .deck-controls { display:none !important; }
+}
+@media (prefers-reduced-motion: reduce) { *,*::before,*::after { animation-duration:0.01ms !important; transition-duration:0.2s !important; } }
+
+
+/* ===========================================================
+   DESIGN TOKENS — Blue Professional (translated to fixed px)
+   =========================================================== */
+:root {
+  /* Stage surround (letterbox area) — deep navy for cinematic atmosphere */
+  --stage-bg: #0a0b16;
+  /* Colors — single-accent discipline */
+  --bg: #fdfae7;                 /* warm cream canvas */
+  --primary: #1e2bfa;            /* saturated cobalt — the only accent */
+  --text: #111111;               /* primary text (near-black) */
+  --text-muted: #6b6b6b;         /* secondary text */
+  --text-light: #9a9a9a;         /* tertiary text */
+  --accent-light: rgba(30,43,250,0.08);   /* cobalt at 8% — tag pills, bar tracks */
+  --accent-medium: rgba(30,43,250,0.15);  /* cobalt at 15% */
+  --border: rgba(30,43,250,0.20);        /* cobalt at 20% — all card borders */
+  --card-bg: rgba(30,43,250,0.04);       /* cobalt at 4% — card fills */
+  --positive: #059669;           /* subdued green (change indicators only) */
+  --negative: #dc2626;            /* subdued red (change indicators only) */
+
+  /* Typography — fixed 1920×1080 stage sizes (scaled up from design doc clamp) */
+  --font-display: 'Space Grotesk', 'Noto Sans JP', sans-serif;
+  --font-body: 'Inter', 'Noto Sans JP', sans-serif;
+  --cover-title-size: 132px;
+  --h2-size: 60px;
+  --h3-size: 34px;
+  --eyebrow-size: 22px;
+  --body-size: 26px;
+  --body-sm: 20px;
+  --meta-size: 18px;
+  --keyword-size: 46px;
+  --metric-size: 84px;
+  --stat-num-size: 52px;
+  --step-num-size: 30px;
+
+  /* Spacing — fixed stage */
+  --pad-x: 140px;
+  --pad-top: 100px;
+  --pad-bottom: 70px;
+  --content-w: 1640px;          /* 1920 - 2×140 */
+  --content-h: 910px;           /* 1080 - 100 - 70 */
+  --gap-cards: 28px;
+  --gap-grid: 32px;
+  --radius-pill: 100px;
+  --radius-card: 14px;
+  --radius-card-sm: 10px;
+  --radius-bar: 6px;
+
+  /* Motion */
+  --ease-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-cinema: cubic-bezier(0.7, 0, 0.2, 1);
+  --dur: 0.7s;
+  --dur-long: 1.0s;
+}
+
+/* ===========================================================
+   BASE / RESET
+   =========================================================== */
+* { margin:0; padding:0; box-sizing:border-box; }
+.deck-stage { background: var(--bg); }
+.slide { background: var(--bg); font-family: var(--font-body); color: var(--text); }
+.slide-content {
+  display: flex; flex-direction: column;
+  width: 100%; height: 100%;
+  padding: var(--pad-top) var(--pad-x) var(--pad-bottom);
+}
+
+/* ===========================================================
+   FURIGANA / RUBY — readings above every kanji compound
+   Small, light, unobtrusive; tuned for CJK + N3-N2 learners.
+   =========================================================== */
+ruby { ruby-position: over; }
+ruby rt {
+  font-family: var(--font-body);
+  font-size: 0.32em;
+  font-weight: 400;
+  color: var(--primary);
+  opacity: 0.62;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  text-transform: none;
+  user-select: none;
+}
+/* Compact ruby for large display headings — keeps readings tidy */
+h1 ruby rt, h2 ruby rt { font-size: 0.26em; opacity: 0.55; }
+/* Larger readings for small body text so they stay legible */
+.body-sm ruby rt, .ec-desc ruby rt, .step-sub ruby rt, .cc-kw ruby rt { font-size: 0.4em; }
+
+
+/* ===========================================================
+   ATMOSPHERIC BACKGROUND — slow drifting cobalt light blobs
+   Layered for cinematic depth; sits behind all slide content.
+   =========================================================== */
+.atmosphere {
+  position: absolute; inset: 0; overflow: hidden;
+  pointer-events: none; z-index: 0;
+}
+.atmosphere .blob {
+  position: absolute; border-radius: 50%;
+  filter: blur(90px); opacity: 0.5;
+  will-change: transform;
+}
+.atmosphere .blob-1 {
+  width: 720px; height: 720px; top: -180px; left: -160px;
+  background: radial-gradient(circle, rgba(30,43,250,0.22), transparent 70%);
+  animation: drift-a 22s var(--ease-cinema) infinite alternate;
+}
+.atmosphere .blob-2 {
+  width: 640px; height: 640px; bottom: -220px; right: -120px;
+  background: radial-gradient(circle, rgba(30,43,250,0.18), transparent 70%);
+  animation: drift-b 28s var(--ease-cinema) infinite alternate;
+}
+.atmosphere .blob-3 {
+  width: 480px; height: 480px; top: 38%; left: 46%;
+  background: radial-gradient(circle, rgba(30,43,250,0.10), transparent 70%);
+  animation: drift-c 34s var(--ease-cinema) infinite alternate;
+}
+@keyframes drift-a { from { transform: translate(0,0); } to { transform: translate(120px, 90px) scale(1.12); } }
+@keyframes drift-b { from { transform: translate(0,0); } to { transform: translate(-100px, -70px) scale(1.08); } }
+@keyframes drift-c { from { transform: translate(-50%,-50%) scale(1); } to { transform: translate(-44%,-56%) scale(1.18); } }
+/* Slide content stays above atmosphere */
+.slide-content { position: relative; z-index: 2; }
+
+
+/* ===========================================================
+   TYPOGRAPHY — CJK-ADJUSTED
+   Japanese: letter-spacing 0 (not -0.02em), line-height 1.7+, no uppercase.
+   Latin/numerals: keep design doc specs via .latin class.
+   =========================================================== */
+.t-display { font-family: var(--font-display); }
+.t-body { font-family: var(--font-body); }
+
+h1, h2, h3, h4 { font-family: var(--font-display); color: var(--text); }
+h1 { font-size: var(--cover-title-size); font-weight: 900; line-height: 1.12; letter-spacing: 0; }
+h2 { font-size: var(--h2-size); font-weight: 600; line-height: 1.18; letter-spacing: 0; }
+h3 { font-size: var(--h3-size); font-weight: 500; line-height: 1.3; letter-spacing: 0; }
+
+/* Eyebrow — cobalt, weight 600. Japanese: no uppercase, slight positive tracking.
+   Paired with accent-line per CJK design guidance. */
+.eyebrow {
+  font-family: var(--font-display); font-weight: 600; font-size: var(--eyebrow-size);
+  color: var(--primary); letter-spacing: 0.05em; line-height: 1;
+}
+.eyebrow.latin { text-transform: uppercase; letter-spacing: 0.12em; }
+
+p, li { font-family: var(--font-body); font-size: var(--body-size); line-height: 1.72; color: var(--text-muted); }
+.body-sm { font-size: var(--body-sm); line-height: 1.65; }
+
+/* Numerals stay in Space Grotesk cobalt */
+.num { font-family: var(--font-display); font-weight: 700; color: var(--primary); }
+.metric-val { font-family: var(--font-display); font-weight: 700; font-size: var(--metric-size); color: var(--primary); line-height: 1; letter-spacing: -0.02em; }
+.stat-num { font-family: var(--font-display); font-weight: 700; font-size: var(--stat-num-size); color: var(--primary); line-height: 1; letter-spacing: -0.02em; }
+
+
+/* ===========================================================
+   PERSISTENT CHROME (outside stage, fixed to viewport)
+   =========================================================== */
+/* Progress bar — thin cobalt strip at very bottom edge */
+.progress-bar {
+  position: fixed; bottom: 0; left: 0; height: 3px; width: 0;
+  background: var(--primary); z-index: 2000;
+  transition: width 0.5s var(--ease-expo);
+}
+/* Keyboard hint */
+.kbd-hint {
+  position: fixed; bottom: 18px; left: 50%; transform: translateX(-50%);
+  font-family: var(--font-display); font-size: 14px; font-weight: 400;
+  color: var(--text-light); letter-spacing: 0.06em; z-index: 1000;
+  opacity: 0.6;
+}
+
+/* Slide footer counter — inside stage, bottom of each slide */
+.slide-footer {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-top: auto; padding-top: 16px;
+}
+.counter {
+  font-family: var(--font-display); font-weight: 500; font-size: var(--meta-size);
+  color: var(--text-muted); letter-spacing: 0.08em;
+}
+.counter b { color: var(--primary); font-weight: 700; }
+.footer-label {
+  font-family: var(--font-display); font-weight: 400; font-size: var(--meta-size);
+  color: var(--text-light); letter-spacing: 0.06em;
+}
+
+
+/* ===========================================================
+   COMPONENTS — Blue Professional design system
+   =========================================================== */
+
+/* --- Tag pill (top-right of slide-header) --- */
+.tag-pill {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 8px 20px; border-radius: var(--radius-pill);
+  background: var(--accent-light); color: var(--primary);
+  font-family: var(--font-display); font-weight: 500; font-size: 18px;
+  letter-spacing: 0.04em; white-space: nowrap;
+}
+
+/* --- Eyebrow dot --- */
+.eyebrow-dot { display:inline-block; width:8px; height:8px; border-radius:50%; background:var(--primary); vertical-align:middle; margin-right:10px; }
+
+/* --- Accent line (60×4 cobalt rule) --- */
+.accent-line { width: 60px; height: 4px; background: var(--primary); border-radius: 2px; }
+.accent-line.wide { width: 100px; }
+
+/* --- Tinted card (primary depth mechanism) --- */
+.card-tinted {
+  background: var(--card-bg); border: 1.5px solid var(--border);
+  border-radius: var(--radius-card); padding: 32px 36px;
+}
+.card-tinted.sm { border-radius: var(--radius-card-sm); border-width: 1px; padding: 24px 28px; }
+
+/* --- Split-highlight block (callout with cobalt left rule) --- */
+.highlight-block {
+  background: var(--accent-light); border-left: 4px solid var(--primary);
+  border-radius: 12px; padding: 28px 36px;
+}
+
+/* --- Step circle (numbered sequential marker) --- */
+.step-circle {
+  width: 72px; height: 72px; border-radius: 50%;
+  background: var(--primary); color: var(--bg);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-display); font-weight: 700; font-size: var(--step-num-size);
+  flex-shrink: 0; line-height: 1;
+}
+/* Diminishing opacity for future steps */
+.step-fade-1 { opacity: 1.0; }
+.step-fade-2 { opacity: 0.82; }
+.step-fade-3 { opacity: 0.64; }
+.step-fade-4 { opacity: 0.46; }
+
+/* --- Step connector (horizontal dashed line between circles) --- */
+.step-connector {
+  flex: 1; height: 2px; background: var(--border); margin: 0 8px;
+  position: relative; top: 35px; /* aligns with circle center */
+}
+.step-connector::after {
+  content: ""; position: absolute; right: -6px; top: -4px;
+  width: 0; height: 0;
+  border-left: 10px solid var(--border);
+  border-top: 5px solid transparent; border-bottom: 5px solid transparent;
+}
+
+/* --- Keyword pill (large keyword display) --- */
+.keyword-pill {
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  background: var(--card-bg); border: 1.5px solid var(--border);
+  border-radius: var(--radius-card); padding: 36px 24px;
+  text-align: center;
+}
+.keyword-pill .kw { font-family: var(--font-display); font-weight: 700; font-size: var(--keyword-size); color: var(--text); letter-spacing: 0; }
+.keyword-pill .en { font-family: var(--font-display); font-weight: 500; font-size: 18px; color: var(--primary); letter-spacing: 0.08em; text-transform: uppercase; margin-top: 10px; }
+
+/* --- Cover decoration panel (soft cobalt tint with dot grid) --- */
+.cover-panel {
+  background: var(--card-bg); border: 1.5px solid var(--border);
+  border-radius: var(--radius-card); overflow: hidden;
+  display: flex; align-items: center; justify-content: center;
+  position: relative;
+}
+.cover-panel::before {
+  content: ""; position: absolute; inset: 0;
+  background-image: radial-gradient(circle, rgba(30,43,250,0.12) 1.4px, transparent 1.4px);
+  background-size: 36px 36px; opacity: 0.5;
+}
+
+/* --- Closing concentric circles decoration --- */
+.closing-circles { position: absolute; inset: 0; pointer-events: none; display: flex; align-items: center; justify-content: center; }
+.closing-circles .ring { position: absolute; border: 1px solid var(--border); border-radius: 50%; }
+.closing-circles .ring-1 { width: 560px; height: 560px; opacity: 0.35; --ring-opacity: 0.35; }
+.closing-circles .ring-2 { width: 380px; height: 380px; opacity: 0.45; --ring-opacity: 0.45; }
+.closing-circles .ring-3 { width: 200px; height: 200px; opacity: 0.55; --ring-opacity: 0.55; }
+
+
+/* ===========================================================
+   SLIDE HEADER (eyebrow left + tag pill right)
+   =========================================================== */
+.slide-header {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: 18px;
+}
+.slide-header .eyebrow-wrap { display: flex; align-items: center; gap: 16px; }
+
+
+/* ===========================================================
+   SLIDE 1: COVER (表紙)
+   =========================================================== */
+.cover-slide .slide-content { padding: var(--pad-top) var(--pad-x) var(--pad-bottom); }
+.cover-top {
+  display: flex; align-items: center; justify-content: space-between;
+}
+.cover-eyebrow-pill {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 10px 22px; border-radius: var(--radius-pill);
+  background: var(--accent-light); border: 1.5px solid var(--border);
+  font-family: var(--font-display); font-weight: 500; font-size: 20px;
+  color: var(--primary); letter-spacing: 0.03em;
+}
+.cover-body { display: flex; flex: 1; align-items: center; gap: 60px; margin-top: 40px; }
+.cover-title-col { flex: 1; }
+.cover-panel-col { width: 480px; flex-shrink: 0; }
+.cover-title { font-size: var(--cover-title-size); font-weight: 900; line-height: 1.08; color: var(--text); margin: 0; }
+.cover-title .accent { color: var(--primary); }
+.cover-sub-rule { width: 88px; height: 4px; background: var(--primary); border-radius: 2px; margin: 40px 0 26px; }
+.cover-subtitle { font-family: var(--font-body); font-size: 32px; font-weight: 400; color: var(--text-muted); letter-spacing: 0.03em; margin: 0; }
+.cover-panel-large { height: 560px; }
+.panel-numeral { font-family: var(--font-display); font-size: 260px; font-weight: 700; color: rgba(30,43,250,0.12); line-height: 1; letter-spacing: -0.04em; position: relative; z-index: 1; }
+.panel-label { position: absolute; bottom: 32px; left: 32px; z-index: 2; font-family: var(--font-display); font-size: 15px; font-weight: 500; color: var(--primary); letter-spacing: 0.16em; text-transform: uppercase; }
+.cover-footer { display: flex; align-items: center; justify-content: space-between; margin-top: auto; }
+.cover-footer .group { font-weight: 500; color: var(--text); }
+
+
+/* ===========================================================
+   SLIDE 2: OUTLINE (本日の流れ)
+   =========================================================== */
+.outline-flow {
+  display: flex; align-items: flex-start; justify-content: space-between;
+  margin-top: 30px; padding: 0 10px;
+}
+.outline-step { display: flex; flex-direction: column; align-items: center; text-align: center; width: 220px; }
+.outline-step .step-num { font-family: var(--font-display); font-weight: 700; font-size: 26px; color: var(--primary); margin-top: 22px; line-height: 1; }
+.outline-step .step-jp { font-family: var(--font-display); font-weight: 600; font-size: 30px; color: var(--text); margin-top: 10px; line-height: 1.2; }
+.outline-step .step-sub { font-family: var(--font-body); font-size: 18px; color: var(--text-muted); margin-top: 8px; line-height: 1.4; }
+.outline-detail {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--gap-cards);
+  margin-top: 50px;
+}
+.outline-card {
+  background: var(--card-bg); border: 1px solid var(--border);
+  border-radius: var(--radius-card-sm); padding: 24px 28px;
+  display: flex; align-items: center; gap: 18px;
+}
+.outline-card .oc-num { font-family: var(--font-display); font-weight: 700; font-size: 28px; color: var(--primary); flex-shrink: 0; }
+.outline-card .oc-text { font-family: var(--font-body); font-size: 20px; color: var(--text); line-height: 1.4; }
+
+
+/* ===========================================================
+   SLIDE 3: EXHIBITION (展示紹介)
+   =========================================================== */
+.exhi-statement {
+  font-family: var(--font-display); font-weight: 600; font-size: 48px;
+  color: var(--text); line-height: 1.35; margin: 28px 0 44px;
+  max-width: 1300px;
+}
+.exhi-statement .q { color: var(--primary); }
+.exhi-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 22px; }
+.exhi-card {
+  background: var(--card-bg); border: 1.5px solid var(--border);
+  border-radius: var(--radius-card); padding: 30px 24px;
+  display: flex; flex-direction: column; align-items: center; text-align: center;
+}
+.exhi-card .ec-icon { width: 56px; height: 56px; margin-bottom: 20px; display: flex; align-items: center; justify-content: center; }
+.exhi-card .ec-title { font-family: var(--font-display); font-weight: 600; font-size: 24px; color: var(--text); line-height: 1.25; }
+.exhi-card .ec-desc { font-family: var(--font-body); font-size: 17px; color: var(--text-muted); line-height: 1.5; margin-top: 10px; }
+
+
+/* ===========================================================
+   SLIDE 4: PAST (過去)
+   =========================================================== */
+.past-timeline { display: flex; align-items: stretch; justify-content: space-between; gap: 30px; margin-top: 36px; }
+.past-stage { flex: 1; display: flex; flex-direction: column; align-items: center; text-align: center; }
+.past-device { height: 240px; display: flex; align-items: flex-end; justify-content: center; margin-bottom: 28px; position: relative; width: 100%; }
+.past-stage .step-circle { margin-bottom: 24px; }
+.past-stage .ps-title { font-family: var(--font-display); font-weight: 600; font-size: 30px; color: var(--text); line-height: 1.2; }
+.past-stage .ps-era { font-family: var(--font-display); font-weight: 500; font-size: 18px; color: var(--primary); letter-spacing: 0.06em; margin-top: 8px; }
+.past-stage .ps-desc { font-family: var(--font-body); font-size: 19px; color: var(--text-muted); line-height: 1.55; margin-top: 12px; max-width: 420px; }
+
+/* CSS-drawn device shapes */
+/* Large computer: tall rack cabinet */
+.dev-mainframe { width: 160px; height: 220px; background: var(--card-bg); border: 2px solid var(--border); border-radius: 8px; position: relative; }
+.dev-mainframe::before { content:""; position:absolute; top:14px; left:14px; right:14px; bottom:48px; background: repeating-linear-gradient(180deg, transparent 0, transparent 20px, var(--border) 20px, var(--border) 22px); border-radius: 4px; }
+.dev-mainframe::after { content:""; position:absolute; bottom:14px; left:14px; right:14px; height: 22px; background: var(--accent-light); border-radius: 4px; }
+
+/* Personal computer: monitor on stand */
+.dev-pc { position: relative; }
+.dev-pc .screen { width: 200px; height: 150px; background: var(--card-bg); border: 2px solid var(--border); border-radius: 10px; position: relative; }
+.dev-pc .screen::before { content:""; position:absolute; inset: 10px; background: var(--accent-light); border-radius: 4px; }
+.dev-pc .stand { width: 16px; height: 40px; background: var(--border); margin: 0 auto; }
+.dev-pc .base { width: 80px; height: 8px; background: var(--border); border-radius: 4px; margin: 0 auto; }
+.dev-pc .pc-stack { display: flex; flex-direction: column; align-items: center; }
+
+/* Smartphone: small rounded rectangle */
+.dev-phone { width: 86px; height: 170px; background: var(--card-bg); border: 2px solid var(--border); border-radius: 14px; position: relative; }
+.dev-phone::before { content:""; position:absolute; top:10px; left:6px; right:6px; bottom:24px; background: var(--accent-light); border-radius: 8px; }
+.dev-phone::after { content:""; position:absolute; bottom:8px; left:50%; transform:translateX(-50%); width:24px; height:4px; background: var(--border); border-radius: 2px; }
+
+/* Arrows between past stages */
+.past-arrow { display: flex; align-items: center; justify-content: center; align-self: center; margin-top: 120px; color: var(--border); font-size: 32px; }
+
+
+/* ===========================================================
+   SLIDE 5: PRESENT (今)
+   =========================================================== */
+.present-keywords { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-top: 32px; }
+.present-support { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 30px; }
+.ps-card { padding: 26px 30px; }
+.ps-card .psc-title { font-family: var(--font-display); font-weight: 600; font-size: 26px; color: var(--primary); line-height: 1.2; }
+.ps-card .psc-desc { font-family: var(--font-body); font-size: 19px; color: var(--text-muted); line-height: 1.55; margin-top: 12px; }
+
+
+/* ===========================================================
+   SLIDE 6: FUTURE (10年後)
+   =========================================================== */
+.future-statement {
+  font-family: var(--font-display); font-weight: 600; font-size: 44px;
+  color: var(--text); line-height: 1.3; margin: 24px 0 40px;
+}
+.future-statement .accent { color: var(--primary); }
+.future-split { display: grid; grid-template-columns: 1fr 1fr; gap: 36px; }
+.future-col h3 { margin-bottom: 20px; display: flex; align-items: center; gap: 14px; }
+.future-col h3 .col-num { font-family: var(--font-display); font-weight: 700; font-size: 22px; color: var(--primary); }
+.future-quote { margin-bottom: 24px; }
+.future-quote .fq-text { font-family: var(--font-display); font-weight: 600; font-size: 28px; color: var(--text); line-height: 1.3; }
+.future-quote .fq-cite { font-family: var(--font-display); font-size: 16px; color: var(--text-muted); letter-spacing: 0.06em; margin-top: 8px; }
+.future-list { list-style: none; padding: 0; margin: 0; }
+.future-list li { font-family: var(--font-body); font-size: 22px; color: var(--text-muted); line-height: 1.6; padding-left: 28px; position: relative; margin-bottom: 14px; }
+.future-list li::before { content: ""; position: absolute; left: 0; top: 16px; width: 10px; height: 10px; border-radius: 50%; background: var(--primary); opacity: 0.7; }
+.future-col.cautious .future-list li::before { opacity: 0.4; }
+
+
+/* ===========================================================
+   SLIDE 7: COUNTRIES (各国の現状)
+   =========================================================== */
+.country-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin-top: 36px; }
+.country-card {
+  background: var(--card-bg); border: 1.5px solid var(--border);
+  border-radius: var(--radius-card); padding: 36px 32px;
+  display: flex; flex-direction: column;
+}
+.country-card .cc-flag-area { display: flex; align-items: center; gap: 16px; margin-bottom: 28px; }
+.country-card .cc-code { font-family: var(--font-display); font-weight: 700; font-size: 48px; color: var(--primary); line-height: 1; letter-spacing: -0.02em; }
+.country-card .cc-name { font-family: var(--font-display); font-weight: 600; font-size: 32px; color: var(--text); line-height: 1.15; }
+.country-card .cc-name-jp { font-family: var(--font-body); font-size: 18px; color: var(--text-muted); margin-top: 4px; }
+.country-card .cc-keywords { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 20px; }
+.country-card .cc-kw { font-family: var(--font-display); font-weight: 500; font-size: 16px; color: var(--primary); background: var(--accent-light); padding: 7px 16px; border-radius: var(--radius-pill); letter-spacing: 0.02em; }
+.country-card .cc-desc { font-family: var(--font-body); font-size: 19px; color: var(--text-muted); line-height: 1.6; margin-top: auto; }
+
+
+/* ===========================================================
+   SLIDE 8: CONCLUSION (結論)
+   =========================================================== */
+.conclusion-keywords { display: flex; gap: 24px; margin: 28px 0 40px; }
+.ck-pill {
+  flex: 1; background: var(--card-bg); border: 1.5px solid var(--border);
+  border-radius: var(--radius-card); padding: 30px 24px; text-align: center;
+}
+.ck-pill .ck-jp { font-family: var(--font-display); font-weight: 700; font-size: 40px; color: var(--text); line-height: 1.1; }
+.ck-pill .ck-en { font-family: var(--font-display); font-weight: 500; font-size: 16px; color: var(--primary); letter-spacing: 0.12em; text-transform: uppercase; margin-top: 10px; }
+.conclusion-arc { display: flex; align-items: center; justify-content: center; gap: 30px; margin-bottom: 36px; }
+.ca-stage { display: flex; flex-direction: column; align-items: center; text-align: center; }
+.ca-stage .ca-label { font-family: var(--font-display); font-weight: 600; font-size: 28px; color: var(--text); margin-top: 20px; line-height: 1.2; }
+.ca-stage .ca-sub { font-family: var(--font-body); font-size: 18px; color: var(--text-muted); margin-top: 6px; }
+.ca-arrow { font-size: 36px; color: var(--border); margin-top: 36px; }
+.conclusion-thought { font-family: var(--font-display); font-weight: 600; font-size: 32px; color: var(--text); line-height: 1.4; }
+.conclusion-thought .accent { color: var(--primary); }
+
+
+/* ===========================================================
+   SLIDE 9: THANK YOU (closing)
+   =========================================================== */
+.thanks-slide .slide-content { align-items: center; justify-content: center; text-align: center; position: relative; }
+.thanks-title { font-family: var(--font-display); font-weight: 900; font-size: 120px; color: var(--text); letter-spacing: 0.04em; position: relative; z-index: 2; line-height: 1.1; }
+.thanks-sub { font-family: var(--font-body); font-size: 26px; color: var(--text-muted); margin-top: 30px; position: relative; z-index: 2; letter-spacing: 0.04em; }
+.thanks-countries { font-family: var(--font-display); font-size: 20px; color: var(--primary); letter-spacing: 0.10em; margin-top: 20px; position: relative; z-index: 2; }
+
+
+/* ===========================================================
+    ANIMATIONS — cinematic & bold staggered reveal on slide entry
+    Re-trigger when slide regains .visible (animation restarts).
+    Larger offsets, blur clearing, and clip-reveal headlines.
+    =========================================================== */
+
+/* Base reveal — rise + blur clearing */
+.reveal { opacity: 0; transform: translateY(36px); filter: blur(8px); }
+.slide.visible .reveal { animation: reveal-cinema var(--dur-long) var(--ease-cinema) forwards; }
+@keyframes reveal-cinema {
+  to { opacity: 1; transform: translateY(0); filter: blur(0); }
+}
+
+/* Scale reveal — grow + blur clearing (panels, rings, devices) */
+.reveal-scale { opacity: 0; transform: scale(0.92); filter: blur(6px); }
+.slide.visible .reveal-scale { animation: reveal-sc-cinema var(--dur-long) var(--ease-cinema) forwards; }
+@keyframes reveal-sc-cinema {
+  to { opacity: 1; transform: scale(1); filter: blur(0); }
+}
+
+/* Clip-reveal for headlines — wipes up from behind a mask */
+h2.reveal { opacity: 1; transform: none; filter: none;
+  clip-path: inset(0 0 100% 0); }
+.slide.visible h2.reveal { animation: clip-reveal-up 1.0s var(--ease-cinema) forwards; }
+@keyframes clip-reveal-up { to { clip-path: inset(0 0 0% 0); } }
+
+/* Cover title — dramatic blur-in + mask wipe */
+.cover-title.reveal { opacity: 0; transform: translateY(50px) scale(1.04); filter: blur(14px);
+  clip-path: inset(0 0 100% 0); }
+.slide.visible .cover-title.reveal { animation: cover-title-in 1.3s var(--ease-cinema) forwards; }
+@keyframes cover-title-in {
+  to { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); clip-path: inset(0 0 0% 0); }
+}
+
+/* Accent line — draws in from left */
+.accent-line.reveal, .cover-sub-rule.reveal { opacity: 0; transform: scaleX(0); transform-origin: left center; }
+.slide.visible .accent-line.reveal, .slide.visible .cover-sub-rule.reveal {
+  animation: line-draw 0.9s var(--ease-cinema) forwards;
+}
+@keyframes line-draw { to { opacity: 1; transform: scaleX(1); } }
+
+/* Cover numeral — dramatic rise */
+.panel-numeral { opacity: 0; transform: scale(0.6); transform-origin: center; }
+.slide.visible .panel-numeral { animation: numeral-rise 1.6s var(--ease-cinema) forwards; }
+@keyframes numeral-rise {
+  0% { opacity: 0; transform: scale(0.6); }
+  60% { opacity: 1; transform: scale(1.08); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+/* Closing rings — expand outward */
+.closing-circles .ring.reveal-scale { opacity: 0; transform: scale(0.2); }
+.slide.visible .closing-circles .ring.reveal-scale { animation: ring-expand 1.4s var(--ease-cinema) forwards; }
+@keyframes ring-expand {
+  to { opacity: var(--ring-opacity, 0.45); transform: scale(1); }
+}
+
+/* Stagger delays — bolder spacing for cinematic pacing */
+.d1 { animation-delay: 0.15s; }
+.d2 { animation-delay: 0.32s; }
+.d3 { animation-delay: 0.50s; }
+.d4 { animation-delay: 0.68s; }
+.d5 { animation-delay: 0.86s; }
+.d6 { animation-delay: 1.04s; }
+.d7 { animation-delay: 1.22s; }
+.d8 { animation-delay: 1.40s; }
+.d9 { animation-delay: 1.58s; }
+
+
+/* ===========================================================
+   INLINE EDITING (post-draft affordance)
+   =========================================================== */
+.edit-hotzone { position: fixed; top: 0; left: 0; width: 80px; height: 80px; z-index: 10000; cursor: pointer; }
+.edit-toggle {
+  position: fixed; top: 16px; left: 16px; width: 44px; height: 44px;
+  border: 1.5px solid var(--border); border-radius: 50%; background: var(--bg);
+  color: var(--primary); font-size: 20px; cursor: pointer; z-index: 10001;
+  opacity: 0; pointer-events: none; transition: opacity 0.3s ease;
+  display: flex; align-items: center; justify-content: center;
+}
+.edit-toggle.show, .edit-toggle.active { opacity: 1; pointer-events: auto; }
+.edit-toggle.active { background: var(--primary); color: var(--bg); }
+.edit-banner {
+  position: fixed; top: 16px; left: 70px; z-index: 10001;
+  font-family: var(--font-display); font-size: 14px; font-weight: 500;
+  color: var(--primary); background: var(--accent-light);
+  padding: 8px 16px; border-radius: var(--radius-pill);
+  display: none; letter-spacing: 0.04em;
+}
+.edit-banner.show { display: block; }
+[contenteditable="true"] { outline: 2px dashed var(--primary); outline-offset: 4px; cursor: text; }
+[contenteditable="true"]:focus { outline-style: solid; }
+</style>
+</head>
+<body>
+
+<!-- =======================================================
+     DECK VIEWPORT + FIXED STAGE
+     ======================================================= -->
+<div class="deck-viewport">
+  <main class="deck-stage" id="deckStage">
+
+    <!-- ===================================================
+         SLIDE 1 — 表紙 (COVER)
+         =================================================== -->
+    <section class="slide active cover-slide" aria-label="表紙">
+      <div class="atmosphere"><div class="blob blob-1"></div><div class="blob blob-2"></div><div class="blob blob-3"></div></div>
+      <div class="slide-content">
+        <!-- Top chrome -->
+        <div class="cover-top">
+          <span class="cover-eyebrow-pill reveal d1"><span class="eyebrow-dot"></span><ruby>日本<rt>にほん</rt></ruby><ruby>科学<rt>かがく</rt></ruby><ruby>未来館<rt>みらいかん</rt></ruby> <ruby>見学<rt>けんがく</rt></ruby>レポート</span>
+          <span class="counter reveal d2"><b>01</b> / 09</span>
+        </div>
+
+        <!-- Body: title (left) + visual panel (right) -->
+        <div class="cover-body">
+          <div class="cover-title-col">
+            <h1 class="cover-title reveal d3"><ruby>未来<rt>みらい</rt></ruby>の<ruby>技術<rt>ぎじゅつ</rt></ruby>と<br><span class="accent"><ruby>私<rt>わたし</rt></ruby>たちの<ruby>暮<rt>く</rt></ruby>らし</span></h1>
+            <div class="cover-sub-rule reveal d4"></div>
+            <p class="cover-subtitle reveal d5"><ruby>日本<rt>にほん</rt></ruby><ruby>科学<rt>かがく</rt></ruby><ruby>未来館<rt>みらいかん</rt></ruby>を<ruby>訪<rt>たず</rt></ruby>ねて</p>
+          </div>
+          <div class="cover-panel-col">
+            <div class="cover-panel cover-panel-large reveal-scale d4">
+              <span class="panel-numeral">01</span>
+              <span class="panel-label"><ruby>未来<rt>みらい</rt></ruby>と<ruby>生活<rt>せいかつ</rt></ruby></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="cover-footer">
+          <span class="footer-label reveal d6"><ruby>発表<rt>はっぴょう</rt></ruby></span>
+          <span class="counter reveal d6"><ruby>中国<rt>ちゅうごく</rt></ruby> ・ <ruby>ネパール</ruby> ・ <ruby>カザフスタン</ruby></span>
+        </div>
+      </div>
+
+      <!--
+        SPEAKER SCRIPT:
+        皆さん、こんにちは。私たちは「未来の技術と私たちの暮らし」というテーマで発表します。
+        先週、日本科学未来館を見学し、コンピューターの過去、現在、未来について考えました。
+      -->
+    </section>
+
+
+    <!-- ===================================================
+         SLIDE 2 — OUTLINE (本日の流れ)
+         =================================================== -->
+    <section class="slide" aria-label="Outline">
+      <div class="atmosphere"><div class="blob blob-1"></div><div class="blob blob-2"></div><div class="blob blob-3"></div></div>
+      <div class="slide-content">
+        <!-- Header -->
+        <div class="slide-header reveal d1">
+          <div class="eyebrow-wrap">
+            <span class="accent-line"></span>
+            <span class="eyebrow">アウトライン</span>
+          </div>
+          <span class="tag-pill">02 / 09</span>
+        </div>
+
+        <!-- Headline -->
+        <h2 class="reveal d2"><ruby>本日<rt>ほんじつ</rt></ruby>の<ruby>流<rt>なが</rt></ruby>れ</h2>
+
+        <!-- 6-step horizontal flow -->
+        <div class="outline-flow reveal d3">
+          <div class="outline-step">
+            <div class="step-circle step-fade-1">01</div>
+            <span class="step-num">03</span>
+            <span class="step-jp"><ruby>展示<rt>てんじ</rt></ruby><ruby>紹介<rt>しょうかい</rt></ruby></span>
+            <span class="step-sub"><ruby>未来館<rt>みらいかん</rt></ruby>で<ruby>見<rt>み</rt></ruby>たもの</span>
+          </div>
+          <div class="step-connector"></div>
+          <div class="outline-step">
+            <div class="step-circle step-fade-1">02</div>
+            <span class="step-num">04</span>
+            <span class="step-jp"><ruby>過去<rt>かこ</rt></ruby></span>
+            <span class="step-sub">コンピューターの<ruby>発展<rt>はってん</rt></ruby></span>
+          </div>
+          <div class="step-connector"></div>
+          <div class="outline-step">
+            <div class="step-circle step-fade-2">03</div>
+            <span class="step-num">05</span>
+            <span class="step-jp"><ruby>現在<rt>げんざい</rt></ruby></span>
+            <span class="step-sub"><ruby>見<rt>み</rt></ruby>る・<ruby>認識<rt>にんしき</rt></ruby>する</span>
+          </div>
+          <div class="step-connector"></div>
+          <div class="outline-step">
+            <div class="step-circle step-fade-3">04</div>
+            <span class="step-num">06</span>
+            <span class="step-jp"><ruby>未来<rt>みらい</rt></ruby></span>
+            <span class="step-sub">どこでも<ruby>計算<rt>けいさん</rt></ruby></span>
+          </div>
+          <div class="step-connector"></div>
+          <div class="outline-step">
+            <div class="step-circle step-fade-4">05</div>
+            <span class="step-num">07</span>
+            <span class="step-jp"><ruby>世界<rt>せかい</rt></ruby></span>
+            <span class="step-sub">3つの<ruby>国<rt>くに</rt></ruby>の<ruby>現状<rt>げんじょう</rt></ruby></span>
+          </div>
+          <div class="step-connector"></div>
+          <div class="outline-step">
+            <div class="step-circle step-fade-4">06</div>
+            <span class="step-num">08</span>
+            <span class="step-jp"><ruby>私<rt>わたし</rt></ruby>たちの<ruby>考<rt>かんが</rt></ruby>え</span>
+            <span class="step-sub"><ruby>技術<rt>ぎじゅつ</rt></ruby>と<ruby>暮<rt>く</rt></ruby>らし</span>
+          </div>
+        </div>
+
+        <!-- Detail cards -->
+        <div class="outline-detail">
+          <div class="outline-card reveal d4"><span class="oc-num">01</span><span class="oc-text"><ruby>展示<rt>てんじ</rt></ruby><ruby>紹介<rt>しょうかい</rt></ruby> — <ruby>未来館<rt>みらいかん</rt></ruby>で<ruby>見<rt>み</rt></ruby>た<ruby>技術<rt>ぎじゅつ</rt></ruby></span></div>
+          <div class="outline-card reveal d5"><span class="oc-num">02</span><span class="oc-text"><ruby>過去<rt>かこ</rt></ruby> — <ruby>大<rt>おお</rt></ruby>きな<ruby>機械<rt>きかい</rt></ruby>から<ruby>小<rt>ちい</rt></ruby>さく</span></div>
+          <div class="outline-card reveal d5"><span class="oc-num">03</span><span class="oc-text"><ruby>現在<rt>げんざい</rt></ruby> — <ruby>見<rt>み</rt></ruby>る・<ruby>認識<rt>にんしき</rt></ruby>する・<ruby>感<rt>かん</rt></ruby>じる</span></div>
+          <div class="outline-card reveal d6"><span class="oc-num">04</span><span class="oc-text"><ruby>未来<rt>みらい</rt></ruby> — どこでも<ruby>計算<rt>けいさん</rt></ruby></span></div>
+          <div class="outline-card reveal d6"><span class="oc-num">05</span><span class="oc-text"><ruby>各<rt>かく</rt></ruby><ruby>国<rt>こく</rt></ruby>の<ruby>現状<rt>げんじょう</rt></ruby> — <ruby>中国<rt>ちゅうごく</rt></ruby>・ネパール・カザフスタン</span></div>
+          <div class="outline-card reveal d7"><span class="oc-num">06</span><span class="oc-text"><ruby>結論<rt>けつろん</rt></ruby> — <ruby>技術<rt>ぎじゅつ</rt></ruby>と<ruby>私<rt>わたし</rt></ruby>たちの<ruby>暮<rt>く</rt></ruby>らし</span></div>
+        </div>
+
+        <!-- Footer -->
+        <div class="slide-footer">
+          <span class="counter"><b>02</b> / 09</span>
+          <span class="footer-label"><ruby>本日<rt>ほんじつ</rt></ruby>の<ruby>流<rt>なが</rt></ruby>れ</span>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ===================================================
+         SLIDE 3 — 展示紹介 (EXHIBITION INTRODUCTION)
+         =================================================== -->
+    <section class="slide" aria-label="展示紹介">
+      <div class="atmosphere"><div class="blob blob-1"></div><div class="blob blob-2"></div><div class="blob blob-3"></div></div>
+      <div class="slide-content">
+        <!-- Header -->
+        <div class="slide-header reveal d1">
+          <div class="eyebrow-wrap">
+            <span class="accent-line"></span>
+            <span class="eyebrow"><ruby>展示<rt>てんじ</rt></ruby><ruby>紹介<rt>しょうかい</rt></ruby></span>
+          </div>
+          <span class="tag-pill">03 / 09</span>
+        </div>
+
+        <!-- Headline -->
+        <h2 class="reveal d2"><ruby>日本<rt>にほん</rt></ruby><ruby>科学<rt>かがく</rt></ruby><ruby>未来館<rt>みらいかん</rt></ruby>で<ruby>見<rt>み</rt></ruby>たもの</h2>
+
+        <!-- Key question statement -->
+        <p class="exhi-statement reveal d3">コンピューターは、<span class="q">これからどこへ<ruby>向<rt>む</rt></ruby>かうのか？</span></p>
+
+        <!-- 5 topic cards -->
+        <div class="exhi-grid">
+          <div class="exhi-card reveal d4">
+            <div class="ec-icon">
+              <!-- Dolphin/brain icon (CSS circle) -->
+              <div style="width:48px;height:48px;border:2.5px solid var(--primary);border-radius:50%;position:relative;">
+                <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:14px;height:14px;background:var(--accent-light);border-radius:50%;"></div>
+              </div>
+            </div>
+            <div class="ec-title">イルカの<ruby>脳<rt>のう</rt></ruby></div>
+            <div class="ec-desc"><ruby>自然<rt>しぜん</rt></ruby>の<ruby>情報<rt>じょうほう</rt></ruby><ruby>処理<rt>しょり</rt></ruby></div>
+          </div>
+          <div class="exhi-card reveal d5">
+            <div class="ec-icon">
+              <!-- Eye icon (CSS) -->
+              <div style="width:52px;height:30px;border:2.5px solid var(--primary);border-radius:50%/60% 60% 40% 40%;position:relative;">
+                <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:12px;height:12px;background:var(--primary);border-radius:50%;"></div>
+              </div>
+            </div>
+            <div class="ec-title">コンピュータービジョン</div>
+            <div class="ec-desc"><ruby>画像<rt>がぞう</rt></ruby>・<ruby>映像<rt>えいぞう</rt></ruby>を<ruby>認識<rt>にんしき</rt></ruby></div>
+          </div>
+          <div class="exhi-card reveal d5">
+            <div class="ec-icon">
+              <!-- Leaf/nature icon (CSS) -->
+              <div style="width:44px;height:44px;border:2.5px solid var(--primary);border-radius:50% 0 50% 0;transform:rotate(-15deg);"></div>
+            </div>
+            <div class="ec-title"><ruby>自然<rt>しぜん</rt></ruby>と<ruby>計算<rt>けいさん</rt></ruby></div>
+            <div class="ec-desc"><ruby>計算機<rt>けいさんき</rt></ruby>と<ruby>自然<rt>しぜん</rt></ruby>の<ruby>関係<rt>かんけい</rt></ruby></div>
+          </div>
+          <div class="exhi-card reveal d6">
+            <div class="ec-icon">
+              <!-- Dust/particle icon (CSS dots) -->
+              <div style="position:relative;width:48px;height:48px;">
+                <div style="position:absolute;top:4px;left:8px;width:6px;height:6px;background:var(--primary);border-radius:50%;"></div>
+                <div style="position:absolute;top:14px;left:24px;width:5px;height:5px;background:var(--primary);border-radius:50%;opacity:0.7;"></div>
+                <div style="position:absolute;top:28px;left:6px;width:7px;height:7px;background:var(--primary);border-radius:50%;opacity:0.5;"></div>
+                <div style="position:absolute;top:34px;left:30px;width:4px;height:4px;background:var(--primary);border-radius:50%;opacity:0.8;"></div>
+                <div style="position:absolute;top:20px;left:14px;width:5px;height:5px;background:var(--primary);border-radius:50%;opacity:0.6;"></div>
+              </div>
+            </div>
+            <div class="ec-title"><ruby>塵<rt>ちり</rt></ruby>も<ruby>計算<rt>けいさん</rt></ruby>する</div>
+            <div class="ec-desc">ごく<ruby>小<rt>ちい</rt></ruby>さな<ruby>計算機<rt>けいさんき</rt></ruby></div>
+          </div>
+          <div class="exhi-card reveal d7">
+            <div class="ec-icon">
+              <!-- Atom/quantum icon (CSS) -->
+              <div style="position:relative;width:48px;height:48px;">
+                <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:10px;height:10px;background:var(--primary);border-radius:50%;"></div>
+                <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) rotate(0deg);width:48px;height:18px;border:2px solid var(--primary);border-radius:50%;opacity:0.6;"></div>
+                <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) rotate(60deg);width:48px;height:18px;border:2px solid var(--primary);border-radius:50%;opacity:0.6;"></div>
+                <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) rotate(120deg);width:48px;height:18px;border:2px solid var(--primary);border-radius:50%;opacity:0.6;"></div>
+              </div>
+            </div>
+            <div class="ec-title"><ruby>量子<rt>りょうし</rt></ruby>コンピューター</div>
+            <div class="ec-desc">あたらしい<ruby>計算<rt>けいさん</rt></ruby><ruby>方法<rt>ほうほう</rt></ruby></div>
+          </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="slide-footer">
+          <span class="counter"><b>03</b> / 09</span>
+          <span class="footer-label"><ruby>展示<rt>てんじ</rt></ruby><ruby>紹介<rt>しょうかい</rt></ruby> — <ruby>未来館<rt>みらいかん</rt></ruby>で<ruby>見<rt>み</rt></ruby>たもの</span>
+        </div>
+      </div>
+
+      <!--
+        SPEAKER SCRIPT:
+        皆さん、こんにちは。私たちは先週、日本科学未来館を見学しました。
+        そこで、コンピューターの歴史だけではなく、自然とコンピューターの関係や、
+        コンピュータービジョン、量子コンピューターなど、さまざまな技術について学びました。
+        特に印象に残ったのは、コンピューターがこれからどのように変化し、
+        私たちの生活とどのような関係を持つようになるのか、ということです。
+        今日は、コンピューターの過去、現在、そして10年後の未来について考えたいと思います。
+      -->
+    </section>
+
+
+    <!-- ===================================================
+         SLIDE 4 — 過去 (PAST)
+         =================================================== -->
+    <section class="slide" aria-label="過去">
+      <div class="atmosphere"><div class="blob blob-1"></div><div class="blob blob-2"></div><div class="blob blob-3"></div></div>
+      <div class="slide-content">
+        <!-- Header -->
+        <div class="slide-header reveal d1">
+          <div class="eyebrow-wrap">
+            <span class="accent-line"></span>
+            <span class="eyebrow"><ruby>過去<rt>かこ</rt></ruby> — コンピューターは<ruby>小<rt>ちい</rt></ruby>さくなってきた</span>
+          </div>
+          <span class="tag-pill">04 / 09</span>
+        </div>
+
+        <!-- Headline -->
+        <h2 class="reveal d2"><ruby>大<rt>おお</rt></ruby>きな<ruby>機械<rt>きかい</rt></ruby>から<ruby>手<rt>て</rt></ruby>のひらの<ruby>機械<rt>きかい</rt></ruby>へ</h2>
+
+        <!-- 3-stage timeline with CSS-drawn devices -->
+        <div class="past-timeline">
+          <!-- Stage 1: Mainframe -->
+          <div class="past-stage reveal d3">
+            <div class="past-device">
+              <div class="dev-mainframe"></div>
+            </div>
+            <div class="step-circle step-fade-1">01</div>
+            <div class="ps-title"><ruby>大型<rt>おおがた</rt></ruby>コンピューター</div>
+            <div class="ps-era">1940〜1960<ruby>年代<rt>ねんだい</rt></ruby></div>
+            <div class="ps-desc"><ruby>部屋<rt>へや</rt></ruby>ほどの<ruby>大<rt>おお</rt></ruby>きさで、とても<ruby>高価<rt>こうか</rt></ruby>な<ruby>機械<rt>きかい</rt></ruby>だった</div>
+          </div>
+
+          <div class="past-arrow reveal d4">→</div>
+
+          <!-- Stage 2: PC -->
+          <div class="past-stage reveal d4">
+            <div class="past-device">
+              <div class="dev-pc">
+                <div class="pc-stack">
+                  <div class="screen"></div>
+                  <div class="stand"></div>
+                  <div class="base"></div>
+                </div>
+              </div>
+            </div>
+            <div class="step-circle step-fade-2">02</div>
+            <div class="ps-title">パソコン</div>
+            <div class="ps-era">1970〜1980<ruby>年代<rt>ねんだい</rt></ruby></div>
+            <div class="ps-desc"><ruby>技術<rt>ぎじゅつ</rt></ruby>が<ruby>発展<rt>はってん</rt></ruby>し、<ruby>家庭<rt>かてい</rt></ruby>に<ruby>広<rt>ひろ</rt></ruby>がった</div>
+          </div>
+
+          <div class="past-arrow reveal d5">→</div>
+
+          <!-- Stage 3: Smartphone -->
+          <div class="past-stage reveal d5">
+            <div class="past-device">
+              <div class="dev-phone"></div>
+            </div>
+            <div class="step-circle step-fade-3">03</div>
+            <div class="ps-title">スマートフォン</div>
+            <div class="ps-era">2000<ruby>年代<rt>ねんだい</rt></ruby> —</div>
+            <div class="ps-desc">いつでも<ruby>持<rt>も</rt></ruby>ち<ruby>歩<rt>ある</rt></ruby>ける<ruby>機械<rt>きかい</rt></ruby>になった</div>
+          </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="slide-footer">
+          <span class="counter"><b>04</b> / 09</span>
+          <span class="footer-label"><ruby>過去<rt>かこ</rt></ruby> — コンピューターの<ruby>発展<rt>はってん</rt></ruby></span>
+        </div>
+      </div>
+
+      <!--
+        SPEAKER SCRIPT:
+        昔のコンピューターは、とても大きく、一つの部屋を使うほどの大きさでした。
+        その後、技術が発展し、パソコンが登場しました。
+        さらに、スマートフォンが普及すると、コンピューターは私たちがいつでも持ち歩けるものになりました。
+        このように、コンピューターは、昔の大きな機械から、どんどん小さくなってきました。
+        そして現在では、コンピューターは私たちの生活のさまざまな場所に存在しています。
+      -->
+    </section>
+
+
+    <!-- ===================================================
+         SLIDE 5 — 今 (PRESENT)
+         =================================================== -->
+    <section class="slide" aria-label="今">
+      <div class="atmosphere"><div class="blob blob-1"></div><div class="blob blob-2"></div><div class="blob blob-3"></div></div>
+      <div class="slide-content">
+        <!-- Header -->
+        <div class="slide-header reveal d1">
+          <div class="eyebrow-wrap">
+            <span class="accent-line"></span>
+            <span class="eyebrow"><ruby>今<rt>いま</rt></ruby> — <ruby>計算<rt>けいさん</rt></ruby>だけではない</span>
+          </div>
+          <span class="tag-pill">05 / 09</span>
+        </div>
+
+        <!-- Headline -->
+        <h2 class="reveal d2">コンピューターは「<ruby>計算<rt>けいさん</rt></ruby>」だけではない</h2>
+
+        <!-- 4 keyword cards -->
+        <div class="present-keywords">
+          <div class="keyword-pill reveal d3">
+            <span class="kw"><ruby>見<rt>み</rt></ruby>る</span>
+          </div>
+          <div class="keyword-pill reveal d3">
+            <span class="kw"><ruby>認識<rt>にんしき</rt></ruby>する</span>
+          </div>
+          <div class="keyword-pill reveal d4">
+            <span class="kw"><ruby>感<rt>かん</rt></ruby>じる</span>
+          </div>
+          <div class="keyword-pill reveal d4">
+            <span class="kw"><ruby>判断<rt>はんだん</rt></ruby>する</span>
+          </div>
+        </div>
+
+        <!-- 3 supporting cards -->
+        <div class="present-support">
+          <div class="card-tinted sm ps-card reveal d5">
+            <div class="psc-title">コンピュータービジョン</div>
+            <div class="psc-desc"><ruby>画像<rt>がぞう</rt></ruby>や<ruby>映像<rt>えいぞう</rt></ruby>を<ruby>認識<rt>にんしき</rt></ruby>し、<ruby>現実<rt>げんじつ</rt></ruby>の<ruby>世界<rt>せかい</rt></ruby>を<ruby>見<rt>み</rt></ruby>ることができる</div>
+          </div>
+          <div class="card-tinted sm ps-card reveal d6">
+            <div class="psc-title"><ruby>自然<rt>しぜん</rt></ruby>の<ruby>情報<rt>じょうほう</rt></ruby><ruby>処理<rt>しょり</rt></ruby></div>
+            <div class="psc-desc">イルカの<ruby>脳<rt>のう</rt></ruby>など、<ruby>自然<rt>しぜん</rt></ruby>からヒントを<ruby>得<rt>え</rt></ruby>てあたらしい<ruby>技術<rt>ぎじゅつ</rt></ruby>を<ruby>研究<rt>けんきゅう</rt></ruby></div>
+          </div>
+          <div class="card-tinted sm ps-card reveal d7">
+            <div class="psc-title">センサー・モノのインターネット</div>
+            <div class="psc-desc"><ruby>生活<rt>せいかつ</rt></ruby>の<ruby>中<rt>なか</rt></ruby>のセンサーが、<ruby>環境<rt>かんきょう</rt></ruby>の<ruby>情報<rt>じょうほう</rt></ruby>を<ruby>集<rt>あつ</rt></ruby>めている</div>
+          </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="slide-footer">
+          <span class="counter"><b>05</b> / 09</span>
+          <span class="footer-label"><ruby>今<rt>いま</rt></ruby> — <ruby>現在<rt>げんざい</rt></ruby>の<ruby>技術<rt>ぎじゅつ</rt></ruby></span>
+        </div>
+      </div>
+
+      <!--
+        SPEAKER SCRIPT:
+        現在では、コンピューターは単に計算するための機械ではありません。
+        例えば、コンピュータービジョンによって、コンピューターは画像や映像を認識できるようになりました。
+        また、展示ではイルカの脳なども紹介されていました。
+        自然界には、人間のコンピューターとは違う情報処理の方法があります。
+        そのため、私たちは自然からヒントを得ながら、新しいコンピューター技術を研究しています。
+        このように、現在のコンピューターは、見る、認識する、感じるなど、現実の世界と関わるようになっています。
+      -->
+    </section>
+
+
+    <!-- ===================================================
+         SLIDE 6 — 10年後 (FUTURE)
+         =================================================== -->
+    <section class="slide" aria-label="10年後">
+      <div class="atmosphere"><div class="blob blob-1"></div><div class="blob blob-2"></div><div class="blob blob-3"></div></div>
+      <div class="slide-content">
+        <!-- Header -->
+        <div class="slide-header reveal d1">
+          <div class="eyebrow-wrap">
+            <span class="accent-line"></span>
+            <span class="eyebrow">10<ruby>年後<rt>ねんご</rt></ruby> — <ruby>未来<rt>みらい</rt></ruby>の<ruby>方向<rt>ほうこう</rt></ruby></span>
+          </div>
+          <span class="tag-pill">06 / 09</span>
+        </div>
+
+        <!-- Headline -->
+        <h2 class="reveal d2">どこでも<ruby>計算<rt>けいさん</rt></ruby>する<ruby>世界<rt>せかい</rt></ruby></h2>
+
+        <!-- Key message -->
+        <p class="future-statement reveal d3"><ruby>計算<rt>けいさん</rt></ruby>する<ruby>方法<rt>ほうほう</rt></ruby>そのものも<span class="accent"><ruby>変<rt>か</rt></ruby>わるかもしれない</span></p>
+
+        <!-- 2-column split -->
+        <div class="future-split">
+          <!-- Left: Computing Everywhere -->
+          <div class="future-col reveal d4">
+            <h3><span class="col-num">01</span> どこでも<ruby>計算<rt>けいさん</rt></ruby></h3>
+            <div class="highlight-block future-quote">
+              <div class="fq-text">「ちりも<ruby>計算<rt>けいさん</rt></ruby>する」</div>
+              <div class="fq-cite">— <ruby>日本<rt>にほん</rt></ruby><ruby>科学<rt>かがく</rt></ruby><ruby>未来館<rt>みらいかん</rt></ruby> <ruby>展示<rt>てんじ</rt></ruby>より</div>
+            </div>
+            <ul class="future-list">
+              <li><ruby>家<rt>いえ</rt></ruby>・<ruby>道路<rt>どうろ</rt></ruby>・<ruby>病院<rt>びょういん</rt></ruby>など、さまざまな<ruby>場所<rt>ばしょ</rt></ruby>に<ruby>小<rt>ちい</rt></ruby>さなセンサーが<ruby>存在<rt>そんざい</rt></ruby>する</li>
+              <li><ruby>私<rt>わたし</rt></ruby>たちが<ruby>意識<rt>いしき</rt></ruby>しない<ruby>場所<rt>ばしょ</rt></ruby>に、コンピューターが<ruby>自然<rt>しぜん</rt></ruby>にある</li>
+              <li><ruby>環境<rt>かんきょう</rt></ruby>の<ruby>一部<rt>いちぶ</rt></ruby>として、<ruby>計算<rt>けいさん</rt></ruby>が<ruby>溶<rt>と</rt></ruby>け<ruby>込<rt>こ</rt></ruby>む<ruby>未来<rt>みらい</rt></ruby></li>
+            </ul>
+          </div>
+
+          <!-- Right: Quantum Computing -->
+          <div class="future-col cautious reveal d5">
+            <h3><span class="col-num">02</span> <ruby>量子<rt>りょうし</rt></ruby>コンピューター</h3>
+            <div class="card-tinted sm" style="margin-bottom:24px;">
+              <div class="psc-title" style="font-size:24px;">あたらしい<ruby>計算<rt>けいさん</rt></ruby>の<ruby>原理<rt>げんり</rt></ruby></div>
+              <div class="psc-desc"><ruby>従来<rt>じゅうらい</rt></ruby>のコンピューターとは<ruby>違<rt>ちが</rt></ruby>う<ruby>計算<rt>けいさん</rt></ruby><ruby>方法<rt>ほうほう</rt></ruby></div>
+            </div>
+            <ul class="future-list">
+              <li><ruby>医療<rt>いりょう</rt></ruby>やあたらしい<ruby>材料<rt>ざいりょう</rt></ruby>の<ruby>研究<rt>けんきゅう</rt></ruby>に<ruby>期待<rt>きたい</rt></ruby>されている</li>
+              <li><ruby>現在<rt>げんざい</rt></ruby>は<ruby>時間<rt>じかん</rt></ruby>がかかる<ruby>問題<rt>もんだい</rt></ruby>に<ruby>使<rt>つか</rt></ruby>われるかもしれない</li>
+              <li>まだ<ruby>研究<rt>けんきゅう</rt></ruby><ruby>段階<rt>だんかい</rt></ruby>だが、<ruby>将来<rt>しょうらい</rt></ruby><ruby>発展<rt>はってん</rt></ruby>する<ruby>可能性<rt>かのうせい</rt></ruby>がある</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="slide-footer">
+          <span class="counter"><b>06</b> / 09</span>
+          <span class="footer-label">10<ruby>年後<rt>ねんご</rt></ruby> — どこでも<ruby>計算<rt>けいさん</rt></ruby></span>
+        </div>
+      </div>
+
+      <!--
+        SPEAKER SCRIPT:
+        では、10年後のコンピューターはどうなるでしょうか。
+        私は、コンピューターはさらに小さくなり、私たちの生活や環境の中に自然に存在するようになると思います。
+        未来館の展示には、「ちりも計算する」という考え方がありました。
+        これは、コンピューターが非常に小さくなり、私たちが意識しない場所にも存在する未来を表しています。
+        例えば、家や道路、病院など、さまざまな場所に小さなコンピューターやセンサーが存在するかもしれません。
+        また、量子コンピューターのような新しい計算方法も、将来さらに発展する可能性があります。
+        医療や新しい材料の研究など、現在は時間がかかる問題にも利用されるかもしれません。
+        つまり、10年後には、コンピューターそのものだけではなく、「計算する方法」も変わっているかもしれません。
+      -->
+    </section>
+
+
+    <!-- ===================================================
+         SLIDE 7 — 各国の現状 (COUNTRIES)
+         =================================================== -->
+    <section class="slide" aria-label="各国の現状">
+      <div class="atmosphere"><div class="blob blob-1"></div><div class="blob blob-2"></div><div class="blob blob-3"></div></div>
+      <div class="slide-content">
+        <!-- Header -->
+        <div class="slide-header reveal d1">
+          <div class="eyebrow-wrap">
+            <span class="accent-line"></span>
+            <span class="eyebrow"><ruby>各<rt>かく</rt></ruby><ruby>国<rt>こく</rt></ruby>の<ruby>現状<rt>げんじょう</rt></ruby> — <ruby>世界<rt>せかい</rt></ruby>の<ruby>技術<rt>ぎじゅつ</rt></ruby></span>
+          </div>
+          <span class="tag-pill">07 / 09</span>
+        </div>
+
+        <!-- Headline -->
+        <h2 class="reveal d2">3つの<ruby>国<rt>くに</rt></ruby>、3つの<ruby>現状<rt>げんじょう</rt></ruby></h2>
+
+        <!-- 3 country cards (same template, same cobalt accent) -->
+        <div class="country-grid">
+          <!-- China -->
+          <div class="country-card reveal d3">
+            <div class="cc-flag-area">
+              <span class="cc-code">01</span>
+              <div>
+                <div class="cc-name"><ruby>中国<rt>ちゅうごく</rt></ruby></div>
+              </div>
+            </div>
+            <div class="cc-keywords">
+              <span class="cc-kw"><ruby>人工知能<rt>じんこうちのう</rt></ruby></span>
+              <span class="cc-kw">コンピュータービジョン</span>
+              <span class="cc-kw"><ruby>自動運転<rt>じどううんてん</rt></ruby></span>
+              <span class="cc-kw">ロボット</span>
+              <span class="cc-kw"><ruby>量子<rt>りょうし</rt></ruby><ruby>技術<rt>ぎじゅつ</rt></ruby></span>
+            </div>
+            <div class="cc-desc"><ruby>人工知能<rt>じんこうちのう</rt></ruby>やコンピュータービジョンが、<ruby>自動運転<rt>じどううんてん</rt></ruby>や<ruby>工場<rt>こうじょう</rt></ruby>の<ruby>自動化<rt>じどうか</rt></ruby>で<ruby>利用<rt>りよう</rt></ruby>されている。<ruby>量子通信<rt>りょうしつうしん</rt></ruby>や<ruby>量子<rt>りょうし</rt></ruby>コンピューターの<ruby>研究<rt>けんきゅう</rt></ruby>も<ruby>進<rt>すす</rt></ruby>んでいる。</div>
+          </div>
+
+          <!-- Nepal -->
+          <div class="country-card reveal d4">
+            <div class="cc-flag-area">
+              <span class="cc-code">02</span>
+              <div>
+                <div class="cc-name">ネパール</div>
+              </div>
+            </div>
+            <div class="cc-keywords">
+              <span class="cc-kw">モバイル<ruby>決済<rt>けっさい</rt></ruby></span>
+              <span class="cc-kw">オンライン<ruby>教育<rt>きょういく</rt></ruby></span>
+              <span class="cc-kw"><ruby>農業<rt>のうぎょう</rt></ruby>テクノロジー</span>
+            </div>
+            <div class="cc-desc">スマートフォンの<ruby>普及<rt>ふきゅう</rt></ruby>で、モバイル<ruby>決済<rt>けっさい</rt></ruby>やオンライン<ruby>学習<rt>がくしゅう</rt></ruby>が<ruby>広<rt>ひろ</rt></ruby>がっている。<ruby>農業<rt>のうぎょう</rt></ruby>への<ruby>技術<rt>ぎじゅつ</rt></ruby><ruby>活用<rt>かつよう</rt></ruby>も<ruby>進<rt>すす</rt></ruby>んでいる。</div>
+          </div>
+
+          <!-- Kazakhstan -->
+          <div class="country-card reveal d5">
+            <div class="cc-flag-area">
+              <span class="cc-code">03</span>
+              <div>
+                <div class="cc-name">カザフスタン</div>
+              </div>
+            </div>
+            <div class="cc-keywords">
+              <span class="cc-kw">デジタル<ruby>政府<rt>せいふ</rt></ruby></span>
+              <span class="cc-kw">スマートシティ</span>
+              <span class="cc-kw"><ruby>宇宙<rt>うちゅう</rt></ruby>・<ruby>科学<rt>かがく</rt></ruby></span>
+            </div>
+            <div class="cc-desc">デジタル<ruby>化<rt>か</rt></ruby>の<ruby>推進<rt>すいしん</rt></ruby>とスマートシティ<ruby>構想<rt>こうそう</rt></ruby>が<ruby>進<rt>すす</rt></ruby>んでいる。<ruby>若者<rt>わかもの</rt></ruby>の<ruby>技術<rt>ぎじゅつ</rt></ruby><ruby>学習<rt>がくしゅう</rt></ruby>も<ruby>盛<rt>さか</rt></ruby>んである。</div>
+          </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="slide-footer">
+          <span class="counter"><b>07</b> / 09</span>
+          <span class="footer-label"><ruby>各<rt>かく</rt></ruby><ruby>国<rt>こく</rt></ruby>の<ruby>現状<rt>げんじょう</rt></ruby> — 3つの<ruby>国<rt>くに</rt></ruby></span>
+        </div>
+      </div>
+
+      <!--
+        SPEAKER SCRIPT (中国):
+        次に、中国の現状について紹介します。
+        中国では、現在、コンピューターや人工知能に関する技術が急速に発展しています。
+        例えば、コンピュータービジョンは、自動運転や工場の自動化など、さまざまな分野で利用されています。
+        また、ロボット技術やスマートシティなど、コンピューターを利用した技術も発展しています。
+        さらに、量子通信や量子コンピューターについても研究が進められています。
+        まだ研究段階の技術もありますが、今後、私たちの生活の中で利用される場面が増えていくと考えています。
+
+        SPEAKER SCRIPT (ネパール):
+        次に、ネパールの現状について紹介します。
+        ネパールでは、スマートフォンの普及によって、モバイル決済やオンライン学習が急速に広がっています。
+        都市だけでなく地方でも、スマートフォンを通じて教育や金融のサービスが利用できるようになってきました。
+        また、農業への技術活用も進んでおり、天候や作物の状態をデータで管理する取り組みが始まっています。
+        まだインフラの課題はありますが、技術が生活を支える役割は今後さらに大きくなると考えています。
+
+        SPEAKER SCRIPT (カザフスタン):
+        最後に、カザフスタンの現状について紹介します。
+        カザフスタンでは、政府がデジタル化を推進しており、オンラインでの行政手続きが進んでいます。
+        また、スマートシティの構想も進んでおり、都市の交通やエネルギー管理に技術が活用されています。
+        宇宙科学や若者の技術学習にも力が入っており、将来の技術者を育てる教育が盛んです。
+        このように、カザフスタンは技術を社会に取り入れながら、未来に向けた準備を進めている国と言えます。
+      -->
+    </section>
+
+
+    <!-- ===================================================
+         SLIDE 8 — 結論 (CONCLUSION)
+         =================================================== -->
+    <section class="slide" aria-label="結論">
+      <div class="atmosphere"><div class="blob blob-1"></div><div class="blob blob-2"></div><div class="blob blob-3"></div></div>
+      <div class="slide-content">
+        <!-- Header -->
+        <div class="slide-header reveal d1">
+          <div class="eyebrow-wrap">
+            <span class="accent-line"></span>
+            <span class="eyebrow"><ruby>結論<rt>けつろん</rt></ruby> — <ruby>技術<rt>ぎじゅつ</rt></ruby>が<ruby>生活<rt>せいかつ</rt></ruby>の<ruby>一部<rt>いちぶ</rt></ruby>になる</span>
+          </div>
+          <span class="tag-pill">08 / 09</span>
+        </div>
+
+        <!-- Headline -->
+        <h2 class="reveal d2"><ruby>技術<rt>ぎじゅつ</rt></ruby>が<ruby>生活<rt>せいかつ</rt></ruby>の<ruby>一部<rt>いちぶ</rt></ruby>になる</h2>
+
+        <!-- 3 keyword pills -->
+        <div class="conclusion-keywords reveal d3">
+          <div class="ck-pill">
+            <div class="ck-jp"><ruby>便利<rt>べんり</rt></ruby></div>
+            <div class="ck-en">べんり</div>
+          </div>
+          <div class="ck-pill">
+            <div class="ck-jp"><ruby>自然<rt>しぜん</rt></ruby></div>
+            <div class="ck-en">しぜん</div>
+          </div>
+          <div class="ck-pill">
+            <div class="ck-jp"><ruby>課題<rt>かだい</rt></ruby></div>
+            <div class="ck-en">かだい</div>
+          </div>
+        </div>
+
+        <!-- Evolution arc: 3 steps -->
+        <div class="conclusion-arc reveal d4">
+          <div class="ca-stage">
+            <div class="step-circle step-fade-1">01</div>
+            <div class="ca-label"><ruby>大<rt>おお</rt></ruby>きな<ruby>機械<rt>きかい</rt></ruby></div>
+            <div class="ca-sub"><ruby>過去<rt>かこ</rt></ruby></div>
+          </div>
+          <span class="ca-arrow">→</span>
+          <div class="ca-stage">
+            <div class="step-circle step-fade-2">02</div>
+            <div class="ca-label"><ruby>生活<rt>せいかつ</rt></ruby>の<ruby>中<rt>なか</rt></ruby></div>
+            <div class="ca-sub"><ruby>現在<rt>げんざい</rt></ruby></div>
+          </div>
+          <span class="ca-arrow">→</span>
+          <div class="ca-stage">
+            <div class="step-circle step-fade-3">03</div>
+            <div class="ca-label"><ruby>意識<rt>いしき</rt></ruby>しない<ruby>存在<rt>そんざい</rt></ruby></div>
+            <div class="ca-sub"><ruby>未来<rt>みらい</rt></ruby></div>
+          </div>
+        </div>
+
+        <!-- Closing thought -->
+        <div class="highlight-block reveal d5">
+          <p class="conclusion-thought"><ruby>技術<rt>ぎじゅつ</rt></ruby>を<ruby>発展<rt>はってん</rt></ruby>させるだけでなく、<span class="accent">どう<ruby>使<rt>つか</rt></ruby>うか</span>を<ruby>考<rt>かんが</rt></ruby>えることも<ruby>大切<rt>たいせつ</rt></ruby></p>
+        </div>
+
+        <!-- Footer -->
+        <div class="slide-footer">
+          <span class="counter"><b>08</b> / 09</span>
+          <span class="footer-label"><ruby>結論<rt>けつろん</rt></ruby> — <ruby>技術<rt>ぎじゅつ</rt></ruby>と<ruby>暮<rt>く</rt></ruby>らし</span>
+        </div>
+      </div>
+
+      <!--
+        SPEAKER SCRIPT:
+        今回の見学を通して、私たちは、未来のコンピューターは単なる便利な道具ではなく、
+        私たちの生活や社会の一部になっていくと考えました。
+        過去には、コンピューターは大きな機械でした。
+        現在では、スマートフォンやセンサーなど、さまざまな場所で利用されています。
+        そして将来は、私たちがコンピューターを意識しなくても、生活の中で自然に利用するようになるかもしれません。
+        一方で、技術が発展すると、新しい問題も生まれると思います。
+        そのため、技術を発展させるだけではなく、それを私たちの生活の中でどのように利用するかを考えることも大切です。
+        私たちは今回の見学を通して、未来の技術について考えることができました。
+      -->
+    </section>
+
+
+    <!-- ===================================================
+         SLIDE 9 — Thank You (CLOSING)
+         =================================================== -->
+    <section class="slide thanks-slide" aria-label="ありがとう">
+      <div class="atmosphere"><div class="blob blob-1"></div><div class="blob blob-2"></div><div class="blob blob-3"></div></div>
+      <div class="slide-content">
+        <!-- Concentric circles decoration -->
+        <div class="closing-circles">
+          <div class="ring ring-1 reveal-scale d1"></div>
+          <div class="ring ring-2 reveal-scale d2"></div>
+          <div class="ring ring-3 reveal-scale d3"></div>
+        </div>
+
+        <div class="accent-line reveal d2" style="margin-bottom:36px;"></div>
+        <h1 class="thanks-title reveal d3">ありがとうございました</h1>
+        <p class="thanks-sub reveal d4"><ruby>未来<rt>みらい</rt></ruby>の<ruby>技術<rt>ぎじゅつ</rt></ruby>と<ruby>私<rt>わたし</rt></ruby>たちの<ruby>暮<rt>く</rt></ruby>らし</p>
+        <p class="thanks-countries reveal d5"><ruby>中国<rt>ちゅうごく</rt></ruby> ・ ネパール ・ カザフスタン</p>
+
+        <!-- Footer -->
+        <div class="slide-footer" style="position:absolute;bottom:var(--pad-bottom);left:var(--pad-x);right:var(--pad-x);">
+          <span class="counter"><b>09</b> / 09</span>
+          <span class="footer-label">ありがとう</span>
+        </div>
+      </div>
+
+      <!--
+        SPEAKER SCRIPT:
+        ご清聴ありがとうございました。
+      -->
+    </section>
+
+  </main>
+</div>
+
+<!-- Persistent chrome (outside stage) -->
+<div class="progress-bar" id="progressBar"></div>
+<div class="kbd-hint" id="kbdHint">← → 矢印キーで移動 · E で編集</div>
+
+<!-- Inline editing controls -->
+<div class="edit-hotzone" id="editHotzone"></div>
+<button class="edit-toggle" id="editToggle" title="編集モード (E)">✏</button>
+<div class="edit-banner" id="editBanner">編集モード — クリックで編集 · Ctrl+S で保存</div>
+
+
+<script>
+/* ===========================================================
+   SLIDE PRESENTATION CONTROLLER
+   Stage scaling + keyboard/touch nav + progress + counter
+   =========================================================== */
+class SlidePresentation {
+  constructor() {
+    this.slides = document.querySelectorAll('.slide');
+    this.total = this.slides.length;
+    this.current = 0;
+    this.stage = document.getElementById('deckStage');
+    this.progressBar = document.getElementById('progressBar');
+    this.kbdHint = document.getElementById('kbdHint');
+
+    this.scaleStage();
+    window.addEventListener('resize', () => this.scaleStage());
+
+    this.setupKeyboard();
+    this.setupTouch();
+    this.showSlide(0);
+
+    // Fade out keyboard hint after a few seconds
+    setTimeout(() => { if (this.kbdHint) this.kbdHint.style.opacity = '0'; }, 6000);
+  }
+
+  /* Scale 1920×1080 stage to fit viewport (letterbox, never reflow) */
+  scaleStage() {
+    var vw = window.innerWidth, vh = window.innerHeight;
+    var scale = Math.min(vw / 1920, vh / 1080);
+    var ox = (vw - 1920 * scale) / 2;
+    var oy = (vh - 1080 * scale) / 2;
+    this.stage.style.transform = 'translate(' + ox + 'px,' + oy + 'px) scale(' + scale + ')';
+  }
+
+  /* Keyboard navigation */
+  setupKeyboard() {
+    document.addEventListener('keydown', (e) => {
+      // Skip if editing text
+      if (e.target.getAttribute('contenteditable') === 'true') {
+        if (e.key === 'Escape') { e.target.blur(); }
+        return;
+      }
+      switch (e.key) {
+        case 'ArrowRight': case ' ': case 'PageDown':
+          e.preventDefault(); this.next(); break;
+        case 'ArrowLeft': case 'PageUp':
+          e.preventDefault(); this.prev(); break;
+        case 'Home':
+          e.preventDefault(); this.showSlide(0); break;
+        case 'End':
+          e.preventDefault(); this.showSlide(this.total - 1); break;
+      }
+    });
+  }
+
+  /* Touch / swipe navigation */
+  setupTouch() {
+    var startX = 0, startY = 0;
+    this.stage.addEventListener('touchstart', (e) => {
+      startX = e.touches[0].clientX;
+      startY = e.touches[0].clientY;
+    }, { passive: true });
+    this.stage.addEventListener('touchend', (e) => {
+      var dx = e.changedTouches[0].clientX - startX;
+      var dy = e.changedTouches[0].clientY - startY;
+      if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)) {
+        if (dx < 0) this.next(); else this.prev();
+      }
+    }, { passive: true });
+  }
+
+  next() { if (this.current < this.total - 1) this.showSlide(this.current + 1); }
+  prev() { if (this.current > 0) this.showSlide(this.current - 1); }
+
+  /* Show slide at index — toggles .active/.visible to trigger CSS animations */
+  showSlide(index) {
+    this.current = Math.max(0, Math.min(index, this.total - 1));
+    this.slides.forEach((slide, i) => {
+      if (i === this.current) {
+        slide.classList.add('active', 'visible');
+      } else {
+        slide.classList.remove('active', 'visible');
+      }
+    });
+    this.updateProgress();
+  }
+
+  /* Progress bar width = (current+1) / total */
+  updateProgress() {
+    var pct = ((this.current + 1) / this.total) * 100;
+    this.progressBar.style.width = pct + '%';
+  }
+}
+
+
+/* ===========================================================
+   INLINE EDITOR
+   Hover top-left corner or press E to enter edit mode.
+   Click text to edit. Ctrl+S saves to localStorage.
+   =========================================================== */
+class InlineEditor {
+  constructor() {
+    this.isActive = false;
+    this.editableSelector = 'h1, h2, h3, p, span, li, div.ec-title, div.ec-desc, div.psc-title, div.psc-desc, div.cc-desc, div.cc-name, div.cc-kw, div.ps-title, div.ps-desc, div.step-jp, div.step-sub, div.oc-text, div.ck-jp, div.fq-text, div.fq-cite, div.conclusion-thought, div.thanks-title, div.thanks-sub, div.cover-subtitle, div.eyebrow, div.cc-name-jp';
+    this.toggleBtn = document.getElementById('editToggle');
+    this.hotzone = document.getElementById('editHotzone');
+    this.banner = document.getElementById('editBanner');
+    this.hideTimeout = null;
+
+    this.setupToggle();
+    this.setupHotzone();
+    this.setupKeyboard();
+    this.setupSave();
+  }
+
+  setupToggle() {
+    this.toggleBtn.addEventListener('click', () => this.toggleEditMode());
+  }
+
+  setupHotzone() {
+    this.hotzone.addEventListener('mouseenter', () => {
+      clearTimeout(this.hideTimeout);
+      this.toggleBtn.classList.add('show');
+    });
+    this.hotzone.addEventListener('mouseleave', () => {
+      this.hideTimeout = setTimeout(() => {
+        if (!this.isActive) this.toggleBtn.classList.remove('show');
+      }, 400);
+    });
+    this.toggleBtn.addEventListener('mouseenter', () => clearTimeout(this.hideTimeout));
+    this.toggleBtn.addEventListener('mouseleave', () => {
+      this.hideTimeout = setTimeout(() => {
+        if (!this.isActive) this.toggleBtn.classList.remove('show');
+      }, 400);
+    });
+    this.hotzone.addEventListener('click', () => this.toggleEditMode());
+  }
+
+  setupKeyboard() {
+    document.addEventListener('keydown', (e) => {
+      if ((e.key === 'e' || e.key === 'E') && !e.target.getAttribute('contenteditable')) {
+        e.preventDefault();
+        this.toggleEditMode();
+      }
+    });
+  }
+
+  setupSave() {
+    document.addEventListener('keydown', (e) => {
+      if ((e.ctrlKey || e.metaKey) && e.key === 's') {
+        e.preventDefault();
+        this.save();
+      }
+    });
+  }
+
+  toggleEditMode() {
+    this.isActive = !this.isActive;
+    this.toggleBtn.classList.toggle('active', this.isActive);
+    this.toggleBtn.classList.add('show');
+    this.banner.classList.toggle('show', this.isActive);
+
+    var elements = document.querySelectorAll(this.editableSelector);
+    elements.forEach(el => {
+      if (this.isActive) {
+        el.setAttribute('contenteditable', 'true');
+      } else {
+        el.removeAttribute('contenteditable');
+      }
+    });
+  }
+
+  /* Save edited content to localStorage */
+  save() {
+    var slides = document.querySelectorAll('.slide');
+    var content = [];
+    slides.forEach(slide => {
+      content.push(slide.innerHTML);
+    });
+    try {
+      localStorage.setItem('mirai-tech-deck', JSON.stringify(content));
+      this.banner.textContent = '保存しました ✓ — localStorage に保存';
+      this.banner.classList.add('show');
+      setTimeout(() => {
+        if (!this.isActive) this.banner.classList.remove('show');
+        this.banner.textContent = '編集モード — クリックで編集 · Ctrl+S で保存';
+      }, 2500);
+    } catch (e) {
+      console.error('Save failed:', e);
+    }
+  }
+}
+
+/* Initialize presentation */
+var presentation = new SlidePresentation();
+var editor = new InlineEditor();
+</script>
+
+</body>
+</html>
