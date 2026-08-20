@@ -8,7 +8,7 @@
 <!-- =================================================================
      PRESENTATION: 未来の技術と私たちの暮らし
      STYLE: Blue Professional (warm cream + single cobalt accent)
-     STRUCTURE: 9 slides, fixed 1920×1080 stage, scaled to viewport
+     STRUCTURE: 13 slides, fixed 1920×1080 stage, scaled to viewport
      LANGUAGE: Japanese (N3-N2 level), Space Grotesk + Noto Sans JP
      ================================================================= -->
 
@@ -402,6 +402,28 @@ p, li { font-family: var(--font-body); font-size: var(--body-size); line-height:
 
 
 /* ===========================================================
+   HERO IMAGE SLIDES — large image left, text right
+   =========================================================== */
+.hero-slide .slide-content { flex-direction: row; align-items: stretch; gap: 64px; padding: var(--pad-top) var(--pad-x) var(--pad-bottom); }
+.hero-image-col { flex: 1.1; display: flex; align-items: center; justify-content: center; }
+.hero-image-frame {
+  width: 100%; height: 780px; border-radius: var(--radius-card);
+  overflow: hidden; border: 1.5px solid var(--border);
+  background: var(--card-bg); position: relative;
+}
+.hero-image-frame img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.hero-text-col { flex: 1; display: flex; flex-direction: column; justify-content: center; }
+.hero-text-col .hero-eyebrow { display: flex; align-items: center; gap: 16px; margin-bottom: 28px; }
+.hero-text-col .hero-title { font-family: var(--font-display); font-weight: 700; font-size: 64px; color: var(--text); line-height: 1.15; margin: 0; }
+.hero-text-col .hero-title .accent { color: var(--primary); }
+.hero-text-col .hero-rule { width: 88px; height: 4px; background: var(--primary); border-radius: 2px; margin: 32px 0 28px; }
+.hero-text-col .hero-desc { font-family: var(--font-body); font-size: 26px; color: var(--text-muted); line-height: 1.72; margin: 0; }
+.hero-text-col .hero-quote { margin-top: 36px; }
+.hero-text-col .hero-quote .hq-text { font-family: var(--font-display); font-weight: 600; font-size: 30px; color: var(--text); line-height: 1.35; }
+.hero-text-col .hero-quote .hq-cite { font-family: var(--font-display); font-size: 18px; color: var(--text-muted); letter-spacing: 0.06em; margin-top: 10px; }
+
+
+/* ===========================================================
    SLIDE 4: PAST (過去)
    =========================================================== */
 .past-timeline { display: flex; align-items: stretch; justify-content: space-between; gap: 30px; margin-top: 36px; }
@@ -622,7 +644,7 @@ h2.reveal { opacity: 1; transform: none; filter: none;
         <!-- Top chrome -->
         <div class="cover-top">
           <span class="cover-eyebrow-pill reveal d1"><span class="eyebrow-dot"></span><ruby>日本<rt>にほん</rt></ruby><ruby>科学<rt>かがく</rt></ruby><ruby>未来館<rt>みらいかん</rt></ruby> <ruby>見学<rt>けんがく</rt></ruby>レポート</span>
-          <span class="counter reveal d2"><b>01</b> / 09</span>
+          <span class="counter reveal d2"><b>01</b> / 13</span>
         </div>
 
         <!-- Body: title (left) + visual panel (right) -->
@@ -667,7 +689,7 @@ h2.reveal { opacity: 1; transform: none; filter: none;
             <span class="accent-line"></span>
             <span class="eyebrow">アウトライン</span>
           </div>
-          <span class="tag-pill">02 / 09</span>
+          <span class="tag-pill">02 / 13</span>
         </div>
 
         <!-- Headline -->
@@ -677,42 +699,42 @@ h2.reveal { opacity: 1; transform: none; filter: none;
         <div class="outline-flow reveal d3">
           <div class="outline-step">
             <div class="step-circle step-fade-1">01</div>
-            <span class="step-num">03</span>
+            <span class="step-num">03〜07</span>
             <span class="step-jp"><ruby>展示<rt>てんじ</rt></ruby><ruby>紹介<rt>しょうかい</rt></ruby></span>
             <span class="step-sub"><ruby>未来館<rt>みらいかん</rt></ruby>で<ruby>見<rt>み</rt></ruby>たもの</span>
           </div>
           <div class="step-connector"></div>
           <div class="outline-step">
             <div class="step-circle step-fade-1">02</div>
-            <span class="step-num">04</span>
+            <span class="step-num">08</span>
             <span class="step-jp"><ruby>過去<rt>かこ</rt></ruby></span>
             <span class="step-sub">コンピューターの<ruby>発展<rt>はってん</rt></ruby></span>
           </div>
           <div class="step-connector"></div>
           <div class="outline-step">
             <div class="step-circle step-fade-2">03</div>
-            <span class="step-num">05</span>
+            <span class="step-num">09</span>
             <span class="step-jp"><ruby>現在<rt>げんざい</rt></ruby></span>
             <span class="step-sub"><ruby>見<rt>み</rt></ruby>る・<ruby>認識<rt>にんしき</rt></ruby>する</span>
           </div>
           <div class="step-connector"></div>
           <div class="outline-step">
             <div class="step-circle step-fade-3">04</div>
-            <span class="step-num">06</span>
+            <span class="step-num">10</span>
             <span class="step-jp"><ruby>未来<rt>みらい</rt></ruby></span>
             <span class="step-sub">どこでも<ruby>計算<rt>けいさん</rt></ruby></span>
           </div>
           <div class="step-connector"></div>
           <div class="outline-step">
             <div class="step-circle step-fade-4">05</div>
-            <span class="step-num">07</span>
+            <span class="step-num">11</span>
             <span class="step-jp"><ruby>世界<rt>せかい</rt></ruby></span>
             <span class="step-sub">3つの<ruby>国<rt>くに</rt></ruby>の<ruby>現状<rt>げんじょう</rt></ruby></span>
           </div>
           <div class="step-connector"></div>
           <div class="outline-step">
             <div class="step-circle step-fade-4">06</div>
-            <span class="step-num">08</span>
+            <span class="step-num">12</span>
             <span class="step-jp"><ruby>私<rt>わたし</rt></ruby>たちの<ruby>考<rt>かんが</rt></ruby>え</span>
             <span class="step-sub"><ruby>技術<rt>ぎじゅつ</rt></ruby>と<ruby>暮<rt>く</rt></ruby>らし</span>
           </div>
@@ -720,7 +742,7 @@ h2.reveal { opacity: 1; transform: none; filter: none;
 
         <!-- Detail cards -->
         <div class="outline-detail">
-          <div class="outline-card reveal d4"><span class="oc-num">01</span><span class="oc-text"><ruby>展示<rt>てんじ</rt></ruby><ruby>紹介<rt>しょうかい</rt></ruby> — <ruby>未来館<rt>みらいかん</rt></ruby>で<ruby>見<rt>み</rt></ruby>た<ruby>技術<rt>ぎじゅつ</rt></ruby></span></div>
+          <div class="outline-card reveal d4"><span class="oc-num">01</span><span class="oc-text"><ruby>展示<rt>てんじ</rt></ruby><ruby>紹介<rt>しょうかい</rt></ruby>・<ruby>詳細<rt>しょうさい</rt></ruby> — <ruby>未来館<rt>みらいかん</rt></ruby>で<ruby>見<rt>み</rt></ruby>た<ruby>技術<rt>ぎじゅつ</rt></ruby></span></div>
           <div class="outline-card reveal d5"><span class="oc-num">02</span><span class="oc-text"><ruby>過去<rt>かこ</rt></ruby> — <ruby>大<rt>おお</rt></ruby>きな<ruby>機械<rt>きかい</rt></ruby>から<ruby>小<rt>ちい</rt></ruby>さく</span></div>
           <div class="outline-card reveal d5"><span class="oc-num">03</span><span class="oc-text"><ruby>現在<rt>げんざい</rt></ruby> — <ruby>見<rt>み</rt></ruby>る・<ruby>認識<rt>にんしき</rt></ruby>する・<ruby>感<rt>かん</rt></ruby>じる</span></div>
           <div class="outline-card reveal d6"><span class="oc-num">04</span><span class="oc-text"><ruby>未来<rt>みらい</rt></ruby> — どこでも<ruby>計算<rt>けいさん</rt></ruby></span></div>
@@ -730,7 +752,7 @@ h2.reveal { opacity: 1; transform: none; filter: none;
 
         <!-- Footer -->
         <div class="slide-footer">
-          <span class="counter"><b>02</b> / 09</span>
+          <span class="counter"><b>02</b> / 13</span>
           <span class="footer-label"><ruby>本日<rt>ほんじつ</rt></ruby>の<ruby>流<rt>なが</rt></ruby>れ</span>
         </div>
       </div>
@@ -749,7 +771,7 @@ h2.reveal { opacity: 1; transform: none; filter: none;
             <span class="accent-line"></span>
             <span class="eyebrow"><ruby>展示<rt>てんじ</rt></ruby><ruby>紹介<rt>しょうかい</rt></ruby></span>
           </div>
-          <span class="tag-pill">03 / 09</span>
+          <span class="tag-pill">03 / 13</span>
         </div>
 
         <!-- Headline -->
@@ -819,7 +841,7 @@ h2.reveal { opacity: 1; transform: none; filter: none;
 
         <!-- Footer -->
         <div class="slide-footer">
-          <span class="counter"><b>03</b> / 09</span>
+          <span class="counter"><b>03</b> / 13</span>
           <span class="footer-label"><ruby>展示<rt>てんじ</rt></ruby><ruby>紹介<rt>しょうかい</rt></ruby> — <ruby>未来館<rt>みらいかん</rt></ruby>で<ruby>見<rt>み</rt></ruby>たもの</span>
         </div>
       </div>
@@ -837,7 +859,132 @@ h2.reveal { opacity: 1; transform: none; filter: none;
 
 
     <!-- ===================================================
-         SLIDE 4 — 過去 (PAST)
+         SLIDE 4 — HERO: イルカの脳
+         =================================================== -->
+    <section class="slide hero-slide" aria-label="イルカの脳">
+      <div class="atmosphere"><div class="blob blob-1"></div><div class="blob blob-2"></div><div class="blob blob-3"></div></div>
+      <div class="slide-content">
+        <div class="hero-image-col reveal-scale d2">
+          <div class="hero-image-frame">
+            <img src="img-dolphin.png" alt="イルカの脳">
+          </div>
+        </div>
+        <div class="hero-text-col">
+          <div class="hero-eyebrow reveal d1">
+            <span class="accent-line"></span>
+            <span class="eyebrow"><ruby>展示<rt>てんじ</rt></ruby><ruby>詳細<rt>しょうさい</rt></ruby> 01</span>
+          </div>
+          <h2 class="hero-title reveal d3">イルカの<ruby>脳<rt>のう</rt></ruby>と<br><span class="accent"><ruby>自然<rt>しぜん</rt></ruby>の<ruby>情報<rt>じょうほう</rt></ruby><ruby>処理<rt>しょり</rt></ruby></span></h2>
+          <div class="hero-rule reveal d4"></div>
+          <p class="hero-desc reveal d5"><ruby>未来館<rt>みらいかん</rt></ruby>の<ruby>展示<rt>てんじ</rt></ruby>で<ruby>最<rt>もっと</rt></ruby>も<ruby>印象<rt>いんしょう</rt></ruby>に<ruby>残<rt>のこ</rt></ruby>ったものの一つは、イルカの<ruby>脳<rt>のう</rt></ruby>のモデルです。<ruby>自然界<rt>しぜんかい</rt></ruby>には、<ruby>人間<rt>にんげん</rt></ruby>のコンピューターとは<ruby>違<rt>ちが</rt></ruby>う<ruby>情報<rt>じょうほう</rt></ruby><ruby>処理<rt>しょり</rt></ruby>の<ruby>方法<rt>ほうほう</rt></ruby>があります。<ruby>研究<rt>けんきゅう</rt></ruby>者は、イルカの<ruby>脳<rt>のう</rt></ruby>のしくみからヒントを<ruby>得<rt>え</rt></ruby>て、あたらしい<ruby>技術<rt>ぎじゅつ</rt></ruby>を<ruby>開発<rt>かいはつ</rt></ruby>しています。</p>
+          <div class="hero-quote reveal d6">
+            <div class="hq-text">「<ruby>自然<rt>しぜん</rt></ruby>から<ruby>学<rt>まな</rt></ruby>ぶコンピューター」</div>
+            <div class="hq-cite">— <ruby>日本<rt>にほん</rt></ruby><ruby>科学<rt>かがく</rt></ruby><ruby>未来館<rt>みらいかん</rt></ruby></div>
+          </div>
+        </div>
+        <div class="slide-footer" style="position:absolute;bottom:var(--pad-bottom);left:var(--pad-x);right:var(--pad-x);">
+          <span class="counter"><b>04</b> / 13</span>
+          <span class="footer-label"><ruby>展示<rt>てんじ</rt></ruby><ruby>詳細<rt>しょうさい</rt></ruby> — イルカの<ruby>脳<rt>のう</rt></ruby></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================
+         SLIDE 5 — HERO: 自然と計算
+         =================================================== -->
+    <section class="slide hero-slide" aria-label="自然と計算">
+      <div class="atmosphere"><div class="blob blob-1"></div><div class="blob blob-2"></div><div class="blob blob-3"></div></div>
+      <div class="slide-content">
+        <div class="hero-image-col reveal-scale d2">
+          <div class="hero-image-frame">
+            <img src="img-nature.png" alt="自然と計算">
+          </div>
+        </div>
+        <div class="hero-text-col">
+          <div class="hero-eyebrow reveal d1">
+            <span class="accent-line"></span>
+            <span class="eyebrow"><ruby>展示<rt>てんじ</rt></ruby><ruby>詳細<rt>しょうさい</rt></ruby> 02</span>
+          </div>
+          <h2 class="hero-title reveal d3"><ruby>自然<rt>しぜん</rt></ruby>と<br><span class="accent"><ruby>計算<rt>けいさん</rt></ruby>の<ruby>関係<rt>かんけい</rt></ruby></span></h2>
+          <div class="hero-rule reveal d4"></div>
+          <p class="hero-desc reveal d5">コンピューターは<ruby>自然<rt>しぜん</rt></ruby>を<ruby>計算<rt>けいさん</rt></ruby>で<ruby>理解<rt>りかい</rt></ruby>しようとしますが、<ruby>自然<rt>しぜん</rt></ruby>もまた<ruby>計算<rt>けいさん</rt></ruby>を<ruby>行<rt>おこな</rt></ruby>っています。<ruby>花<rt>はな</rt></ruby>の<ruby>開花<rt>かいか</rt></ruby>や<ruby>鳥<rt>とり</rt></ruby>の<ruby>渡<rt>わた</rt></ruby>りなど、<ruby>自然界<rt>しぜんかい</rt></ruby>のしくみを<ruby>計算<rt>けいさん</rt></ruby><ruby>模型<rt>もけい</rt></ruby>で<ruby>表<rt>あらわ</rt></ruby>すことで、<ruby>技術<rt>ぎじゅつ</rt></ruby>と<ruby>自然<rt>しぜん</rt></ruby>の<ruby>境界<rt>きょうかい</rt></ruby>が<ruby>曖昧<rt>あいまい</rt></ruby>になっていくことを<ruby>学<rt>まな</rt></ruby>びました。</p>
+          <div class="hero-quote reveal d6">
+            <div class="hq-text">「<ruby>計算<rt>けいさん</rt></ruby>は<ruby>自然<rt>しぜん</rt></ruby>の<ruby>言語<rt>げんご</rt></ruby>」</div>
+            <div class="hq-cite">— <ruby>未来館<rt>みらいかん</rt></ruby> <ruby>展示<rt>てんじ</rt></ruby>より</div>
+          </div>
+        </div>
+        <div class="slide-footer" style="position:absolute;bottom:var(--pad-bottom);left:var(--pad-x);right:var(--pad-x);">
+          <span class="counter"><b>05</b> / 13</span>
+          <span class="footer-label"><ruby>展示<rt>てんじ</rt></ruby><ruby>詳細<rt>しょうさい</rt></ruby> — <ruby>自然<rt>しぜん</rt></ruby>と<ruby>計算<rt>けいさん</rt></ruby></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================
+         SLIDE 6 — HERO: 塵も計算する
+         =================================================== -->
+    <section class="slide hero-slide" aria-label="塵も計算する">
+      <div class="atmosphere"><div class="blob blob-1"></div><div class="blob blob-2"></div><div class="blob blob-3"></div></div>
+      <div class="slide-content">
+        <div class="hero-image-col reveal-scale d2">
+          <div class="hero-image-frame">
+            <img src="img-dust.png" alt="塵も計算する">
+          </div>
+        </div>
+        <div class="hero-text-col">
+          <div class="hero-eyebrow reveal d1">
+            <span class="accent-line"></span>
+            <span class="eyebrow"><ruby>展示<rt>てんじ</rt></ruby><ruby>詳細<rt>しょうさい</rt></ruby> 03</span>
+          </div>
+          <h2 class="hero-title reveal d3"><ruby>塵<rt>ちり</rt></ruby>も<br><span class="accent"><ruby>計算<rt>けいさん</rt></ruby>する</span></h2>
+          <div class="hero-rule reveal d4"></div>
+          <p class="hero-desc reveal d5">コンピューターはさらに<ruby>小<rt>ちい</rt></ruby>さくなり、<ruby>私<rt>わたし</rt></ruby>たちが<ruby>見<rt>み</rt></ruby>ることのできない<ruby>粒子<rt>りゅうし</rt></ruby>ほどの<ruby>大<rt>おお</rt></ruby>きさになるかもしれません。<ruby>家<rt>いえ</rt></ruby>や<ruby>道路<rt>どうろ</rt></ruby>、<ruby>衣服<rt>いふく</rt></ruby>の<ruby>中<rt>なか</rt></ruby>に<ruby>埋<rt>う</rt></ruby>め<ruby>込<rt>こ</rt></ruby>まれた<ruby>無数<rt>むすう</rt></ruby>のセンサーが、<ruby>環境<rt>かんきょう</rt></ruby>の<ruby>情報<rt>じょうほう</rt></ruby>を<ruby>集<rt>あつ</rt></ruby>め<ruby>続<rt>つづ</rt></ruby>けます。<ruby>私<rt>わたし</rt></ruby>たちがそれを<ruby>意識<rt>いしき</rt></ruby>しなくても、<ruby>計算<rt>けいさん</rt></ruby>は<ruby>周<rt>まわ</rt></ruby>りで<ruby>行<rt>おこな</rt></ruby>われています。</p>
+          <div class="hero-quote reveal d6">
+            <div class="hq-text">「<ruby>塵<rt>ちり</rt></ruby>すら<ruby>計算<rt>けいさん</rt></ruby>する」</div>
+            <div class="hq-cite">— <ruby>未来館<rt>みらいかん</rt></ruby> <ruby>展示<rt>てんじ</rt></ruby>より</div>
+          </div>
+        </div>
+        <div class="slide-footer" style="position:absolute;bottom:var(--pad-bottom);left:var(--pad-x);right:var(--pad-x);">
+          <span class="counter"><b>06</b> / 13</span>
+          <span class="footer-label"><ruby>展示<rt>てんじ</rt></ruby><ruby>詳細<rt>しょうさい</rt></ruby> — <ruby>塵<rt>ちり</rt></ruby>も<ruby>計算<rt>けいさん</rt></ruby>する</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================
+         SLIDE 7 — HERO: 量子コンピューター
+         =================================================== -->
+    <section class="slide hero-slide" aria-label="量子コンピューター">
+      <div class="atmosphere"><div class="blob blob-1"></div><div class="blob blob-2"></div><div class="blob blob-3"></div></div>
+      <div class="slide-content">
+        <div class="hero-image-col reveal-scale d2">
+          <div class="hero-image-frame">
+            <img src="img-quantum.png" alt="量子コンピューター">
+          </div>
+        </div>
+        <div class="hero-text-col">
+          <div class="hero-eyebrow reveal d1">
+            <span class="accent-line"></span>
+            <span class="eyebrow"><ruby>展示<rt>てんじ</rt></ruby><ruby>詳細<rt>しょうさい</rt></ruby> 04</span>
+          </div>
+          <h2 class="hero-title reveal d3"><ruby>量子<rt>りょうし</rt></ruby><br><span class="accent">コンピューター</span></h2>
+          <div class="hero-rule reveal d4"></div>
+          <p class="hero-desc reveal d5"><ruby>従来<rt>じゅうらい</rt></ruby>のコンピューターとは<ruby>全<rt>まった</rt></ruby>く<ruby>違<rt>ちが</rt></ruby>う<ruby>計算<rt>けいさん</rt></ruby>の<ruby>原理<rt>げんり</rt></ruby>です。<ruby>量子<rt>りょうし</rt></ruby>の<ruby>性質<rt>せいしつ</rt></ruby>を<ruby>利用<rt>りよう</rt></ruby>することで、これまで<ruby>膨大<rt>ぼうだい</rt></ruby>な<ruby>時間<rt>じかん</rt></ruby>がかかっていた<ruby>問題<rt>もんだい</rt></ruby>を<ruby>高速<rt>こうそく</rt></ruby>に<ruby>解<rt>と</rt></ruby>ける<ruby>可能性<rt>かのうせい</rt></ruby>があります。<ruby>医療<rt>いりょう</rt></ruby>や<ruby>新<rt>あたら</rt></ruby>しい<ruby>材料<rt>ざいりょう</rt></ruby>の<ruby>研究<rt>けんきゅう</rt></ruby>など、さまざまな<ruby>分野<rt>ぶんや</rt></ruby>での<ruby>応用<rt>おうよう</rt></ruby>が<ruby>期待<rt>きたい</rt></ruby>されています。</p>
+          <div class="hero-quote reveal d6">
+            <div class="hq-text">「<ruby>計算<rt>けいさん</rt></ruby>の<ruby>常識<rt>じょうしき</rt></ruby>が<ruby>変<rt>か</rt></ruby>わる」</div>
+            <div class="hq-cite">— <ruby>未来館<rt>みらいかん</rt></ruby> <ruby>展示<rt>てんじ</rt></ruby>より</div>
+          </div>
+        </div>
+        <div class="slide-footer" style="position:absolute;bottom:var(--pad-bottom);left:var(--pad-x);right:var(--pad-x);">
+          <span class="counter"><b>07</b> / 13</span>
+          <span class="footer-label"><ruby>展示<rt>てんじ</rt></ruby><ruby>詳細<rt>しょうさい</rt></ruby> — <ruby>量子<rt>りょうし</rt></ruby>コンピューター</span>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ===================================================
+         SLIDE 8 — 過去 (PAST)
          =================================================== -->
     <section class="slide" aria-label="過去">
       <div class="atmosphere"><div class="blob blob-1"></div><div class="blob blob-2"></div><div class="blob blob-3"></div></div>
@@ -848,7 +995,7 @@ h2.reveal { opacity: 1; transform: none; filter: none;
             <span class="accent-line"></span>
             <span class="eyebrow"><ruby>過去<rt>かこ</rt></ruby> — コンピューターは<ruby>小<rt>ちい</rt></ruby>さくなってきた</span>
           </div>
-          <span class="tag-pill">04 / 09</span>
+          <span class="tag-pill">08 / 13</span>
         </div>
 
         <!-- Headline -->
@@ -902,7 +1049,7 @@ h2.reveal { opacity: 1; transform: none; filter: none;
 
         <!-- Footer -->
         <div class="slide-footer">
-          <span class="counter"><b>04</b> / 09</span>
+          <span class="counter"><b>08</b> / 13</span>
           <span class="footer-label"><ruby>過去<rt>かこ</rt></ruby> — コンピューターの<ruby>発展<rt>はってん</rt></ruby></span>
         </div>
       </div>
@@ -930,7 +1077,7 @@ h2.reveal { opacity: 1; transform: none; filter: none;
             <span class="accent-line"></span>
             <span class="eyebrow"><ruby>今<rt>いま</rt></ruby> — <ruby>計算<rt>けいさん</rt></ruby>だけではない</span>
           </div>
-          <span class="tag-pill">05 / 09</span>
+          <span class="tag-pill">09 / 13</span>
         </div>
 
         <!-- Headline -->
@@ -970,7 +1117,7 @@ h2.reveal { opacity: 1; transform: none; filter: none;
 
         <!-- Footer -->
         <div class="slide-footer">
-          <span class="counter"><b>05</b> / 09</span>
+          <span class="counter"><b>09</b> / 13</span>
           <span class="footer-label"><ruby>今<rt>いま</rt></ruby> — <ruby>現在<rt>げんざい</rt></ruby>の<ruby>技術<rt>ぎじゅつ</rt></ruby></span>
         </div>
       </div>
@@ -999,7 +1146,7 @@ h2.reveal { opacity: 1; transform: none; filter: none;
             <span class="accent-line"></span>
             <span class="eyebrow">10<ruby>年後<rt>ねんご</rt></ruby> — <ruby>未来<rt>みらい</rt></ruby>の<ruby>方向<rt>ほうこう</rt></ruby></span>
           </div>
-          <span class="tag-pill">06 / 09</span>
+          <span class="tag-pill">10 / 13</span>
         </div>
 
         <!-- Headline -->
@@ -1041,7 +1188,7 @@ h2.reveal { opacity: 1; transform: none; filter: none;
 
         <!-- Footer -->
         <div class="slide-footer">
-          <span class="counter"><b>06</b> / 09</span>
+          <span class="counter"><b>10</b> / 13</span>
           <span class="footer-label">10<ruby>年後<rt>ねんご</rt></ruby> — どこでも<ruby>計算<rt>けいさん</rt></ruby></span>
         </div>
       </div>
@@ -1072,7 +1219,7 @@ h2.reveal { opacity: 1; transform: none; filter: none;
             <span class="accent-line"></span>
             <span class="eyebrow"><ruby>各<rt>かく</rt></ruby><ruby>国<rt>こく</rt></ruby>の<ruby>現状<rt>げんじょう</rt></ruby> — <ruby>世界<rt>せかい</rt></ruby>の<ruby>技術<rt>ぎじゅつ</rt></ruby></span>
           </div>
-          <span class="tag-pill">07 / 09</span>
+          <span class="tag-pill">11 / 13</span>
         </div>
 
         <!-- Headline -->
@@ -1133,7 +1280,7 @@ h2.reveal { opacity: 1; transform: none; filter: none;
 
         <!-- Footer -->
         <div class="slide-footer">
-          <span class="counter"><b>07</b> / 09</span>
+          <span class="counter"><b>11</b> / 13</span>
           <span class="footer-label"><ruby>各<rt>かく</rt></ruby><ruby>国<rt>こく</rt></ruby>の<ruby>現状<rt>げんじょう</rt></ruby> — 3つの<ruby>国<rt>くに</rt></ruby></span>
         </div>
       </div>
@@ -1176,7 +1323,7 @@ h2.reveal { opacity: 1; transform: none; filter: none;
             <span class="accent-line"></span>
             <span class="eyebrow"><ruby>結論<rt>けつろん</rt></ruby> — <ruby>技術<rt>ぎじゅつ</rt></ruby>が<ruby>生活<rt>せいかつ</rt></ruby>の<ruby>一部<rt>いちぶ</rt></ruby>になる</span>
           </div>
-          <span class="tag-pill">08 / 09</span>
+          <span class="tag-pill">12 / 13</span>
         </div>
 
         <!-- Headline -->
@@ -1226,7 +1373,7 @@ h2.reveal { opacity: 1; transform: none; filter: none;
 
         <!-- Footer -->
         <div class="slide-footer">
-          <span class="counter"><b>08</b> / 09</span>
+          <span class="counter"><b>12</b> / 13</span>
           <span class="footer-label"><ruby>結論<rt>けつろん</rt></ruby> — <ruby>技術<rt>ぎじゅつ</rt></ruby>と<ruby>暮<rt>く</rt></ruby>らし</span>
         </div>
       </div>
@@ -1265,7 +1412,7 @@ h2.reveal { opacity: 1; transform: none; filter: none;
 
         <!-- Footer -->
         <div class="slide-footer" style="position:absolute;bottom:var(--pad-bottom);left:var(--pad-x);right:var(--pad-x);">
-          <span class="counter"><b>09</b> / 09</span>
+          <span class="counter"><b>13</b> / 13</span>
           <span class="footer-label">ありがとう</span>
         </div>
       </div>
