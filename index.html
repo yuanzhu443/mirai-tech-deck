@@ -298,17 +298,12 @@ p, li { font-family: var(--font-body); font-size: var(--body-size); line-height:
 .keyword-pill .kw { font-family: var(--font-display); font-weight: 700; font-size: var(--keyword-size); color: var(--text); letter-spacing: 0; }
 .keyword-pill .en { font-family: var(--font-display); font-weight: 500; font-size: 18px; color: var(--primary); letter-spacing: 0.08em; text-transform: uppercase; margin-top: 10px; }
 
-/* --- Cover decoration panel (soft cobalt tint with dot grid) --- */
+/* --- Cover decoration panel (image with label) --- */
 .cover-panel {
-  background: var(--card-bg); border: 1.5px solid var(--border);
+  border: 1.5px solid var(--border);
   border-radius: var(--radius-card); overflow: hidden;
-  display: flex; align-items: center; justify-content: center;
+  display: flex; align-items: flex-end; justify-content: flex-start;
   position: relative;
-}
-.cover-panel::before {
-  content: ""; position: absolute; inset: 0;
-  background-image: radial-gradient(circle, rgba(30,43,250,0.12) 1.4px, transparent 1.4px);
-  background-size: 36px 36px; opacity: 0.5;
 }
 
 /* --- Closing concentric circles decoration --- */
@@ -352,7 +347,7 @@ p, li { font-family: var(--font-body); font-size: var(--body-size); line-height:
 .cover-subtitle { font-family: var(--font-body); font-size: 32px; font-weight: 400; color: var(--text-muted); letter-spacing: 0.03em; margin: 0; }
 .cover-panel-large { height: 560px; }
 .panel-numeral { font-family: var(--font-display); font-size: 260px; font-weight: 700; color: rgba(30,43,250,0.12); line-height: 1; letter-spacing: -0.04em; position: relative; z-index: 1; }
-.panel-label { position: absolute; bottom: 32px; left: 32px; z-index: 2; font-family: var(--font-display); font-size: 15px; font-weight: 500; color: var(--primary); letter-spacing: 0.16em; text-transform: uppercase; }
+.panel-label { position: absolute; bottom: 0; left: 0; right: 0; z-index: 3; font-family: var(--font-display); font-size: 15px; font-weight: 600; color: #fff; letter-spacing: 0.16em; text-transform: uppercase; padding: 14px 24px; background: linear-gradient(transparent, rgba(10,11,22,0.72)); }
 .cover-footer { display: flex; align-items: center; justify-content: space-between; margin-top: auto; }
 .cover-footer .group { font-weight: 500; color: var(--text); }
 
@@ -390,7 +385,7 @@ p, li { font-family: var(--font-body); font-size: var(--body-size); line-height:
   max-width: 1300px;
 }
 .exhi-statement .q { color: var(--primary); }
-.exhi-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 22px; }
+.exhi-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px; }
 .exhi-card {
   background: var(--card-bg); border: 1.5px solid var(--border);
   border-radius: var(--radius-card); padding: 30px 24px;
@@ -656,7 +651,7 @@ h2.reveal { opacity: 1; transform: none; filter: none;
           </div>
           <div class="cover-panel-col">
             <div class="cover-panel cover-panel-large reveal-scale d4">
-              <span class="panel-numeral">01</span>
+              <img src="img-summary.png" alt="未来と生活" style="width:100%;height:100%;object-fit:cover;display:block;position:relative;z-index:1;">
               <span class="panel-label"><ruby>未来<rt>みらい</rt></ruby>と<ruby>生活<rt>せいかつ</rt></ruby></span>
             </div>
           </div>
@@ -791,16 +786,6 @@ h2.reveal { opacity: 1; transform: none; filter: none;
             </div>
             <div class="ec-title">イルカの<ruby>脳<rt>のう</rt></ruby></div>
             <div class="ec-desc"><ruby>自然<rt>しぜん</rt></ruby>の<ruby>情報<rt>じょうほう</rt></ruby><ruby>処理<rt>しょり</rt></ruby></div>
-          </div>
-          <div class="exhi-card reveal d5">
-            <div class="ec-icon">
-              <!-- Eye icon (CSS) -->
-              <div style="width:52px;height:30px;border:2.5px solid var(--primary);border-radius:50%/60% 60% 40% 40%;position:relative;">
-                <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:12px;height:12px;background:var(--primary);border-radius:50%;"></div>
-              </div>
-            </div>
-            <div class="ec-title">コンピュータービジョン</div>
-            <div class="ec-desc"><ruby>画像<rt>がぞう</rt></ruby>・<ruby>映像<rt>えいぞう</rt></ruby>を<ruby>認識<rt>にんしき</rt></ruby></div>
           </div>
           <div class="exhi-card reveal d5">
             <div class="ec-icon">
