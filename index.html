@@ -65,17 +65,17 @@ img, video, canvas, svg { max-width:100%; max-height:100%; }
   /* Typography — fixed 1920×1080 stage sizes (scaled up from design doc clamp) */
   --font-display: 'Space Grotesk', 'Noto Sans JP', sans-serif;
   --font-body: 'Inter', 'Noto Sans JP', sans-serif;
-  --cover-title-size: 132px;
-  --h2-size: 60px;
-  --h3-size: 34px;
-  --eyebrow-size: 22px;
-  --body-size: 26px;
-  --body-sm: 20px;
-  --meta-size: 18px;
-  --keyword-size: 46px;
-  --metric-size: 84px;
-  --stat-num-size: 52px;
-  --step-num-size: 30px;
+  --cover-title-size: 148px;
+  --h2-size: 68px;
+  --h3-size: 38px;
+  --eyebrow-size: 24px;
+  --body-size: 30px;
+  --body-sm: 22px;
+  --meta-size: 20px;
+  --keyword-size: 52px;
+  --metric-size: 92px;
+  --stat-num-size: 56px;
+  --step-num-size: 32px;
 
   /* Spacing — fixed stage */
   --pad-x: 140px;
@@ -353,69 +353,74 @@ p, li { font-family: var(--font-body); font-size: var(--body-size); line-height:
 
 
 /* ===========================================================
-   SLIDE 2: OUTLINE (本日の流れ)
+   SLIDE 2: OUTLINE (本日の流れ) — single large horizontal flow
    =========================================================== */
 .outline-flow {
   display: flex; align-items: flex-start; justify-content: space-between;
-  margin-top: 30px; padding: 0 10px;
+  margin-top: 120px; padding: 0 10px;
 }
-.outline-step { display: flex; flex-direction: column; align-items: center; text-align: center; width: 220px; }
-.outline-step .step-num { font-family: var(--font-display); font-weight: 700; font-size: 26px; color: var(--primary); margin-top: 22px; line-height: 1; }
-.outline-step .step-jp { font-family: var(--font-display); font-weight: 600; font-size: 30px; color: var(--text); margin-top: 10px; line-height: 1.2; }
-.outline-step .step-sub { font-family: var(--font-body); font-size: 18px; color: var(--text-muted); margin-top: 8px; line-height: 1.4; }
-.outline-detail {
-  display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--gap-cards);
-  margin-top: 50px;
+.outline-step { display: flex; flex-direction: column; align-items: center; text-align: center; width: 300px; }
+.outline-step .step-circle { width: 110px; height: 110px; font-size: 46px; }
+.outline-step .step-num { font-family: var(--font-display); font-weight: 700; font-size: 40px; color: var(--primary); margin-top: 32px; line-height: 1; }
+.outline-step .step-jp { font-family: var(--font-display); font-weight: 700; font-size: 52px; color: var(--text); margin-top: 18px; line-height: 1.15; white-space: nowrap; }
+.outline-step .step-sub { font-family: var(--font-body); font-size: 36px; color: var(--text-muted); margin-top: 16px; line-height: 1.35; }
+.step-connector { flex: 1; height: 3px; background: var(--border); margin: 0 10px; position: relative; top: 53px; }
+.step-connector::after {
+  content: ""; position: absolute; right: -8px; top: -5px;
+  width: 0; height: 0;
+  border-left: 14px solid var(--border);
+  border-top: 7px solid transparent; border-bottom: 7px solid transparent;
 }
-.outline-card {
-  background: var(--card-bg); border: 1px solid var(--border);
-  border-radius: var(--radius-card-sm); padding: 24px 28px;
-  display: flex; align-items: center; gap: 18px;
-}
-.outline-card .oc-num { font-family: var(--font-display); font-weight: 700; font-size: 28px; color: var(--primary); flex-shrink: 0; }
-.outline-card .oc-text { font-family: var(--font-body); font-size: 20px; color: var(--text); line-height: 1.4; }
 
 
 /* ===========================================================
    SLIDE 3: EXHIBITION (展示紹介)
    =========================================================== */
 .exhi-statement {
-  font-family: var(--font-display); font-weight: 600; font-size: 48px;
-  color: var(--text); line-height: 1.35; margin: 28px 0 44px;
-  max-width: 1300px;
+  font-family: var(--font-display); font-weight: 600; font-size: 56px;
+  color: var(--text); line-height: 1.35; margin: 40px 0 60px;
+  max-width: 1400px;
 }
 .exhi-statement .q { color: var(--primary); }
-.exhi-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px; }
+.exhi-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 36px; }
 .exhi-card {
   background: var(--card-bg); border: 1.5px solid var(--border);
-  border-radius: var(--radius-card); padding: 30px 24px;
+  border-radius: var(--radius-card); padding: 48px 32px;
   display: flex; flex-direction: column; align-items: center; text-align: center;
 }
-.exhi-card .ec-icon { width: 56px; height: 56px; margin-bottom: 20px; display: flex; align-items: center; justify-content: center; }
-.exhi-card .ec-title { font-family: var(--font-display); font-weight: 600; font-size: 24px; color: var(--text); line-height: 1.25; }
-.exhi-card .ec-desc { font-family: var(--font-body); font-size: 17px; color: var(--text-muted); line-height: 1.5; margin-top: 10px; }
+.exhi-card .ec-icon { width: 80px; height: 80px; margin-bottom: 32px; display: flex; align-items: center; justify-content: center; }
+.exhi-card .ec-title { font-family: var(--font-display); font-weight: 700; font-size: 38px; color: var(--text); line-height: 1.25; }
+.exhi-card .ec-desc { font-family: var(--font-body); font-size: 30px; color: var(--text-muted); line-height: 1.5; margin-top: 18px; }
 
 
 /* ===========================================================
-   HERO IMAGE SLIDES — large image left, text right
+   HERO IMAGE SLIDES — large image left, keywords right
    =========================================================== */
 .hero-slide .slide-content { flex-direction: row; align-items: stretch; gap: 64px; padding: var(--pad-top) var(--pad-x) var(--pad-bottom); }
 .hero-image-col { flex: 1.1; display: flex; align-items: center; justify-content: center; }
 .hero-image-frame {
-  width: 100%; height: 780px; border-radius: var(--radius-card);
+  width: 100%; height: 800px; border-radius: var(--radius-card);
   overflow: hidden; border: 1.5px solid var(--border);
   background: var(--card-bg); position: relative;
 }
 .hero-image-frame img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .hero-text-col { flex: 1; display: flex; flex-direction: column; justify-content: center; }
-.hero-text-col .hero-eyebrow { display: flex; align-items: center; gap: 16px; margin-bottom: 28px; }
-.hero-text-col .hero-title { font-family: var(--font-display); font-weight: 700; font-size: 64px; color: var(--text); line-height: 1.15; margin: 0; }
+.hero-text-col .hero-eyebrow { display: flex; align-items: center; gap: 16px; margin-bottom: 32px; }
+.hero-text-col .hero-title { font-family: var(--font-display); font-weight: 700; font-size: 76px; color: var(--text); line-height: 1.12; margin: 0; }
 .hero-text-col .hero-title .accent { color: var(--primary); }
-.hero-text-col .hero-rule { width: 88px; height: 4px; background: var(--primary); border-radius: 2px; margin: 32px 0 28px; }
-.hero-text-col .hero-desc { font-family: var(--font-body); font-size: 26px; color: var(--text-muted); line-height: 1.72; margin: 0; }
-.hero-text-col .hero-quote { margin-top: 36px; }
-.hero-text-col .hero-quote .hq-text { font-family: var(--font-display); font-weight: 600; font-size: 30px; color: var(--text); line-height: 1.35; }
-.hero-text-col .hero-quote .hq-cite { font-family: var(--font-display); font-size: 18px; color: var(--text-muted); letter-spacing: 0.06em; margin-top: 10px; }
+.hero-text-col .hero-rule { width: 96px; height: 5px; background: var(--primary); border-radius: 2px; margin: 36px 0 36px; }
+/* Keyword pills on hero slides */
+.hero-keywords { display: flex; flex-wrap: wrap; gap: 18px; }
+.hero-kw {
+  font-family: var(--font-display); font-weight: 600; font-size: 34px;
+  color: var(--primary); background: var(--accent-light);
+  padding: 16px 32px; border-radius: var(--radius-pill);
+  letter-spacing: 0.02em; line-height: 1.2;
+  border: 1.5px solid var(--border);
+}
+.hero-quote { margin-top: 40px; }
+.hero-quote .hq-text { font-family: var(--font-display); font-weight: 600; font-size: 36px; color: var(--text); line-height: 1.35; }
+.hero-quote .hq-cite { font-family: var(--font-display); font-size: 22px; color: var(--text-muted); letter-spacing: 0.06em; margin-top: 12px; }
 
 
 /* ===========================================================
@@ -425,9 +430,9 @@ p, li { font-family: var(--font-body); font-size: var(--body-size); line-height:
 .past-stage { flex: 1; display: flex; flex-direction: column; align-items: center; text-align: center; }
 .past-device { height: 240px; display: flex; align-items: flex-end; justify-content: center; margin-bottom: 28px; position: relative; width: 100%; }
 .past-stage .step-circle { margin-bottom: 24px; }
-.past-stage .ps-title { font-family: var(--font-display); font-weight: 600; font-size: 30px; color: var(--text); line-height: 1.2; }
-.past-stage .ps-era { font-family: var(--font-display); font-weight: 500; font-size: 18px; color: var(--primary); letter-spacing: 0.06em; margin-top: 8px; }
-.past-stage .ps-desc { font-family: var(--font-body); font-size: 19px; color: var(--text-muted); line-height: 1.55; margin-top: 12px; max-width: 420px; }
+.past-stage .ps-title { font-family: var(--font-display); font-weight: 700; font-size: 38px; color: var(--text); line-height: 1.2; }
+.past-stage .ps-era { font-family: var(--font-display); font-weight: 600; font-size: 28px; color: var(--primary); letter-spacing: 0.04em; margin-top: 10px; }
+.past-stage .ps-desc { font-family: var(--font-body); font-size: 30px; color: var(--text-muted); line-height: 1.55; margin-top: 16px; max-width: 480px; }
 
 /* CSS-drawn device shapes */
 /* Large computer: tall rack cabinet */
@@ -453,70 +458,167 @@ p, li { font-family: var(--font-body); font-size: var(--body-size); line-height:
 
 
 /* ===========================================================
-   SLIDE 5: PRESENT (今)
+   SLIDE 5: PRESENT (今) — 4 large keyword cards with icons
    =========================================================== */
-.present-keywords { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-top: 32px; }
-.present-support { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 30px; }
-.ps-card { padding: 26px 30px; }
-.ps-card .psc-title { font-family: var(--font-display); font-weight: 600; font-size: 26px; color: var(--primary); line-height: 1.2; }
-.ps-card .psc-desc { font-family: var(--font-body); font-size: 19px; color: var(--text-muted); line-height: 1.55; margin-top: 12px; }
+.present-keywords { display: grid; grid-template-columns: repeat(4, 1fr); gap: 36px; margin-top: 72px; }
+.present-keywords .keyword-pill { padding: 48px 28px; min-height: 520px; position: relative; }
+.present-keywords .keyword-pill::before {
+  content: ""; position: absolute; top: 0; left: 0; right: 0; height: 6px;
+  background: var(--primary); border-radius: var(--radius-card) var(--radius-card) 0 0;
+}
+.present-keywords .keyword-pill .kw-icon {
+  width: 88px; height: 88px; margin-bottom: 36px;
+  display: flex; align-items: center; justify-content: center;
+  position: relative;
+}
+.present-keywords .keyword-pill .kw-num {
+  font-family: var(--font-display); font-weight: 700; font-size: 36px;
+  color: var(--primary); opacity: 0.25; position: absolute; top: 20px; right: 24px;
+}
+.present-keywords .keyword-pill .kw { font-size: 68px; line-height: 1.1; }
+.present-keywords .keyword-pill .kw-desc {
+  font-family: var(--font-body); font-size: 30px; font-weight: 400;
+  color: var(--text-muted); line-height: 1.5; margin-top: 28px;
+}
 
 
 /* ===========================================================
-   SLIDE 6: FUTURE (10年後)
+   SLIDE 6: FUTURE (10年後) — 2 large cards, keyword-driven
    =========================================================== */
 .future-statement {
-  font-family: var(--font-display); font-weight: 600; font-size: 44px;
-  color: var(--text); line-height: 1.3; margin: 24px 0 40px;
+  font-family: var(--font-display); font-weight: 700; font-size: 52px;
+  color: var(--text); line-height: 1.3; margin: 36px 0 56px; text-align: center;
 }
 .future-statement .accent { color: var(--primary); }
-.future-split { display: grid; grid-template-columns: 1fr 1fr; gap: 36px; }
-.future-col h3 { margin-bottom: 20px; display: flex; align-items: center; gap: 14px; }
-.future-col h3 .col-num { font-family: var(--font-display); font-weight: 700; font-size: 22px; color: var(--primary); }
-.future-quote { margin-bottom: 24px; }
-.future-quote .fq-text { font-family: var(--font-display); font-weight: 600; font-size: 28px; color: var(--text); line-height: 1.3; }
-.future-quote .fq-cite { font-family: var(--font-display); font-size: 16px; color: var(--text-muted); letter-spacing: 0.06em; margin-top: 8px; }
-.future-list { list-style: none; padding: 0; margin: 0; }
-.future-list li { font-family: var(--font-body); font-size: 22px; color: var(--text-muted); line-height: 1.6; padding-left: 28px; position: relative; margin-bottom: 14px; }
-.future-list li::before { content: ""; position: absolute; left: 0; top: 16px; width: 10px; height: 10px; border-radius: 50%; background: var(--primary); opacity: 0.7; }
-.future-col.cautious .future-list li::before { opacity: 0.4; }
-
-
-/* ===========================================================
-   SLIDE 7: COUNTRIES (各国の現状)
-   =========================================================== */
-.country-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin-top: 36px; }
-.country-card {
+.future-split { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+.future-col {
   background: var(--card-bg); border: 1.5px solid var(--border);
-  border-radius: var(--radius-card); padding: 36px 32px;
+  border-top: 6px solid var(--primary);
+  border-radius: var(--radius-card); padding: 48px 40px;
   display: flex; flex-direction: column;
 }
-.country-card .cc-flag-area { display: flex; align-items: center; gap: 16px; margin-bottom: 28px; }
-.country-card .cc-code { font-family: var(--font-display); font-weight: 700; font-size: 48px; color: var(--primary); line-height: 1; letter-spacing: -0.02em; }
-.country-card .cc-name { font-family: var(--font-display); font-weight: 600; font-size: 32px; color: var(--text); line-height: 1.15; }
-.country-card .cc-name-jp { font-family: var(--font-body); font-size: 18px; color: var(--text-muted); margin-top: 4px; }
-.country-card .cc-keywords { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 20px; }
-.country-card .cc-kw { font-family: var(--font-display); font-weight: 500; font-size: 16px; color: var(--primary); background: var(--accent-light); padding: 7px 16px; border-radius: var(--radius-pill); letter-spacing: 0.02em; }
-.country-card .cc-desc { font-family: var(--font-body); font-size: 19px; color: var(--text-muted); line-height: 1.6; margin-top: auto; }
+.future-col h3 { margin-bottom: 32px; display: flex; align-items: center; gap: 16px; font-size: 42px; }
+.future-col h3 .col-num { font-family: var(--font-display); font-weight: 700; font-size: 32px; color: var(--primary); }
+.future-quote { margin-bottom: 36px; }
+.future-quote .fq-text { font-family: var(--font-display); font-weight: 600; font-size: 36px; color: var(--text); line-height: 1.3; }
+.future-quote .fq-cite { font-family: var(--font-display); font-size: 24px; color: var(--text-muted); letter-spacing: 0.06em; margin-top: 12px; }
+.future-keywords { display: flex; flex-wrap: wrap; gap: 14px; margin-top: auto; }
+.future-kw {
+  font-family: var(--font-display); font-weight: 600; font-size: 30px;
+  color: var(--primary); background: var(--accent-light);
+  padding: 14px 26px; border-radius: var(--radius-pill);
+  letter-spacing: 0.02em; line-height: 1.2;
+  border: 1.5px solid var(--border);
+}
 
 
 /* ===========================================================
-   SLIDE 8: CONCLUSION (結論)
+   SLIDE 7: COUNTRIES (各国の現状) — Asia SVG map with tagged pins
    =========================================================== */
-.conclusion-keywords { display: flex; gap: 24px; margin: 28px 0 40px; }
-.ck-pill {
-  flex: 1; background: var(--card-bg); border: 1.5px solid var(--border);
-  border-radius: var(--radius-card); padding: 30px 24px; text-align: center;
+.map-layout { display: flex; gap: 44px; margin-top: 36px; flex: 1; align-items: stretch; min-height: 0; }
+
+/* --- Asia map (SVG-based, geographically accurate) --- */
+.map-area {
+  flex: 1.3; position: relative;
+  background: var(--card-bg); border: 1.5px solid var(--border);
+  border-radius: var(--radius-card); overflow: hidden;
 }
-.ck-pill .ck-jp { font-family: var(--font-display); font-weight: 700; font-size: 40px; color: var(--text); line-height: 1.1; }
-.ck-pill .ck-en { font-family: var(--font-display); font-weight: 500; font-size: 16px; color: var(--primary); letter-spacing: 0.12em; text-transform: uppercase; margin-top: 10px; }
-.conclusion-arc { display: flex; align-items: center; justify-content: center; gap: 30px; margin-bottom: 36px; }
-.ca-stage { display: flex; flex-direction: column; align-items: center; text-align: center; }
-.ca-stage .ca-label { font-family: var(--font-display); font-weight: 600; font-size: 28px; color: var(--text); margin-top: 20px; line-height: 1.2; }
-.ca-stage .ca-sub { font-family: var(--font-body); font-size: 18px; color: var(--text-muted); margin-top: 6px; }
-.ca-arrow { font-size: 36px; color: var(--border); margin-top: 36px; }
-.conclusion-thought { font-family: var(--font-display); font-weight: 600; font-size: 32px; color: var(--text); line-height: 1.4; }
-.conclusion-thought .accent { color: var(--primary); }
+.map-area .map-svg {
+  width: 100%; height: 100%; display: block;
+}
+/* SVG country fill colors */
+.map-svg .country { fill: rgba(30,43,250,0.08); stroke: rgba(30,43,250,0.30); stroke-width: 1.5; stroke-linejoin: round; }
+.map-svg .country.highlight { fill: rgba(30,43,250,0.22); stroke: var(--primary); stroke-width: 2.5; }
+.map-svg .country.highlight-fill { fill: rgba(30,43,250,0.22); stroke: rgba(30,43,250,0.30); stroke-width: 1.5; }
+.map-svg .country.highlight-2 { fill: rgba(30,43,250,0.28); stroke: var(--primary); stroke-width: 2.5; }
+.map-svg .country.highlight-3 { fill: rgba(30,43,250,0.18); stroke: var(--primary); stroke-width: 2.5; }
+.map-svg .grid-line { stroke: rgba(30,43,250,0.05); stroke-width: 0.8; fill: none; }
+.map-svg .country-label {
+  font-family: 'Space Grotesk', sans-serif; font-size: 14px; fill: rgba(17,17,17,0.35);
+  text-anchor: middle; letter-spacing: 0.04em; font-weight: 500;
+}
+.map-svg .country-label.highlight { fill: var(--primary); font-weight: 700; font-size: 16px; }
+.map-svg .ocean-label {
+  font-family: 'Space Grotesk', sans-serif; font-size: 13px; fill: rgba(30,43,250,0.20);
+  text-anchor: middle; letter-spacing: 0.12em; font-weight: 500; text-transform: uppercase;
+}
+/* Map title */
+.map-area .map-title {
+  position: absolute; top: 20px; left: 24px; z-index: 5;
+  font-family: var(--font-display); font-weight: 600; font-size: 22px;
+  color: var(--text-light); letter-spacing: 0.10em;
+}
+
+/* SVG-native pins inside the map — positioned in SVG coordinate space */
+.map-svg .pin-dot { fill: #1e2bfa; stroke: #fdfae7; stroke-width: 4; }
+.map-svg .pin-pulse { fill: none; stroke: #1e2bfa; stroke-width: 2; opacity: 0.4; animation: svg-pin-pulse 2.5s cubic-bezier(0.7,0,0.2,1) infinite; transform-origin: center; }
+.map-svg .pin-label { font-family: 'Space Grotesk','Noto Sans JP',sans-serif; font-weight: 700; font-size: 32px; fill: #111; text-anchor: middle; paint-order: stroke; stroke: #fdfae7; stroke-width: 6px; stroke-linejoin: round; }
+@keyframes svg-pin-pulse {
+  0%, 100% { r: 12; opacity: 0.4; }
+  50% { r: 30; opacity: 0; }
+}
+
+/* --- Tag panels (right side) --- */
+.map-tags {
+  flex: 1; display: flex; flex-direction: column; gap: 18px; justify-content: center;
+  max-height: 760px; overflow: hidden;
+}
+.map-tag {
+  background: var(--card-bg); border: 1.5px solid var(--border);
+  border-left: 6px solid var(--primary);
+  border-radius: var(--radius-card); padding: 24px 26px;
+}
+.map-tag .mt-head { display: flex; align-items: center; gap: 14px; margin-bottom: 18px; }
+.map-tag .mt-num {
+  font-family: var(--font-display); font-weight: 700; font-size: 32px;
+  color: var(--primary); line-height: 1;
+}
+.map-tag .mt-name {
+  font-family: var(--font-display); font-weight: 700; font-size: 34px;
+  color: var(--text); line-height: 1.1;
+}
+.map-tag .mt-kws { display: flex; flex-wrap: wrap; gap: 10px; }
+.map-tag .mt-kw {
+  font-family: var(--font-display); font-weight: 600; font-size: 24px;
+  color: var(--primary); background: var(--accent-light);
+  padding: 12px 22px; border-radius: var(--radius-pill);
+  letter-spacing: 0.02em; line-height: 1.2;
+  border: 1.5px solid var(--border);
+}
+
+
+/* ===========================================================
+   SLIDE 8: CONCLUSION (結論) — 3 takeaway cards + closing
+   =========================================================== */
+.conclusion-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 36px; margin-top: 60px; }
+.concl-card {
+  background: var(--card-bg); border: 1.5px solid var(--border);
+  border-top: 6px solid var(--primary);
+  border-radius: var(--radius-card); padding: 48px 36px;
+  display: flex; flex-direction: column;
+}
+.concl-card .cc-num {
+  font-family: var(--font-display); font-weight: 700; font-size: 48px;
+  color: var(--primary); line-height: 1; margin-bottom: 24px;
+}
+.concl-card .cc-title {
+  font-family: var(--font-display); font-weight: 700; font-size: 46px;
+  color: var(--text); line-height: 1.15; margin-bottom: 24px;
+}
+.concl-card .cc-flow {
+  font-family: var(--font-display); font-weight: 600; font-size: 30px;
+  color: var(--primary); line-height: 1.4; margin-bottom: 20px;
+}
+.concl-card .cc-desc {
+  font-family: var(--font-body); font-size: 28px; color: var(--text-muted);
+  line-height: 1.55; margin-top: auto;
+}
+.conclusion-close {
+  margin-top: 56px; text-align: center;
+  font-family: var(--font-display); font-weight: 700; font-size: 44px;
+  color: var(--text); line-height: 1.35;
+}
+.conclusion-close .accent { color: var(--primary); }
 
 
 /* ===========================================================
@@ -660,7 +762,7 @@ h2.reveal { opacity: 1; transform: none; filter: none;
         <!-- Footer -->
         <div class="cover-footer">
           <span class="footer-label reveal d6"><ruby>発表<rt>はっぴょう</rt></ruby></span>
-          <span class="counter reveal d6"><ruby>中国<rt>ちゅうごく</rt></ruby> ・ <ruby>ネパール</ruby> ・ <ruby>カザフスタン</ruby></span>
+          <span class="counter reveal d6">タマン ・ アセラ ・ アジヤイ ・ シュゲンサク</span>
         </div>
       </div>
 
@@ -735,16 +837,6 @@ h2.reveal { opacity: 1; transform: none; filter: none;
           </div>
         </div>
 
-        <!-- Detail cards -->
-        <div class="outline-detail">
-          <div class="outline-card reveal d4"><span class="oc-num">01</span><span class="oc-text"><ruby>展示<rt>てんじ</rt></ruby><ruby>紹介<rt>しょうかい</rt></ruby>・<ruby>詳細<rt>しょうさい</rt></ruby> — <ruby>未来館<rt>みらいかん</rt></ruby>で<ruby>見<rt>み</rt></ruby>た<ruby>技術<rt>ぎじゅつ</rt></ruby></span></div>
-          <div class="outline-card reveal d5"><span class="oc-num">02</span><span class="oc-text"><ruby>過去<rt>かこ</rt></ruby> — <ruby>大<rt>おお</rt></ruby>きな<ruby>機械<rt>きかい</rt></ruby>から<ruby>小<rt>ちい</rt></ruby>さく</span></div>
-          <div class="outline-card reveal d5"><span class="oc-num">03</span><span class="oc-text"><ruby>現在<rt>げんざい</rt></ruby> — <ruby>見<rt>み</rt></ruby>る・<ruby>認識<rt>にんしき</rt></ruby>する・<ruby>感<rt>かん</rt></ruby>じる</span></div>
-          <div class="outline-card reveal d6"><span class="oc-num">04</span><span class="oc-text"><ruby>未来<rt>みらい</rt></ruby> — どこでも<ruby>計算<rt>けいさん</rt></ruby></span></div>
-          <div class="outline-card reveal d6"><span class="oc-num">05</span><span class="oc-text"><ruby>各<rt>かく</rt></ruby><ruby>国<rt>こく</rt></ruby>の<ruby>現状<rt>げんじょう</rt></ruby> — <ruby>中国<rt>ちゅうごく</rt></ruby>・ネパール・カザフスタン</span></div>
-          <div class="outline-card reveal d7"><span class="oc-num">06</span><span class="oc-text"><ruby>結論<rt>けつろん</rt></ruby> — <ruby>技術<rt>ぎじゅつ</rt></ruby>と<ruby>私<rt>わたし</rt></ruby>たちの<ruby>暮<rt>く</rt></ruby>らし</span></div>
-        </div>
-
         <!-- Footer -->
         <div class="slide-footer">
           <span class="counter"><b>02</b> / 13</span>
@@ -780,8 +872,8 @@ h2.reveal { opacity: 1; transform: none; filter: none;
           <div class="exhi-card reveal d4">
             <div class="ec-icon">
               <!-- Dolphin/brain icon (CSS circle) -->
-              <div style="width:48px;height:48px;border:2.5px solid var(--primary);border-radius:50%;position:relative;">
-                <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:14px;height:14px;background:var(--accent-light);border-radius:50%;"></div>
+              <div style="width:72px;height:72px;border:3px solid var(--primary);border-radius:50%;position:relative;">
+                <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:20px;height:20px;background:var(--accent-light);border-radius:50%;"></div>
               </div>
             </div>
             <div class="ec-title">イルカの<ruby>脳<rt>のう</rt></ruby></div>
@@ -790,7 +882,7 @@ h2.reveal { opacity: 1; transform: none; filter: none;
           <div class="exhi-card reveal d5">
             <div class="ec-icon">
               <!-- Leaf/nature icon (CSS) -->
-              <div style="width:44px;height:44px;border:2.5px solid var(--primary);border-radius:50% 0 50% 0;transform:rotate(-15deg);"></div>
+              <div style="width:66px;height:66px;border:3px solid var(--primary);border-radius:50% 0 50% 0;transform:rotate(-15deg);"></div>
             </div>
             <div class="ec-title"><ruby>自然<rt>しぜん</rt></ruby>と<ruby>計算<rt>けいさん</rt></ruby></div>
             <div class="ec-desc"><ruby>計算機<rt>けいさんき</rt></ruby>と<ruby>自然<rt>しぜん</rt></ruby>の<ruby>関係<rt>かんけい</rt></ruby></div>
@@ -798,12 +890,12 @@ h2.reveal { opacity: 1; transform: none; filter: none;
           <div class="exhi-card reveal d6">
             <div class="ec-icon">
               <!-- Dust/particle icon (CSS dots) -->
-              <div style="position:relative;width:48px;height:48px;">
-                <div style="position:absolute;top:4px;left:8px;width:6px;height:6px;background:var(--primary);border-radius:50%;"></div>
-                <div style="position:absolute;top:14px;left:24px;width:5px;height:5px;background:var(--primary);border-radius:50%;opacity:0.7;"></div>
-                <div style="position:absolute;top:28px;left:6px;width:7px;height:7px;background:var(--primary);border-radius:50%;opacity:0.5;"></div>
-                <div style="position:absolute;top:34px;left:30px;width:4px;height:4px;background:var(--primary);border-radius:50%;opacity:0.8;"></div>
-                <div style="position:absolute;top:20px;left:14px;width:5px;height:5px;background:var(--primary);border-radius:50%;opacity:0.6;"></div>
+              <div style="position:relative;width:72px;height:72px;">
+                <div style="position:absolute;top:6px;left:12px;width:9px;height:9px;background:var(--primary);border-radius:50%;"></div>
+                <div style="position:absolute;top:20px;left:36px;width:7px;height:7px;background:var(--primary);border-radius:50%;opacity:0.7;"></div>
+                <div style="position:absolute;top:42px;left:8px;width:10px;height:10px;background:var(--primary);border-radius:50%;opacity:0.5;"></div>
+                <div style="position:absolute;top:50px;left:44px;width:6px;height:6px;background:var(--primary);border-radius:50%;opacity:0.8;"></div>
+                <div style="position:absolute;top:30px;left:20px;width:7px;height:7px;background:var(--primary);border-radius:50%;opacity:0.6;"></div>
               </div>
             </div>
             <div class="ec-title"><ruby>塵<rt>ちり</rt></ruby>も<ruby>計算<rt>けいさん</rt></ruby>する</div>
@@ -812,11 +904,11 @@ h2.reveal { opacity: 1; transform: none; filter: none;
           <div class="exhi-card reveal d7">
             <div class="ec-icon">
               <!-- Atom/quantum icon (CSS) -->
-              <div style="position:relative;width:48px;height:48px;">
-                <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:10px;height:10px;background:var(--primary);border-radius:50%;"></div>
-                <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) rotate(0deg);width:48px;height:18px;border:2px solid var(--primary);border-radius:50%;opacity:0.6;"></div>
-                <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) rotate(60deg);width:48px;height:18px;border:2px solid var(--primary);border-radius:50%;opacity:0.6;"></div>
-                <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) rotate(120deg);width:48px;height:18px;border:2px solid var(--primary);border-radius:50%;opacity:0.6;"></div>
+              <div style="position:relative;width:72px;height:72px;">
+                <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:14px;height:14px;background:var(--primary);border-radius:50%;"></div>
+                <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) rotate(0deg);width:72px;height:26px;border:3px solid var(--primary);border-radius:50%;opacity:0.6;"></div>
+                <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) rotate(60deg);width:72px;height:26px;border:3px solid var(--primary);border-radius:50%;opacity:0.6;"></div>
+                <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) rotate(120deg);width:72px;height:26px;border:3px solid var(--primary);border-radius:50%;opacity:0.6;"></div>
               </div>
             </div>
             <div class="ec-title"><ruby>量子<rt>りょうし</rt></ruby>コンピューター</div>
@@ -861,7 +953,11 @@ h2.reveal { opacity: 1; transform: none; filter: none;
           </div>
           <h2 class="hero-title reveal d3">イルカの<ruby>脳<rt>のう</rt></ruby>と<br><span class="accent"><ruby>自然<rt>しぜん</rt></ruby>の<ruby>情報<rt>じょうほう</rt></ruby><ruby>処理<rt>しょり</rt></ruby></span></h2>
           <div class="hero-rule reveal d4"></div>
-          <p class="hero-desc reveal d5"><ruby>未来館<rt>みらいかん</rt></ruby>の<ruby>展示<rt>てんじ</rt></ruby>で<ruby>最<rt>もっと</rt></ruby>も<ruby>印象<rt>いんしょう</rt></ruby>に<ruby>残<rt>のこ</rt></ruby>ったものの一つは、イルカの<ruby>脳<rt>のう</rt></ruby>のモデルです。<ruby>自然界<rt>しぜんかい</rt></ruby>には、<ruby>人間<rt>にんげん</rt></ruby>のコンピューターとは<ruby>違<rt>ちが</rt></ruby>う<ruby>情報<rt>じょうほう</rt></ruby><ruby>処理<rt>しょり</rt></ruby>の<ruby>方法<rt>ほうほう</rt></ruby>があります。<ruby>研究<rt>けんきゅう</rt></ruby>者は、イルカの<ruby>脳<rt>のう</rt></ruby>のしくみからヒントを<ruby>得<rt>え</rt></ruby>て、あたらしい<ruby>技術<rt>ぎじゅつ</rt></ruby>を<ruby>開発<rt>かいはつ</rt></ruby>しています。</p>
+          <div class="hero-keywords reveal d5">
+            <span class="hero-kw"><ruby>自然<rt>しぜん</rt></ruby>の<ruby>情報<rt>じょうほう</rt></ruby><ruby>処理<rt>しょり</rt></ruby></span>
+            <span class="hero-kw">イルカの<ruby>脳<rt>のう</rt></ruby></span>
+            <span class="hero-kw"><ruby>研究<rt>けんきゅう</rt></ruby>のヒント</span>
+          </div>
           <div class="hero-quote reveal d6">
             <div class="hq-text">「<ruby>自然<rt>しぜん</rt></ruby>から<ruby>学<rt>まな</rt></ruby>ぶコンピューター」</div>
             <div class="hq-cite">— <ruby>日本<rt>にほん</rt></ruby><ruby>科学<rt>かがく</rt></ruby><ruby>未来館<rt>みらいかん</rt></ruby></div>
@@ -892,7 +988,11 @@ h2.reveal { opacity: 1; transform: none; filter: none;
           </div>
           <h2 class="hero-title reveal d3"><ruby>自然<rt>しぜん</rt></ruby>と<br><span class="accent"><ruby>計算<rt>けいさん</rt></ruby>の<ruby>関係<rt>かんけい</rt></ruby></span></h2>
           <div class="hero-rule reveal d4"></div>
-          <p class="hero-desc reveal d5">コンピューターは<ruby>自然<rt>しぜん</rt></ruby>を<ruby>計算<rt>けいさん</rt></ruby>で<ruby>理解<rt>りかい</rt></ruby>しようとしますが、<ruby>自然<rt>しぜん</rt></ruby>もまた<ruby>計算<rt>けいさん</rt></ruby>を<ruby>行<rt>おこな</rt></ruby>っています。<ruby>花<rt>はな</rt></ruby>の<ruby>開花<rt>かいか</rt></ruby>や<ruby>鳥<rt>とり</rt></ruby>の<ruby>渡<rt>わた</rt></ruby>りなど、<ruby>自然界<rt>しぜんかい</rt></ruby>のしくみを<ruby>計算<rt>けいさん</rt></ruby><ruby>模型<rt>もけい</rt></ruby>で<ruby>表<rt>あらわ</rt></ruby>すことで、<ruby>技術<rt>ぎじゅつ</rt></ruby>と<ruby>自然<rt>しぜん</rt></ruby>の<ruby>境界<rt>きょうかい</rt></ruby>が<ruby>曖昧<rt>あいまい</rt></ruby>になっていくことを<ruby>学<rt>まな</rt></ruby>びました。</p>
+          <div class="hero-keywords reveal d5">
+            <span class="hero-kw"><ruby>計算<rt>けいさん</rt></ruby>で<ruby>理解<rt>りかい</rt></ruby></span>
+            <span class="hero-kw"><ruby>自然界<rt>しぜんかい</rt></ruby>のしくみ</span>
+            <span class="hero-kw"><ruby>境界<rt>きょうかい</rt></ruby>が<ruby>曖昧<rt>あいまい</rt></ruby></span>
+          </div>
           <div class="hero-quote reveal d6">
             <div class="hq-text">「<ruby>計算<rt>けいさん</rt></ruby>は<ruby>自然<rt>しぜん</rt></ruby>の<ruby>言語<rt>げんご</rt></ruby>」</div>
             <div class="hq-cite">— <ruby>未来館<rt>みらいかん</rt></ruby> <ruby>展示<rt>てんじ</rt></ruby>より</div>
@@ -923,7 +1023,11 @@ h2.reveal { opacity: 1; transform: none; filter: none;
           </div>
           <h2 class="hero-title reveal d3"><ruby>塵<rt>ちり</rt></ruby>も<br><span class="accent"><ruby>計算<rt>けいさん</rt></ruby>する</span></h2>
           <div class="hero-rule reveal d4"></div>
-          <p class="hero-desc reveal d5">コンピューターはさらに<ruby>小<rt>ちい</rt></ruby>さくなり、<ruby>私<rt>わたし</rt></ruby>たちが<ruby>見<rt>み</rt></ruby>ることのできない<ruby>粒子<rt>りゅうし</rt></ruby>ほどの<ruby>大<rt>おお</rt></ruby>きさになるかもしれません。<ruby>家<rt>いえ</rt></ruby>や<ruby>道路<rt>どうろ</rt></ruby>、<ruby>衣服<rt>いふく</rt></ruby>の<ruby>中<rt>なか</rt></ruby>に<ruby>埋<rt>う</rt></ruby>め<ruby>込<rt>こ</rt></ruby>まれた<ruby>無数<rt>むすう</rt></ruby>のセンサーが、<ruby>環境<rt>かんきょう</rt></ruby>の<ruby>情報<rt>じょうほう</rt></ruby>を<ruby>集<rt>あつ</rt></ruby>め<ruby>続<rt>つづ</rt></ruby>けます。<ruby>私<rt>わたし</rt></ruby>たちがそれを<ruby>意識<rt>いしき</rt></ruby>しなくても、<ruby>計算<rt>けいさん</rt></ruby>は<ruby>周<rt>まわ</rt></ruby>りで<ruby>行<rt>おこな</rt></ruby>われています。</p>
+          <div class="hero-keywords reveal d5">
+            <span class="hero-kw"><ruby>粒子<rt>りゅうし</rt></ruby>ほど<ruby>小<rt>ちい</rt></ruby>さく</span>
+            <span class="hero-kw"><ruby>無数<rt>むすう</rt></ruby>のセンサー</span>
+            <span class="hero-kw"><ruby>意識<rt>いしき</rt></ruby>しない<ruby>計算<rt>けいさん</rt></ruby></span>
+          </div>
           <div class="hero-quote reveal d6">
             <div class="hq-text">「<ruby>塵<rt>ちり</rt></ruby>すら<ruby>計算<rt>けいさん</rt></ruby>する」</div>
             <div class="hq-cite">— <ruby>未来館<rt>みらいかん</rt></ruby> <ruby>展示<rt>てんじ</rt></ruby>より</div>
@@ -954,7 +1058,11 @@ h2.reveal { opacity: 1; transform: none; filter: none;
           </div>
           <h2 class="hero-title reveal d3"><ruby>量子<rt>りょうし</rt></ruby><br><span class="accent">コンピューター</span></h2>
           <div class="hero-rule reveal d4"></div>
-          <p class="hero-desc reveal d5"><ruby>従来<rt>じゅうらい</rt></ruby>のコンピューターとは<ruby>全<rt>まった</rt></ruby>く<ruby>違<rt>ちが</rt></ruby>う<ruby>計算<rt>けいさん</rt></ruby>の<ruby>原理<rt>げんり</rt></ruby>です。<ruby>量子<rt>りょうし</rt></ruby>の<ruby>性質<rt>せいしつ</rt></ruby>を<ruby>利用<rt>りよう</rt></ruby>することで、これまで<ruby>膨大<rt>ぼうだい</rt></ruby>な<ruby>時間<rt>じかん</rt></ruby>がかかっていた<ruby>問題<rt>もんだい</rt></ruby>を<ruby>高速<rt>こうそく</rt></ruby>に<ruby>解<rt>と</rt></ruby>ける<ruby>可能性<rt>かのうせい</rt></ruby>があります。<ruby>医療<rt>いりょう</rt></ruby>や<ruby>新<rt>あたら</rt></ruby>しい<ruby>材料<rt>ざいりょう</rt></ruby>の<ruby>研究<rt>けんきゅう</rt></ruby>など、さまざまな<ruby>分野<rt>ぶんや</rt></ruby>での<ruby>応用<rt>おうよう</rt></ruby>が<ruby>期待<rt>きたい</rt></ruby>されています。</p>
+          <div class="hero-keywords reveal d5">
+            <span class="hero-kw"><ruby>全<rt>まった</rt></ruby>く<ruby>違<rt>ちが</rt></ruby>う<ruby>原理<rt>げんり</rt></ruby></span>
+            <span class="hero-kw"><ruby>高速<rt>こうそく</rt></ruby>に<ruby>解<rt>と</rt></ruby>く</span>
+            <span class="hero-kw"><ruby>医療<rt>いりょう</rt></ruby>・<ruby>材料<rt>ざいりょう</rt></ruby></span>
+          </div>
           <div class="hero-quote reveal d6">
             <div class="hq-text">「<ruby>計算<rt>けいさん</rt></ruby>の<ruby>常識<rt>じょうしき</rt></ruby>が<ruby>変<rt>か</rt></ruby>わる」</div>
             <div class="hq-cite">— <ruby>未来館<rt>みらいかん</rt></ruby> <ruby>展示<rt>てんじ</rt></ruby>より</div>
@@ -1068,35 +1176,68 @@ h2.reveal { opacity: 1; transform: none; filter: none;
         <!-- Headline -->
         <h2 class="reveal d2">コンピューターは「<ruby>計算<rt>けいさん</rt></ruby>」だけではない</h2>
 
-        <!-- 4 keyword cards -->
+        <!-- 4 large keyword cards with icons -->
         <div class="present-keywords">
           <div class="keyword-pill reveal d3">
+            <span class="kw-num">01</span>
+            <div class="kw-icon">
+              <!-- Eye icon -->
+              <svg width="80" height="80" viewBox="0 0 80 80" fill="none">
+                <ellipse cx="40" cy="40" rx="36" ry="22" stroke="#1e2bfa" stroke-width="3"/>
+                <circle cx="40" cy="40" r="12" fill="#1e2bfa"/>
+                <circle cx="40" cy="40" r="5" fill="#fdfae7"/>
+              </svg>
+            </div>
             <span class="kw"><ruby>見<rt>み</rt></ruby>る</span>
+            <span class="kw-desc"><ruby>画像<rt>がぞう</rt></ruby>や<ruby>映像<rt>えいぞう</rt></ruby>を<br><ruby>認識<rt>にんしき</rt></ruby>する</span>
           </div>
-          <div class="keyword-pill reveal d3">
+          <div class="keyword-pill reveal d4">
+            <span class="kw-num">02</span>
+            <div class="kw-icon">
+              <!-- Brain/recognition icon -->
+              <svg width="80" height="80" viewBox="0 0 80 80" fill="none">
+                <path d="M40 12 C28 12 20 20 20 32 C20 38 22 42 26 44 C22 46 20 50 20 56 C20 66 28 72 40 72 C52 72 60 66 60 56 C60 50 58 46 54 44 C58 42 60 38 60 32 C60 20 52 12 40 12Z" stroke="#1e2bfa" stroke-width="3" stroke-linejoin="round"/>
+                <line x1="40" y1="20" x2="40" y2="64" stroke="#1e2bfa" stroke-width="2.5"/>
+                <circle cx="32" cy="34" r="3" fill="#1e2bfa"/>
+                <circle cx="48" cy="34" r="3" fill="#1e2bfa"/>
+                <circle cx="32" cy="50" r="3" fill="#1e2bfa"/>
+                <circle cx="48" cy="50" r="3" fill="#1e2bfa"/>
+              </svg>
+            </div>
             <span class="kw"><ruby>認識<rt>にんしき</rt></ruby>する</span>
+            <span class="kw-desc"><ruby>現実<rt>げんじつ</rt></ruby>の<ruby>世界<rt>せかい</rt></ruby>を<br><ruby>理解<rt>りかい</rt></ruby>する</span>
           </div>
-          <div class="keyword-pill reveal d4">
+          <div class="keyword-pill reveal d5">
+            <span class="kw-num">03</span>
+            <div class="kw-icon">
+              <!-- Sensor/wave icon -->
+              <svg width="80" height="80" viewBox="0 0 80 80" fill="none">
+                <circle cx="40" cy="40" r="6" fill="#1e2bfa"/>
+                <path d="M28 28 C24 32 24 48 28 52" stroke="#1e2bfa" stroke-width="3" stroke-linecap="round"/>
+                <path d="M52 28 C56 32 56 48 52 52" stroke="#1e2bfa" stroke-width="3" stroke-linecap="round"/>
+                <path d="M20 22 C14 28 14 52 20 58" stroke="#1e2bfa" stroke-width="3" stroke-linecap="round" opacity="0.5"/>
+                <path d="M60 22 C66 28 66 52 60 58" stroke="#1e2bfa" stroke-width="3" stroke-linecap="round" opacity="0.5"/>
+              </svg>
+            </div>
             <span class="kw"><ruby>感<rt>かん</rt></ruby>じる</span>
+            <span class="kw-desc">センサーで<ruby>環境<rt>かんきょう</rt></ruby>を<br><ruby>感知<rt>かんち</rt></ruby>する</span>
           </div>
-          <div class="keyword-pill reveal d4">
+          <div class="keyword-pill reveal d6">
+            <span class="kw-num">04</span>
+            <div class="kw-icon">
+              <!-- Decision/branch icon -->
+              <svg width="80" height="80" viewBox="0 0 80 80" fill="none">
+                <circle cx="40" cy="18" r="8" stroke="#1e2bfa" stroke-width="3"/>
+                <circle cx="20" cy="60" r="8" stroke="#1e2bfa" stroke-width="3"/>
+                <circle cx="60" cy="60" r="8" stroke="#1e2bfa" stroke-width="3"/>
+                <line x1="40" y1="26" x2="40" y2="40" stroke="#1e2bfa" stroke-width="3"/>
+                <line x1="40" y1="40" x2="20" y2="52" stroke="#1e2bfa" stroke-width="3"/>
+                <line x1="40" y1="40" x2="60" y2="52" stroke="#1e2bfa" stroke-width="3"/>
+                <circle cx="40" cy="40" r="4" fill="#1e2bfa"/>
+              </svg>
+            </div>
             <span class="kw"><ruby>判断<rt>はんだん</rt></ruby>する</span>
-          </div>
-        </div>
-
-        <!-- 3 supporting cards -->
-        <div class="present-support">
-          <div class="card-tinted sm ps-card reveal d5">
-            <div class="psc-title">コンピュータービジョン</div>
-            <div class="psc-desc"><ruby>画像<rt>がぞう</rt></ruby>や<ruby>映像<rt>えいぞう</rt></ruby>を<ruby>認識<rt>にんしき</rt></ruby>し、<ruby>現実<rt>げんじつ</rt></ruby>の<ruby>世界<rt>せかい</rt></ruby>を<ruby>見<rt>み</rt></ruby>ることができる</div>
-          </div>
-          <div class="card-tinted sm ps-card reveal d6">
-            <div class="psc-title"><ruby>自然<rt>しぜん</rt></ruby>の<ruby>情報<rt>じょうほう</rt></ruby><ruby>処理<rt>しょり</rt></ruby></div>
-            <div class="psc-desc">イルカの<ruby>脳<rt>のう</rt></ruby>など、<ruby>自然<rt>しぜん</rt></ruby>からヒントを<ruby>得<rt>え</rt></ruby>てあたらしい<ruby>技術<rt>ぎじゅつ</rt></ruby>を<ruby>研究<rt>けんきゅう</rt></ruby></div>
-          </div>
-          <div class="card-tinted sm ps-card reveal d7">
-            <div class="psc-title">センサー・モノのインターネット</div>
-            <div class="psc-desc"><ruby>生活<rt>せいかつ</rt></ruby>の<ruby>中<rt>なか</rt></ruby>のセンサーが、<ruby>環境<rt>かんきょう</rt></ruby>の<ruby>情報<rt>じょうほう</rt></ruby>を<ruby>集<rt>あつ</rt></ruby>めている</div>
+            <span class="kw-desc">データから<br><ruby>意思決定<rt>いしきってい</rt></ruby>する</span>
           </div>
         </div>
 
@@ -1140,34 +1281,36 @@ h2.reveal { opacity: 1; transform: none; filter: none;
         <!-- Key message -->
         <p class="future-statement reveal d3"><ruby>計算<rt>けいさん</rt></ruby>する<ruby>方法<rt>ほうほう</rt></ruby>そのものも<span class="accent"><ruby>変<rt>か</rt></ruby>わるかもしれない</span></p>
 
-        <!-- 2-column split -->
+        <!-- 2-column split — symmetric cards -->
         <div class="future-split">
           <!-- Left: Computing Everywhere -->
           <div class="future-col reveal d4">
             <h3><span class="col-num">01</span> どこでも<ruby>計算<rt>けいさん</rt></ruby></h3>
-            <div class="highlight-block future-quote">
+            <div class="future-quote">
               <div class="fq-text">「ちりも<ruby>計算<rt>けいさん</rt></ruby>する」</div>
               <div class="fq-cite">— <ruby>日本<rt>にほん</rt></ruby><ruby>科学<rt>かがく</rt></ruby><ruby>未来館<rt>みらいかん</rt></ruby> <ruby>展示<rt>てんじ</rt></ruby>より</div>
             </div>
-            <ul class="future-list">
-              <li><ruby>家<rt>いえ</rt></ruby>・<ruby>道路<rt>どうろ</rt></ruby>・<ruby>病院<rt>びょういん</rt></ruby>など、さまざまな<ruby>場所<rt>ばしょ</rt></ruby>に<ruby>小<rt>ちい</rt></ruby>さなセンサーが<ruby>存在<rt>そんざい</rt></ruby>する</li>
-              <li><ruby>私<rt>わたし</rt></ruby>たちが<ruby>意識<rt>いしき</rt></ruby>しない<ruby>場所<rt>ばしょ</rt></ruby>に、コンピューターが<ruby>自然<rt>しぜん</rt></ruby>にある</li>
-              <li><ruby>環境<rt>かんきょう</rt></ruby>の<ruby>一部<rt>いちぶ</rt></ruby>として、<ruby>計算<rt>けいさん</rt></ruby>が<ruby>溶<rt>と</rt></ruby>け<ruby>込<rt>こ</rt></ruby>む<ruby>未来<rt>みらい</rt></ruby></li>
-            </ul>
+            <div class="future-keywords">
+              <span class="future-kw"><ruby>家<rt>いえ</rt></ruby>・<ruby>道路<rt>どうろ</rt></ruby>・<ruby>病院<rt>びょういん</rt></ruby></span>
+              <span class="future-kw"><ruby>小<rt>ちい</rt></ruby>さなセンサー</span>
+              <span class="future-kw"><ruby>意識<rt>いしき</rt></ruby>しない<ruby>存在<rt>そんざい</rt></ruby></span>
+              <span class="future-kw"><ruby>環境<rt>かんきょう</rt></ruby>の<ruby>一部<rt>いちぶ</rt></ruby></span>
+            </div>
           </div>
 
           <!-- Right: Quantum Computing -->
-          <div class="future-col cautious reveal d5">
+          <div class="future-col reveal d5">
             <h3><span class="col-num">02</span> <ruby>量子<rt>りょうし</rt></ruby>コンピューター</h3>
-            <div class="card-tinted sm" style="margin-bottom:24px;">
-              <div class="psc-title" style="font-size:24px;">あたらしい<ruby>計算<rt>けいさん</rt></ruby>の<ruby>原理<rt>げんり</rt></ruby></div>
-              <div class="psc-desc"><ruby>従来<rt>じゅうらい</rt></ruby>のコンピューターとは<ruby>違<rt>ちが</rt></ruby>う<ruby>計算<rt>けいさん</rt></ruby><ruby>方法<rt>ほうほう</rt></ruby></div>
+            <div class="future-quote">
+              <div class="fq-text">あたらしい<ruby>計算<rt>けいさん</rt></ruby>の<ruby>原理<rt>げんり</rt></ruby></div>
+              <div class="fq-cite">— <ruby>従来<rt>じゅうらい</rt></ruby>とは<ruby>違<rt>ちが</rt></ruby>う<ruby>方法<rt>ほうほう</rt></ruby></div>
             </div>
-            <ul class="future-list">
-              <li><ruby>医療<rt>いりょう</rt></ruby>やあたらしい<ruby>材料<rt>ざいりょう</rt></ruby>の<ruby>研究<rt>けんきゅう</rt></ruby>に<ruby>期待<rt>きたい</rt></ruby>されている</li>
-              <li><ruby>現在<rt>げんざい</rt></ruby>は<ruby>時間<rt>じかん</rt></ruby>がかかる<ruby>問題<rt>もんだい</rt></ruby>に<ruby>使<rt>つか</rt></ruby>われるかもしれない</li>
-              <li>まだ<ruby>研究<rt>けんきゅう</rt></ruby><ruby>段階<rt>だんかい</rt></ruby>だが、<ruby>将来<rt>しょうらい</rt></ruby><ruby>発展<rt>はってん</rt></ruby>する<ruby>可能性<rt>かのうせい</rt></ruby>がある</li>
-            </ul>
+            <div class="future-keywords">
+              <span class="future-kw"><ruby>医療<rt>いりょう</rt></ruby>・<ruby>材料<rt>ざいりょう</rt></ruby></span>
+              <span class="future-kw"><ruby>高速<rt>こうそく</rt></ruby>に<ruby>解<rt>と</rt></ruby>く</span>
+              <span class="future-kw"><ruby>研究<rt>けんきゅう</rt></ruby><ruby>段階<rt>だんかい</rt></ruby></span>
+              <span class="future-kw"><ruby>将来<rt>しょうらい</rt></ruby>の<ruby>発展<rt>はってん</rt></ruby></span>
+            </div>
           </div>
         </div>
 
@@ -1210,56 +1353,109 @@ h2.reveal { opacity: 1; transform: none; filter: none;
         <!-- Headline -->
         <h2 class="reveal d2">3つの<ruby>国<rt>くに</rt></ruby>、3つの<ruby>現状<rt>げんじょう</rt></ruby></h2>
 
-        <!-- 3 country cards (same template, same cobalt accent) -->
-        <div class="country-grid">
-          <!-- China -->
-          <div class="country-card reveal d3">
-            <div class="cc-flag-area">
-              <span class="cc-code">01</span>
-              <div>
-                <div class="cc-name"><ruby>中国<rt>ちゅうごく</rt></ruby></div>
-              </div>
-            </div>
-            <div class="cc-keywords">
-              <span class="cc-kw"><ruby>人工知能<rt>じんこうちのう</rt></ruby></span>
-              <span class="cc-kw">コンピュータービジョン</span>
-              <span class="cc-kw"><ruby>自動運転<rt>じどううんてん</rt></ruby></span>
-              <span class="cc-kw">ロボット</span>
-              <span class="cc-kw"><ruby>量子<rt>りょうし</rt></ruby><ruby>技術<rt>ぎじゅつ</rt></ruby></span>
-            </div>
-            <div class="cc-desc"><ruby>人工知能<rt>じんこうちのう</rt></ruby>やコンピュータービジョンが、<ruby>自動運転<rt>じどううんてん</rt></ruby>や<ruby>工場<rt>こうじょう</rt></ruby>の<ruby>自動化<rt>じどうか</rt></ruby>で<ruby>利用<rt>りよう</rt></ruby>されている。<ruby>量子通信<rt>りょうしつうしん</rt></ruby>や<ruby>量子<rt>りょうし</rt></ruby>コンピューターの<ruby>研究<rt>けんきゅう</rt></ruby>も<ruby>進<rt>すす</rt></ruby>んでいる。</div>
+        <!-- Asia map layout: map left, tag panels right -->
+        <div class="map-layout">
+          <!-- Map area — real geographic Asia SVG from Natural Earth data -->
+          <div class="map-area reveal-scale d2">
+            <span class="map-title">ASIA</span>
+            <svg class="map-svg" viewBox="1182 231 667 383" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
+<path class="country" d="M1992.918,183.377L2000,181.061L2000,184.858ZM1272.784,320.596L1264.866,324.806L1259.345,330.541L1264.394,335.814L1263.847,339.556L1269.913,346.099L1265.643,349.751L1257.805,345.811L1252.613,342.244L1235.524,338.258L1221.972,337.065L1203.753,327.011L1212.405,321.477L1212.353,316.691L1215.392,312.672L1220.768,312.265L1222.606,302.809L1196.423,297.386L1187.515,287.62L1176.589,288.917L1173.918,283.515L1181.631,281.973L1170.875,273.86L1171.522,269.754L1156.537,266.32L1151.601,259.067L1152.334,252.123L1155.451,247.952L1161.765,244.881L1155.944,242.24L1173,231.939L1175.089,229.105L1166.866,225.299L1169.137,221.679L1164.136,217.544L1167.876,212.782L1161.414,206.458L1166.541,202.269L1158.033,198.567L1158.844,194.677L1172.784,191.936L1178.515,190.004L1187.642,193.362L1202.855,194.685L1223.846,200.968L1228.478,207.306L1213.239,211.706L1188.437,207.484L1184.358,208.19L1193.415,212.258L1194.133,220.513L1205.626,223.649L1202.998,218.568L1206.534,216.464L1219.964,219.921L1224.642,218.568L1220.903,214.499L1233.851,209.058L1244.165,211.32L1247.401,207.502L1242.769,204.19L1245.489,200.867L1241.405,197.421L1256.944,199.204L1260.119,202.315L1253.084,203.001L1257.495,207.994L1266.079,206.789L1267.438,203.246L1298.43,195.829L1297.143,199.474L1318.428,198.002L1326.678,195.699L1333.008,199.046L1339.321,195.366L1333.5,192.148L1336.389,190.315L1352.8,191.996L1380.623,200.08L1384.337,197.172L1378.529,193.056L1371.834,192.511L1373.665,189.877L1370.526,183.765L1380.778,178.734L1388.556,172.593L1403.264,174.058L1404.422,177.148L1399.156,181.654L1404.399,187.308L1403.137,194.921L1409.266,198.326L1406.882,202.035L1396,209.926L1402.35,210.744L1410.672,207.318L1416.956,201.923L1413.718,198.765L1416.31,195.097L1408.899,191.55L1413.332,185.972L1406.117,181.442L1416.06,177.697L1414.774,173.747L1420.464,176.701L1418.272,182.062L1424.217,183.077L1421.684,179.07L1430.981,176.886L1442.511,176.592L1452.778,179.759L1447.837,175.132L1447.284,169.214L1456.944,168.093L1482.346,167.61L1477.831,164.705L1484.26,161.057L1501.444,158.148L1516.114,157.407L1517.968,155.886L1532.556,155.37L1537.101,156.618L1549.57,153.665L1559.776,153.758L1566.616,148.995L1579.731,146.715L1589.259,148.515L1581.694,149.885L1600.854,152.129L1617.096,152.204L1634.079,156.995L1632.697,159.883L1607.778,166.259L1622.884,168.438L1627.886,167.387L1630.72,170.953L1642.043,168.632L1659.869,169.55L1661.222,172.148L1684.448,172.975L1684.765,168.731L1705.425,169.673L1714.396,172.6L1713.667,178.481L1720.644,182.853L1729.381,185.109L1734.742,179.28L1743.654,181.779L1753.122,180.286L1763.875,181.995L1777.055,181.216L1773.044,176.058L1780.379,173.651L1830.556,177.259L1835.284,180.557L1849.827,184.802L1872.26,183.751L1883.321,184.666L1887.946,186.963L1887.27,191.026L1894.114,192.608L1911.403,191.325L1932.42,191.8L1942.098,196.738L1948.983,194.961L1944.49,191.411L1946.964,188.942L1964.688,190.496L1976.245,190.163L2000,195.239L2000,217.372L1992.818,219.843L1985.618,219.436L1996.502,228.467L1995.712,232.236L1985.357,231.026L1964.89,235.856L1948.325,243.169L1946.282,245.694L1938.336,241.851L1923.861,246.212L1908.552,245.766L1900.096,254.797L1906.622,258.287L1905.877,266.375L1900.72,266.58L1900.653,273.62L1890.938,276.457L1889.01,282.8L1880.727,284.155L1879.062,289.8L1871.054,294.976L1869,291.148L1863.52,270.698L1866.191,262.993L1871.169,257.081L1879.802,255.838L1899.289,243.131L1909.276,238.699L1913.742,230.867L1906.991,231.335L1903.655,235.912L1889.564,242.013L1885.013,235.182L1870.67,237.068L1856.767,246.38L1861.354,249.787L1840.365,251.81L1840.768,247.793L1832.132,246.95L1825.249,249.679L1808.262,248.724L1789.988,250.37L1769.21,262.067L1750.701,274.317L1759.454,275.017L1767.582,279.731L1777.231,277.317L1785.252,283.428L1785.44,288.155L1781.097,293.705L1778.122,309.222L1767.887,321.104L1749.274,337.269L1741.872,340.529L1734.878,337.901L1726.556,343.815L1726.556,343.815L1726.556,343.815L1725.778,342.842L1728.582,339.87L1727.918,328.548L1739.428,327.57L1745.069,316.079L1750.146,309.047L1736.148,312.876L1727.707,312.87L1725.457,307.65L1718.877,303.7L1709.208,301.924L1699.702,285.077L1686.508,281.377L1672.239,282.529L1667.65,285.293L1670.768,289.681L1662.663,297.354L1662.714,299.799L1654.885,303.309L1648.216,301.212L1641.587,301.675L1635.347,299.213L1627.21,303.128L1614.789,305.425L1602.64,304.578L1593.827,299.069L1588.259,298.337L1575.981,300.093L1568.088,297.756L1567.029,293.593L1549.231,289.218L1543.476,294.976L1545.732,298.246L1540.332,302.114L1526.755,300.518L1523.042,297.923L1512.415,296.136L1493.364,303.534L1487.507,304.497L1485.333,304.954L1482.385,301.555L1475.229,302.299L1463.239,294.653L1455.255,296.08L1447.602,292.88L1444.642,295.788L1432.227,281.679L1425.14,277.387L1407.92,281.205L1408.381,278.172L1401.245,276.278L1395.445,277.63L1393.696,271.872L1383.712,270.674L1378.717,272.979L1362.103,276.402L1341.314,278.336L1342.778,284.037L1333.153,289.701L1342.156,293.522L1340.763,296.153L1331.346,297.562L1324.241,294.683L1315.433,294.795L1309.539,297.139L1290.715,291.044L1282.037,291.188L1270.569,297.231L1269.877,301.288L1264.164,298.066L1258.147,309.514L1266.985,313.127ZM1520.987,128.234L1533.005,126.979L1543.799,129.776L1556.593,135.147L1555.221,140.143L1543.1,140.836L1518.405,137.112L1514.141,133.127L1506.562,132.029ZM1571.321,137.919L1585.402,141.074L1583.753,143.332L1552.434,145.476L1562.583,138.181ZM1771.284,155.388L1785.953,155.632L1806.035,158.578L1801.667,162.704L1781.188,162.55L1771.975,163.862L1760.969,160.25L1763.954,156.43ZM1823.457,159.782L1837.398,161.237L1830.977,163.432L1811.773,160.743L1813.103,158.944ZM1777.017,170.76L1789.234,168.05L1797.799,171.635ZM1249.15,130.649L1277.999,128.821L1286.239,130.038L1264.367,133.869L1261.514,130.818ZM1126.284,276.551L1109.226,276.003L1118.158,271.756L1126.432,273.612ZM1297.268,168.649L1310.569,163.773L1309.066,161.251L1339.834,154.749L1358.324,153.709L1378.65,150.928L1378.781,154.85L1342.131,160.254L1324.873,165.542L1307.885,176.308L1309.016,180.923L1319.643,185.479L1298.208,185.244L1296.733,182.778L1286.677,181.288L1285.865,178.288L1291.356,174.066L1302.376,169.328ZM1793.97,280.012L1795.751,290.833L1803.634,306.279L1795.411,304.445L1791.993,312.473L1797.408,318.166L1789.4,322.999L1788.358,306.93L1789.889,295.302L1786.634,289.84L1787.125,282.248ZM28.176,205.004L45.237,206.631L56.113,211.83L50.605,214.251L41.499,214.826L41.361,220.255L33.934,221.245L22.314,217.688L21.071,215.278L9.112,215.09L7.299,211.081L0.646,212.401L0,195.239ZM7.257,184.52L0,184.858L0,181.061L13.456,182.429Z"/>>
+<path class="country" d="M1487.507,304.497L1493.364,303.534L1512.415,296.136L1523.042,297.923L1526.755,300.518L1540.332,302.114L1545.732,298.246L1543.476,294.976L1549.231,289.218L1567.029,293.593L1568.088,297.756L1575.981,300.093L1588.259,298.337L1593.827,299.069L1602.64,304.578L1614.789,305.425L1627.21,303.128L1635.347,299.213L1641.587,301.675L1648.216,301.212L1641.585,310.951L1643.016,313.223L1655.912,311.333L1665.405,316.992L1664.796,318.967L1652.343,319.077L1644.362,324.33L1630.355,329.432L1621.518,327.803L1618.602,331.384L1621.275,335.353L1606.909,342.151L1589.607,344.291L1583.139,347.274L1565.739,342.177L1535.274,341.006L1529.483,332.585L1519.337,328.507L1505.253,326.781L1505.393,317.881L1501.56,313.406L1488.966,308.373Z"/>
+<path class="country" d="M1540.706,421.361L1539.633,427.905L1535.663,426.9L1528.471,430.739L1528.64,433.919L1522.815,445.866L1518.473,444.601L1517.59,454.601L1514.848,455.919L1511.922,447.106L1506.439,447.795L1513.201,439.611L1499.559,437.983L1499.069,434.12L1492.017,431.445L1490.054,435.214L1494.064,438.155L1489.358,442.25L1494.622,455.839L1493.826,457.867L1483.198,458.95L1480.552,466.417L1472.557,470.156L1466.339,476.692L1456.627,483.833L1456.618,486.389L1446.249,490.041L1444.584,494.279L1446.035,506.113L1443.681,511.391L1443.656,520.83L1430.777,534.117L1425.517,528.93L1420.814,515.547L1415.916,507.582L1413.577,497.163L1408.523,489.533L1404.561,471.658L1403.503,459.726L1391.503,462.385L1384.245,455.652L1386.916,453.644L1378.759,446.748L1382.459,443.042L1394.685,443.056L1389.827,431.193L1386.191,428.698L1392.314,422.875L1398.765,423.297L1413.452,406.26L1413.366,402.3L1418.104,399.086L1413.62,396.343L1409.722,387.716L1412.446,385.321L1427.065,385.851L1432.43,381.181L1438.401,387.693L1439.867,397.905L1435.88,397.158L1437.438,403.282L1450.618,410.684L1444.936,418.401L1462.801,426.345L1470.417,427.065L1473.621,429.891L1489.224,431.622L1489.558,423.501L1493.412,426.707L1498.581,429.929L1511.297,429.269L1509.426,424.083L1513.906,423.388L1525.367,415.718L1533.987,414.744L1534.716,420.531Z"/>
+<path class="country highlight-fill" id="map-jp" d="M1788.248,360.699L1783.108,366.292L1782.078,379.243L1779.185,383.159L1772.086,385.773L1762.32,386.113L1754.405,392.455L1750.441,386.167L1727.701,390.116L1733.334,394.204L1729.627,403.646L1723.347,403.825L1724.709,398.818L1718.936,393.392L1736.765,381.518L1747.824,379.861L1753.764,380.997L1759.577,371.12L1763.281,373.774L1774.591,366.059L1778.082,359.266L1779.477,349.509L1785.383,348.489ZM1803.408,334.143L1807.338,331.788L1808.573,338.025L1800.331,339.546L1795.466,345.064L1786.731,341.266L1783.707,347.345L1777.528,347.428L1779.512,337.63L1785.447,337.321L1788.709,325.306L1795.238,331.091ZM1735.395,392.461L1743.912,387.454L1748.702,390.557L1738.971,396.678Z"/>
+<path class="country" d="M1726.556,343.815L1726.556,343.815L1726.556,343.815ZM1725.778,342.842L1726.556,343.815L1720.374,347.253L1720.584,351.243L1708.519,357.499L1707.697,360.518L1713.054,363.858L1700.971,368.65L1692.845,366.657L1696.592,359.548L1690.365,356.545L1704.828,346.056L1712.269,347.999L1711.401,345.069Z"/>
+<path class="country" d="M1700.971,368.65L1713.054,363.858L1719.225,374.014L1717.174,383.468L1702.699,387.314L1703.107,380.123L1700.652,374.34L1704.779,373.404Z"/>
+<path class="country" d="M1369.548,370.799L1376.833,372.009L1389.537,369.547L1393.371,364.558L1397.455,367.783L1399.137,374.269L1407,370.063L1416.556,370.481L1417.545,372.076L1399.146,375.537L1395.902,377.957L1397.85,383.075L1393.788,389.543L1388.503,389.37L1382.926,402.703L1371.883,404.454L1368.592,412.326L1361.371,414.636L1347.499,415.489L1338.19,412.652L1343.229,407.616L1338.566,403.103L1336.269,391.279L1340.06,380.314L1345.726,382.422L1358.592,376.637L1359.701,372.194L1365.254,369.142Z"/>
+<path class="country" d="M1269.822,412.11L1264.918,406.232L1262.97,397.986L1256.163,394.941L1252.315,389.66L1256.399,383.408L1248.737,371.868L1245.699,367.417L1245.051,359.325L1248.856,357.742L1256.353,363.141L1258.365,362.978L1264.917,358.879L1271.574,365.48L1273.331,369.577L1282.458,373.521L1290.356,374.479L1299.564,371.71L1308.398,367.459L1318.502,367.097L1329.082,370.52L1335.431,375.44L1339.573,375.639L1340.06,380.314L1336.269,391.279L1338.566,403.103L1343.229,407.616L1338.19,412.652L1343.177,418.93L1348.488,421.372L1351.759,429.723L1343.745,432.593L1341.652,439.047L1318.874,435.371L1313.845,427.574L1303.973,431.256L1297.184,429.413L1286.226,423.561L1278.417,410.883Z"/>
+<path class="country" d="M1432.43,381.181L1427.065,385.851L1412.446,385.321L1409.722,387.716L1413.62,396.343L1418.104,399.086L1413.366,402.3L1413.452,406.26L1398.765,423.297L1392.314,422.875L1386.191,428.698L1389.827,431.193L1394.685,443.056L1382.459,443.042L1378.759,446.748L1374.687,445.343L1368.738,437.119L1341.652,439.047L1343.745,432.593L1351.759,429.723L1348.488,421.372L1343.177,418.93L1338.19,412.652L1347.499,415.489L1361.371,414.636L1368.592,412.326L1371.883,404.454L1382.926,402.703L1388.503,389.37L1393.788,389.543L1397.85,383.075L1395.902,377.957L1399.146,375.537L1417.545,372.076L1423.294,378.935Z"/>
+<path class="country" d="M1514.848,455.919L1513.159,463.532L1507.873,451.898L1502.756,451.676L1501.517,457.057L1494.622,455.839L1489.358,442.25L1494.064,438.155L1490.054,435.214L1492.017,431.445L1499.069,434.12L1499.559,437.983L1513.201,439.611L1506.439,447.795L1511.922,447.106Z"/>
+<path class="country" d="M1509.426,424.083L1511.297,429.269L1498.581,429.929L1493.412,426.707L1500.088,421.168Z"/>
+<path class="country" d="M1556.2,464.938L1545.854,468.88L1540.977,475.896L1549.463,488.493L1545.512,494.35L1550.543,501.551L1553.263,512.299L1547.52,523.187L1548.692,514.808L1542.206,488.923L1539.803,484.322L1529.83,491.068L1523.271,489.271L1524.027,477.184L1513.159,463.532L1514.848,455.919L1517.59,454.601L1518.473,444.601L1522.815,445.866L1528.64,433.919L1528.471,430.739L1535.663,426.9L1539.633,427.905L1540.706,421.361L1548.237,425.544L1548.177,434.377L1542.914,439.017L1542.248,445.607L1548.113,444.685L1552.956,450.876L1551.338,455.491L1562.111,459.278Z"/>
+<path class="country" d="M1584.549,499.075L1572.158,499.338L1568.601,503.958L1569.916,510.667L1560.177,508.22L1560.991,503.855L1556.099,503.888L1555.66,509.998L1550.854,523.02L1554.855,527.215L1558.107,537.095L1567.451,543.806L1561.968,546.751L1556.032,542.456L1547.243,531.802L1547.52,523.187L1553.263,512.299L1550.543,501.551L1545.512,494.35L1549.463,488.493L1540.977,475.896L1545.854,468.88L1556.2,464.938L1562.678,470.245L1561.442,481.079L1567.298,477.764L1577.536,477.032L1581.761,481.543L1582.107,487.027L1586.606,491.869Z"/>
+<path class="country" d="M1596.571,499.468L1591.647,497.423L1589.133,501.253L1584.549,499.075L1586.606,491.869L1582.107,487.027L1581.761,481.543L1577.536,477.032L1567.298,477.764L1561.442,481.079L1562.678,470.245L1556.2,464.938L1562.111,459.278L1565.573,460.735L1564.733,454.38L1567.614,453.566L1573.355,463L1580.194,463.044L1582.348,467.889L1577.203,471.341L1583.859,474.665L1597.581,493.914Z"/>
+<path class="country" d="M1579.635,520.112L1590.276,517.471L1587.836,514.106L1597.174,509.83L1596.571,499.468L1597.581,493.914L1583.859,474.665L1577.203,471.341L1582.348,467.889L1580.194,463.044L1573.355,463L1567.614,453.566L1580.427,451.597L1585.162,448.637L1592.919,451.735L1592.04,454.936L1600.279,458.635L1592.861,463.388L1587.011,472.492L1596.455,485.607L1604.873,493.5L1607.418,503.781L1606.667,513.554L1595.672,520.79L1584.213,530.594L1583.757,523.268Z"/>
+<path class="country" d="M1569.916,510.667L1568.601,503.958L1572.158,499.338L1584.549,499.075L1589.133,501.253L1591.647,497.423L1596.571,499.468L1597.174,509.83L1587.836,514.106L1590.276,517.471L1579.635,520.112L1574.985,519.301Z"/>
+<path class="country" d="M1556.032,542.456L1561.968,546.751L1567.451,543.806L1574.34,551.398L1575.014,562.865L1579.049,571.187L1575.109,571.557L1563.281,563.032L1556.648,548.856ZM1654.9,555.384L1643.697,554.445L1636.785,570.422L1626.999,570.049L1621.097,573.346L1613.967,574.075L1609.24,567.223L1617.605,568.089L1618.723,563.385L1627.753,561.135L1634.467,553.227L1640.819,554.389L1641.393,548.105L1648.473,539.899L1653.828,545.106L1662.122,548.327Z"/>
+<path class="country" d="M1783.335,592.816L1783.521,629.025L1778.575,624.466L1764.525,625.102L1770.381,619.038L1766.266,608.333L1750.914,603.164L1742.572,598.031L1738.8,601.22L1733.277,594.04L1742.757,590.673L1734.624,590.662L1725.109,583.58L1735.445,580.423L1744.364,582.705L1746.792,593.755L1752.542,597.08L1757.185,591.187L1768.498,587.83ZM1694.27,627.775L1694.936,630.555L1686.555,635.926L1688.778,629.982ZM1745.612,616.677L1745.612,616.677L1745.612,616.677ZM1654.9,555.384L1651.74,560.401L1654.865,568.217L1661.093,573.358L1654.51,574.013L1652.898,582.835L1647.556,586.635L1645.267,600.663L1638.138,601.187L1629.206,595.697L1622.601,597.695L1620.574,595.006L1612.355,594.67L1611.505,587.22L1606.066,580.923L1605.94,570.915L1609.24,567.223L1613.967,574.075L1621.097,573.346L1626.999,570.049L1636.785,570.422L1643.697,554.445ZM1718.728,593.938L1722.17,597.516L1710.549,597.223L1711.866,594.168ZM1704.861,599.431L1699.939,596.022L1705.559,595.755ZM1710.735,566.289L1714.414,569.81L1714.644,576.934L1709.425,579.851L1707.775,572.75ZM1682.931,573.508L1695.781,570.482L1691.317,575.993L1667.684,577.052L1666.894,581.257L1671.866,586.198L1674.866,583.681L1685.225,581.791L1675.046,588.951L1680.303,596.071L1684.235,608.04L1679.091,607.72L1681.775,603.171L1676.324,605.322L1671.657,598.382L1672.069,592.968L1668.364,594.657L1669.06,609.083L1663.149,608.258L1663.882,597.784L1659.821,593.937L1666.865,575.223L1671.588,571.097ZM1668.306,635.363L1660.932,631.47L1666.113,630.378ZM1674.12,625.797L1682.797,623.338L1681.983,626.425ZM1657.003,624.828L1661.814,626.736L1648.556,628.553L1655,623.346ZM1602.705,614.048L1603.464,616.024L1614.107,616.578L1615.331,614.288L1625.638,616.959L1627.66,620.56L1635.994,621.573L1642.808,624.875L1636.47,626.991L1630.36,624.753L1619.567,624.493L1607.931,621.374L1601.543,621.518L1585.364,616.434L1589.176,611.125ZM1579.833,584.397L1582.711,591.373L1589.492,595.38L1587.876,610.883L1581.724,611L1569.913,601.816L1563.328,593.925L1556.344,581.983L1551.465,577.353L1547.785,568.24L1529.894,550.755L1529.406,547.927L1541.583,549.224L1559.119,566.707L1564.767,566.794L1576.88,577.789L1574.654,582.326Z"/>
+<path class="country" d="M1671.299,507.79L1668.464,503.557L1675.152,505.761ZM1681.034,522.92L1683.041,517.915L1689.322,515.966L1688.791,521.266L1683.31,528.247ZM1702.093,531.622L1701.093,543.513L1699.063,537.85L1696.647,547.365L1690.11,544.141L1690.243,537.478L1686.723,534.851L1678.253,540.04L1679.513,533.732L1686.043,530.076L1688.006,532.591L1701.237,526.781ZM1658.359,526.613L1650.968,531.884L1661.041,520.724L1663.953,515.205L1664.943,519.735ZM1679.65,477.121L1680.643,483.406L1675.904,489.865L1676.271,498.768L1688.613,501.803L1689.319,508.722L1682.937,503.076L1670.159,501.383L1667.058,495.199L1670.644,475.563ZM1677.991,514.949L1684.001,514.017L1677.792,520.365ZM1697.236,510.8L1698.797,517.003L1694.51,515.529L1693.343,522.067L1690.57,514.507L1693.839,514.95L1690.371,508.605Z"/>
+<path class="country" d="M1194.2,415.278L1200.383,416.162L1211.105,408.879L1205.568,403.324L1217.753,399.698L1232.722,405.092L1248.386,416.265L1258.715,416.709L1268.978,419.748L1271.153,424.539L1278.625,430.094L1282.278,440.844L1285.498,441.551L1286.553,443.673L1288.893,450.586L1305.593,453.387L1306.713,452.213L1309.259,456.148L1305.555,467.259L1288.889,472.815L1272.87,474.944L1267.685,477.444L1263.704,483.278L1241.004,480.704L1237.663,487.549L1227.441,470.112L1217.441,460.082L1217.035,452.928L1213.849,446.768L1208.242,443.451L1206.719,439.012L1195.168,422.463L1192.402,422.489Z"/>
+<path class="country" d="M1288.889,472.815L1295.048,485.864L1289.823,491.718L1275.414,496.655L1270.44,500.575L1253.472,504.532L1249.942,507.817L1241.572,508.166L1237.236,491.043L1237.663,487.549L1241.004,480.704L1263.704,483.278L1267.685,477.444L1272.87,474.944Z"/>
+<path class="country" d="M1306.713,452.213L1310.479,439.921L1313.316,439.9L1318.908,445.711L1326.273,447.45L1332.256,454.423L1324.933,464.876L1322.413,464.585L1321.048,472.439L1314.498,475.18L1307.083,482.657L1295.048,485.864L1288.889,472.815L1305.555,467.259L1309.259,456.148ZM1312.561,435.511L1311.505,433.618L1312.561,435.511Z"/>
+<path class="country" d="M1282.278,440.844L1281.911,436.801L1286.606,435.031L1285.498,441.551Z"/>
+<path class="country" d="M1266.525,411.838L1268.978,419.748L1258.715,416.709L1262.792,411.375Z"/>
+<path class="country" d="M1217.753,399.698L1215.513,392.933L1227.812,387.152L1229.387,376.377L1235.276,371.538L1248.737,371.868L1256.399,383.408L1252.315,389.66L1256.163,394.941L1262.97,397.986L1264.918,406.232L1269.822,412.11L1266.525,411.838L1262.792,411.375L1258.715,416.709L1248.386,416.265L1232.722,405.092Z"/>
+<path class="country" d="M1198.444,396.653L1199.006,393.496L1203.399,388.36L1199.991,385.899L1200.832,379.362L1205.926,374.909L1219.57,374.392L1235.276,371.538L1229.387,376.377L1227.812,387.152L1215.513,392.933L1204.634,398.854Z"/>
+<path class="country" d="M1197.476,398.404L1198.444,396.653L1204.634,398.854L1215.513,392.933L1217.753,399.698L1205.568,403.324L1211.105,408.879L1200.383,416.162L1194.2,415.278L1194.014,414.474L1196.653,403.431Z"/>
+<path class="country" d="M1198.444,396.653L1197.476,398.404L1196.653,403.431L1194.014,414.474L1193.462,413.031L1190.364,404.929L1195.145,394.532L1199.006,393.496Z"/>
+<path class="country" d="M1199.006,393.496L1195.145,394.532L1199.991,385.899L1203.399,388.36Z"/>
+<path class="country" d="M1221.972,337.065L1235.524,338.258L1252.613,342.244L1257.805,345.811L1259.099,349.583L1249.847,349.214L1242.126,350.081L1230.856,347.617L1230.297,341.453Z"/>
+<path class="country" d="M1258.365,362.978L1256.353,363.141L1248.856,357.742L1242.536,354.739L1242.126,350.081L1249.847,349.214L1258.242,359.125Z"/>
+<path class="country" d="M1257.805,345.811L1265.643,349.751L1269.913,346.099L1275.661,352.965L1271.574,365.48L1264.917,358.879L1258.365,362.978L1258.242,359.125L1249.847,349.214L1259.099,349.583ZM1256.353,363.141L1248.856,357.742L1256.353,363.141Z"/>
+<path class="country highlight" id="map-tw" d="M1676.543,442.847L1670.817,456.312L1667.257,447.502L1674.972,437.84Z"/>
+<path class="country" d="M1454.378,536.576L1453.541,542.36L1446.38,545.213L1442.751,532.81L1445.266,523.792L1449.105,526.879Z"/>
+<path class="country" d="M1641.393,548.105L1640.819,554.389L1634.467,553.227Z"/>
+<path class="country" d="M1310.934,348.878L1310.716,328.393L1325.017,325.11L1339.213,331.671L1344.518,336.679L1360.56,335.436L1367.211,339.494L1366.797,345.067L1370.634,349.657L1381.292,352.433L1383.722,348.458L1394.235,343.558L1391.222,347.704L1399.278,348.41L1405.863,351.337L1398.749,355.338L1394.523,354.79L1392.592,350.814L1385.164,352.105L1380.758,358.74L1374.679,360.925L1379.956,366.387L1376.833,372.009L1369.548,370.799L1369.701,367.4L1356.501,362.301L1346.524,355.849L1343.793,350.121L1333.796,348.231L1333.202,343.798L1325.717,340.862Z"/>
+<path class="country" d="M1291.68,346.241L1300.441,343.236L1308.085,349.149L1310.934,348.878L1325.717,340.862L1333.202,343.798L1333.796,348.231L1343.793,350.121L1346.524,355.849L1356.501,362.301L1369.701,367.4L1369.548,370.799L1365.254,369.142L1359.701,372.194L1358.592,376.637L1345.726,382.422L1340.06,380.314L1339.573,375.639L1335.431,375.44L1329.082,370.52L1318.502,367.097L1308.398,367.459L1299.564,371.71L1299.338,361.97L1292.744,355.961L1293.974,351.278L1304.094,350.865L1298.454,344.353Z"/>
+<path class="country" d="M1394.235,343.558L1399.137,340.34L1408.276,342.254L1412.294,337.824L1422.224,339.548L1439.679,340.281L1445.889,343.093L1434.373,349.563L1427.247,350.223L1425.146,353.771L1419.266,353.025L1410.124,356.737L1409.308,359.308L1398.804,360.151L1385.916,358.778L1386.442,355.575L1394.523,354.79L1398.749,355.338L1405.863,351.337L1399.278,348.41L1391.222,347.704Z"/>
+<path class="country" d="M1376.833,372.009L1379.956,366.387L1374.679,360.925L1380.758,358.74L1385.164,352.105L1392.592,350.814L1394.523,354.79L1386.442,355.575L1385.916,358.778L1398.804,360.151L1409.308,359.308L1410.716,364.449L1415.916,365.154L1416.556,370.481L1407,370.063L1399.137,374.269L1397.455,367.783L1393.371,364.558L1389.537,369.547Z"/>
+<path class="country highlight" id="map-cn" d="M1608.196,477.272L1603.64,475.55L1606.217,468.253L1615.481,466.828L1612.995,474.601ZM1445.889,343.093L1449.257,338.479L1444.256,328.829L1458.105,325.372L1462.114,315.426L1473.135,317.254L1476.49,309.172L1485.333,304.954L1487.507,304.497L1488.966,308.373L1501.56,313.406L1505.393,317.881L1505.253,326.781L1519.337,328.507L1529.483,332.585L1535.274,341.006L1565.739,342.177L1583.139,347.274L1589.607,344.291L1606.909,342.151L1621.275,335.353L1618.602,331.384L1621.518,327.803L1630.355,329.432L1644.362,324.33L1652.343,319.077L1664.796,318.967L1665.405,316.992L1655.912,311.333L1643.016,313.223L1641.585,310.951L1648.216,301.212L1654.885,303.309L1662.714,299.799L1662.663,297.354L1670.768,289.681L1667.65,285.293L1672.239,282.529L1686.508,281.377L1699.702,285.077L1709.208,301.924L1718.877,303.7L1725.457,307.65L1727.707,312.87L1736.148,312.876L1750.146,309.047L1745.069,316.079L1739.428,327.57L1727.918,328.548L1728.582,339.87L1725.778,342.842L1711.401,345.069L1712.269,347.999L1704.828,346.056L1690.365,356.545L1672.525,362.273L1678.714,353.801L1675.78,350.89L1664.664,356.714L1661.241,360.302L1652.959,363.161L1665.016,371.946L1671.241,367.979L1679.766,370.29L1680.667,373.2L1672.801,374.752L1661.951,384.427L1667.931,387.48L1670.113,392.944L1677.267,402.303L1673.69,407.947L1678.29,412.634L1676.025,421.562L1672.92,422.061L1659.205,441.996L1643.837,451.799L1632.26,453.102L1629.117,455.863L1615.475,459.497L1610.499,465.69L1610.358,459.509L1600.279,458.635L1592.04,454.936L1592.919,451.735L1585.162,448.637L1580.427,451.597L1567.614,453.566L1564.733,454.38L1565.573,460.735L1562.111,459.278L1551.338,455.491L1552.956,450.876L1548.113,444.685L1542.248,445.607L1542.914,439.017L1548.177,434.377L1548.237,425.544L1540.706,421.361L1534.716,420.531L1533.987,414.744L1525.367,415.718L1513.906,423.388L1509.426,424.083L1500.088,421.168L1493.412,426.707L1489.558,423.501L1476.796,421.684L1467.97,418.149L1452.921,409.355L1450.618,410.684L1437.438,403.282L1435.88,397.158L1439.867,397.905L1438.401,387.693L1432.43,381.181L1423.294,378.935L1417.545,372.076L1416.556,370.481L1415.916,365.154L1410.716,364.449L1409.308,359.308L1410.124,356.737L1419.266,353.025L1425.146,353.771L1427.247,350.223L1434.373,349.563Z"/>
+<path class="country highlight" id="map-np" d="M1489.558,423.501L1489.224,431.622L1473.621,429.891L1470.417,427.065L1462.801,426.345L1444.936,418.401L1450.618,410.684L1452.921,409.355L1467.97,418.149L1476.796,421.684Z"/>
+<path class="country highlight" id="map-kz" d="M1485.333,304.954L1476.49,309.172L1473.135,317.254L1462.114,315.426L1458.105,325.372L1444.256,328.829L1449.257,338.479L1445.889,343.093L1439.679,340.281L1422.224,339.548L1412.294,337.824L1408.276,342.254L1399.137,340.34L1394.235,343.558L1383.722,348.458L1381.292,352.433L1370.634,349.657L1366.797,345.067L1367.211,339.494L1360.56,335.436L1344.518,336.679L1339.213,331.671L1325.017,325.11L1310.716,328.393L1310.934,348.878L1308.085,349.149L1300.441,343.236L1291.68,346.241L1291.675,340.635L1285.236,338.743L1279.476,330.538L1284.881,331.066L1285.094,327.004L1294.672,326.931L1294.682,318.076L1284.4,316.989L1272.784,320.596L1266.985,313.127L1258.147,309.514L1264.164,298.066L1269.877,301.288L1270.569,297.231L1282.037,291.188L1290.715,291.044L1309.539,297.139L1315.433,294.795L1324.241,294.683L1331.346,297.562L1340.763,296.153L1342.156,293.522L1333.153,289.701L1342.778,284.037L1341.314,278.336L1362.103,276.402L1378.717,272.979L1383.712,270.674L1393.696,271.872L1395.445,277.63L1401.245,276.278L1408.381,278.172L1407.92,281.205L1425.14,277.387L1432.227,281.679L1444.642,295.788L1447.602,292.88L1455.255,296.08L1463.239,294.653L1475.229,302.299L1482.385,301.555Z"/>
+              <!-- Pins in SVG coordinate space — exact geographic centroids -->
+              <g class="svg-pin">
+                <circle class="pin-pulse" cx="1360" cy="315" r="12"/>
+                <circle class="pin-dot" cx="1360" cy="315" r="12"/>
+                <text class="pin-label" x="1360" y="375">カザフスタン</text>
+              </g>
+              <g class="svg-pin">
+                <circle class="pin-pulse" cx="1468" cy="422" r="12"/>
+                <circle class="pin-dot" cx="1468" cy="422" r="12"/>
+                <text class="pin-label" x="1468" y="465">ネパール</text>
+              </g>
+              <g class="svg-pin">
+                <circle class="pin-pulse" cx="1585" cy="374" r="12"/>
+                <circle class="pin-dot" cx="1585" cy="374" r="12"/>
+                <text class="pin-label" x="1585" y="425">中国</text>
+              </g>
+            </svg>
           </div>
 
-          <!-- Nepal -->
-          <div class="country-card reveal d4">
-            <div class="cc-flag-area">
-              <span class="cc-code">02</span>
-              <div>
-                <div class="cc-name">ネパール</div>
+          <!-- Tag panels -->
+          <div class="map-tags">
+            <div class="map-tag reveal d3">
+              <div class="mt-head">
+                <span class="mt-num">01</span>
+                <span class="mt-name"><ruby>中国<rt>ちゅうごく</rt></ruby></span>
+              </div>
+              <div class="mt-kws">
+                <span class="mt-kw"><ruby>人工知能<rt>じんこうちのう</rt></ruby></span>
+                <span class="mt-kw"><ruby>自動運転<rt>じどううんてん</rt></ruby></span>
+                <span class="mt-kw">ロボット</span>
+                <span class="mt-kw"><ruby>量子<rt>りょうし</rt></ruby><ruby>技術<rt>ぎじゅつ</rt></ruby></span>
               </div>
             </div>
-            <div class="cc-keywords">
-              <span class="cc-kw">モバイル<ruby>決済<rt>けっさい</rt></ruby></span>
-              <span class="cc-kw">オンライン<ruby>教育<rt>きょういく</rt></ruby></span>
-              <span class="cc-kw"><ruby>農業<rt>のうぎょう</rt></ruby>テクノロジー</span>
-            </div>
-            <div class="cc-desc">スマートフォンの<ruby>普及<rt>ふきゅう</rt></ruby>で、モバイル<ruby>決済<rt>けっさい</rt></ruby>やオンライン<ruby>学習<rt>がくしゅう</rt></ruby>が<ruby>広<rt>ひろ</rt></ruby>がっている。<ruby>農業<rt>のうぎょう</rt></ruby>への<ruby>技術<rt>ぎじゅつ</rt></ruby><ruby>活用<rt>かつよう</rt></ruby>も<ruby>進<rt>すす</rt></ruby>んでいる。</div>
-          </div>
-
-          <!-- Kazakhstan -->
-          <div class="country-card reveal d5">
-            <div class="cc-flag-area">
-              <span class="cc-code">03</span>
-              <div>
-                <div class="cc-name">カザフスタン</div>
+            <div class="map-tag reveal d4">
+              <div class="mt-head">
+                <span class="mt-num">02</span>
+                <span class="mt-name">ネパール</span>
+              </div>
+              <div class="mt-kws">
+                <span class="mt-kw">モバイル<ruby>決済<rt>けっさい</rt></ruby></span>
+                <span class="mt-kw">オンライン<ruby>教育<rt>きょういく</rt></ruby></span>
+                <span class="mt-kw"><ruby>農業<rt>のうぎょう</rt></ruby>テクノロジー</span>
               </div>
             </div>
-            <div class="cc-keywords">
-              <span class="cc-kw">デジタル<ruby>政府<rt>せいふ</rt></ruby></span>
-              <span class="cc-kw">スマートシティ</span>
-              <span class="cc-kw"><ruby>宇宙<rt>うちゅう</rt></ruby>・<ruby>科学<rt>かがく</rt></ruby></span>
+            <div class="map-tag reveal d5">
+              <div class="mt-head">
+                <span class="mt-num">03</span>
+                <span class="mt-name">カザフスタン</span>
+              </div>
+              <div class="mt-kws">
+                <span class="mt-kw">デジタル<ruby>政府<rt>せいふ</rt></ruby></span>
+                <span class="mt-kw">スマートシティ</span>
+                <span class="mt-kw"><ruby>宇宙<rt>うちゅう</rt></ruby>・<ruby>科学<rt>かがく</rt></ruby></span>
+              </div>
             </div>
-            <div class="cc-desc">デジタル<ruby>化<rt>か</rt></ruby>の<ruby>推進<rt>すいしん</rt></ruby>とスマートシティ<ruby>構想<rt>こうそう</rt></ruby>が<ruby>進<rt>すす</rt></ruby>んでいる。<ruby>若者<rt>わかもの</rt></ruby>の<ruby>技術<rt>ぎじゅつ</rt></ruby><ruby>学習<rt>がくしゅう</rt></ruby>も<ruby>盛<rt>さか</rt></ruby>んである。</div>
           </div>
         </div>
 
@@ -1271,7 +1467,7 @@ h2.reveal { opacity: 1; transform: none; filter: none;
       </div>
 
       <!--
-        SPEAKER SCRIPT (中国):
+        SPEAKER SCRIPT (タマン):
         次に、中国の現状について紹介します。
         中国では、現在、コンピューターや人工知能に関する技術が急速に発展しています。
         例えば、コンピュータービジョンは、自動運転や工場の自動化など、さまざまな分野で利用されています。
@@ -1279,14 +1475,14 @@ h2.reveal { opacity: 1; transform: none; filter: none;
         さらに、量子通信や量子コンピューターについても研究が進められています。
         まだ研究段階の技術もありますが、今後、私たちの生活の中で利用される場面が増えていくと考えています。
 
-        SPEAKER SCRIPT (ネパール):
+        SPEAKER SCRIPT (アセラ):
         次に、ネパールの現状について紹介します。
         ネパールでは、スマートフォンの普及によって、モバイル決済やオンライン学習が急速に広がっています。
         都市だけでなく地方でも、スマートフォンを通じて教育や金融のサービスが利用できるようになってきました。
         また、農業への技術活用も進んでおり、天候や作物の状態をデータで管理する取り組みが始まっています。
         まだインフラの課題はありますが、技術が生活を支える役割は今後さらに大きくなると考えています。
 
-        SPEAKER SCRIPT (カザフスタン):
+        SPEAKER SCRIPT (アジヤイ):
         最後に、カザフスタンの現状について紹介します。
         カザフスタンでは、政府がデジタル化を推進しており、オンラインでの行政手続きが進んでいます。
         また、スマートシティの構想も進んでおり、都市の交通やエネルギー管理に技術が活用されています。
@@ -1306,54 +1502,39 @@ h2.reveal { opacity: 1; transform: none; filter: none;
         <div class="slide-header reveal d1">
           <div class="eyebrow-wrap">
             <span class="accent-line"></span>
-            <span class="eyebrow"><ruby>結論<rt>けつろん</rt></ruby> — <ruby>技術<rt>ぎじゅつ</rt></ruby>が<ruby>生活<rt>せいかつ</rt></ruby>の<ruby>一部<rt>いちぶ</rt></ruby>になる</span>
+            <span class="eyebrow"><ruby>結論<rt>けつろん</rt></ruby> — <ruby>私<rt>わたし</rt></ruby>たちの<ruby>考<rt>かんが</rt></ruby>え</span>
           </div>
           <span class="tag-pill">12 / 13</span>
         </div>
 
         <!-- Headline -->
-        <h2 class="reveal d2"><ruby>技術<rt>ぎじゅつ</rt></ruby>が<ruby>生活<rt>せいかつ</rt></ruby>の<ruby>一部<rt>いちぶ</rt></ruby>になる</h2>
+        <h2 class="reveal d2"><ruby>技術<rt>ぎじゅつ</rt></ruby>は<ruby>生活<rt>せいかつ</rt></ruby>の<ruby>一部<rt>いちぶ</rt></ruby>になる</h2>
 
-        <!-- 3 keyword pills -->
-        <div class="conclusion-keywords reveal d3">
-          <div class="ck-pill">
-            <div class="ck-jp"><ruby>便利<rt>べんり</rt></ruby></div>
-            <div class="ck-en">べんり</div>
+        <!-- 3 conclusion cards -->
+        <div class="conclusion-cards">
+          <div class="concl-card reveal d3">
+            <div class="cc-num">01</div>
+            <div class="cc-title"><ruby>進化<rt>しんか</rt></ruby></div>
+            <div class="cc-flow"><ruby>大<rt>おお</rt></ruby>きな<ruby>機械<rt>きかい</rt></ruby> → <ruby>生活<rt>せいかつ</rt></ruby>の<ruby>中<rt>なか</rt></ruby> → <ruby>意識<rt>いしき</rt></ruby>しない<ruby>存在<rt>そんざい</rt></ruby></div>
+            <div class="cc-desc">コンピューターはどんどん<ruby>小<rt>ちい</rt></ruby>さくなり、<ruby>私<rt>わたし</rt></ruby>たちの<ruby>周<rt>まわ</rt></ruby>りに<ruby>溶<rt>と</rt></ruby>け<ruby>込<rt>こ</rt></ruby>んでいく</div>
           </div>
-          <div class="ck-pill">
-            <div class="ck-jp"><ruby>自然<rt>しぜん</rt></ruby></div>
-            <div class="ck-en">しぜん</div>
+          <div class="concl-card reveal d4">
+            <div class="cc-num">02</div>
+            <div class="cc-title"><ruby>融和<rt>ゆうわ</rt></ruby></div>
+            <div class="cc-flow"><ruby>便利<rt>べんり</rt></ruby>で <ruby>自然<rt>しぜん</rt></ruby>な<ruby>存在<rt>そんざい</rt></ruby></div>
+            <div class="cc-desc"><ruby>技術<rt>ぎじゅつ</rt></ruby>は<ruby>単<rt>たん</rt></ruby>なる<ruby>道具<rt>どうぐ</rt></ruby>ではなく、<ruby>生活<rt>せいかつ</rt></ruby>と<ruby>社会<rt>しゃかい</rt></ruby>の<ruby>一部<rt>いちぶ</rt></ruby>になる</div>
           </div>
-          <div class="ck-pill">
-            <div class="ck-jp"><ruby>課題<rt>かだい</rt></ruby></div>
-            <div class="ck-en">かだい</div>
+          <div class="concl-card reveal d5">
+            <div class="cc-num">03</div>
+            <div class="cc-title"><ruby>責任<rt>せきにん</rt></ruby></div>
+            <div class="cc-flow"><ruby>発展<rt>はってん</rt></ruby>させるだけでは<ruby>不十分<rt>ふじゅうぶん</rt></ruby></div>
+            <div class="cc-desc"><ruby>技術<rt>ぎじゅつ</rt></ruby>をどう<ruby>使<rt>つか</rt></ruby>うかを<ruby>考<rt>かんが</rt></ruby>えることも<ruby>大切<rt>たいせつ</rt></ruby>である</div>
           </div>
         </div>
 
-        <!-- Evolution arc: 3 steps -->
-        <div class="conclusion-arc reveal d4">
-          <div class="ca-stage">
-            <div class="step-circle step-fade-1">01</div>
-            <div class="ca-label"><ruby>大<rt>おお</rt></ruby>きな<ruby>機械<rt>きかい</rt></ruby></div>
-            <div class="ca-sub"><ruby>過去<rt>かこ</rt></ruby></div>
-          </div>
-          <span class="ca-arrow">→</span>
-          <div class="ca-stage">
-            <div class="step-circle step-fade-2">02</div>
-            <div class="ca-label"><ruby>生活<rt>せいかつ</rt></ruby>の<ruby>中<rt>なか</rt></ruby></div>
-            <div class="ca-sub"><ruby>現在<rt>げんざい</rt></ruby></div>
-          </div>
-          <span class="ca-arrow">→</span>
-          <div class="ca-stage">
-            <div class="step-circle step-fade-3">03</div>
-            <div class="ca-label"><ruby>意識<rt>いしき</rt></ruby>しない<ruby>存在<rt>そんざい</rt></ruby></div>
-            <div class="ca-sub"><ruby>未来<rt>みらい</rt></ruby></div>
-          </div>
-        </div>
-
-        <!-- Closing thought -->
-        <div class="highlight-block reveal d5">
-          <p class="conclusion-thought"><ruby>技術<rt>ぎじゅつ</rt></ruby>を<ruby>発展<rt>はってん</rt></ruby>させるだけでなく、<span class="accent">どう<ruby>使<rt>つか</rt></ruby>うか</span>を<ruby>考<rt>かんが</rt></ruby>えることも<ruby>大切<rt>たいせつ</rt></ruby></p>
+        <!-- Closing statement -->
+        <div class="conclusion-close reveal d6">
+          <ruby>未来<rt>みらい</rt></ruby>の<ruby>技術<rt>ぎじゅつ</rt></ruby>と<span class="accent"><ruby>私<rt>わたし</rt></ruby>たちの<ruby>暮<rt>く</rt></ruby>らし</span>を<ruby>考<rt>かんが</rt></ruby>える
         </div>
 
         <!-- Footer -->
@@ -1393,7 +1574,7 @@ h2.reveal { opacity: 1; transform: none; filter: none;
         <div class="accent-line reveal d2" style="margin-bottom:36px;"></div>
         <h1 class="thanks-title reveal d3">ありがとうございました</h1>
         <p class="thanks-sub reveal d4"><ruby>未来<rt>みらい</rt></ruby>の<ruby>技術<rt>ぎじゅつ</rt></ruby>と<ruby>私<rt>わたし</rt></ruby>たちの<ruby>暮<rt>く</rt></ruby>らし</p>
-        <p class="thanks-countries reveal d5"><ruby>中国<rt>ちゅうごく</rt></ruby> ・ ネパール ・ カザフスタン</p>
+        <p class="thanks-countries reveal d5">タマン ・ アセラ ・ アジヤイ ・ シュゲンサク</p>
 
         <!-- Footer -->
         <div class="slide-footer" style="position:absolute;bottom:var(--pad-bottom);left:var(--pad-x);right:var(--pad-x);">
